@@ -1,0 +1,129 @@
+syntax = "proto3";
+option go_package = "proto/reservation";
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+service ReservationService{
+  rpc GetActiveForHost(GetActiveForHostRequest) returns (GetActiveForHostResponse){
+    option (google.api.http) = {
+      get: "/reservation/host"
+    };
+  }
+  rpc GetActiveForGuest(GetActiveForGuestRequest) returns (GetActiveForGuestResponse){
+    option (google.api.http) = {
+      get: "/reservation/guest"
+    };
+  }
+  rpc GetFutureForAccommodation(GetFutureForAccommodationRequest) returns (GetFutureForAccommodationResponse){
+    option (google.api.http) = {
+      get: "/reservation/accommodation"
+    };
+  }
+  rpc ManualReservation(ManualReservationRequest) returns (ManualReservationResponse){
+    option (google.api.http) = {
+      post: "/reservation/manual"
+    };
+  }
+  rpc AutomaticReservation(AutomaticReservationRequest) returns (AutomaticReservationResponse){
+    option (google.api.http) = {
+      post: "/reservation/automatic"
+    };
+  }
+  rpc ApproveReservation(ApproveReservationRequest) returns (ApproveReservationResponse){
+    option (google.api.http) = {
+      post: "/reservation/approve"
+    };
+  }
+  rpc CancelReservation(CancelReservationRequest) returns (CancelReservationResponse){
+    option (google.api.http) = {
+      post: "/reservation/cancel"
+    };
+  }
+}
+
+enum ReservationStatus {
+ PENDING = 0;
+ ACTIVE = 1;
+ CANCELLED = 2;
+ DENIED = 3;
+ EXPIRED = 4;
+}
+
+message Reservation {
+  string id = 1;
+  string hostId = 2;
+  string guestId = 3;
+  string accommodationId = 4;
+  google.protobuf.Timestamp startDate = 5;
+  google.protobuf.Timestamp endDate = 6;
+  int32 guestCount = 7;
+  ReservationStatus reservationStatus = 8;
+}
+
+message ReservationRequest {
+  string hostId = 2;
+  string guestId = 3;
+  string accommodationId = 4;
+  google.protobuf.Timestamp startDate = 5;
+  google.protobuf.Timestamp endDate = 6;
+  int32 guestCount = 7;
+}
+
+message GetActiveForHostRequest{
+  string hostId = 1;
+}
+
+message GetActiveForHostResponse{
+  repeated Reservation reservations =1;
+}
+
+message GetActiveForGuestRequest{
+ string guestId = 1;
+}
+
+message GetActiveForGuestResponse{
+ repeated Reservation reservations = 1;
+}
+
+message GetFutureForAccommodationRequest{
+ string accommodationId = 1;
+}
+
+message GetFutureForAccommodationResponse{
+ repeated Reservation reservations = 1;
+}
+
+message AutomaticReservationRequest{
+ ReservationRequest request = 1;
+}
+
+message AutomaticReservationResponse{
+ string response = 1;
+}
+
+message ManualReservationRequest{
+ ReservationRequest request = 1;
+}
+
+message ManualReservationResponse{
+ string response = 1;
+}
+
+message CancelReservationRequest{
+ string id = 1;
+}
+
+message CancelReservationResponse{
+ string response = 1;
+}
+
+message ApproveReservationRequest{
+ string id = 1;
+}
+
+message ApproveReservationResponse{
+ string response = 1;
+}
+
+
+
