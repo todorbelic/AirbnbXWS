@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Todor\\Desktop\\xml_final\\AirbnbXWS\\backend\\AccommodationService\\AccommodationService.csproj": {}
+    "C:\\Users\\HP LAPTOP\\Desktop\\xml proj\\AirbnbXWS\\backend\\AccommodationService\\AccommodationService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Todor\\Desktop\\xml_final\\AirbnbXWS\\backend\\AccommodationService\\AccommodationService.csproj": {
+    "C:\\Users\\HP LAPTOP\\Desktop\\xml proj\\AirbnbXWS\\backend\\AccommodationService\\AccommodationService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Todor\\Desktop\\xml_final\\AirbnbXWS\\backend\\AccommodationService\\AccommodationService.csproj",
+        "projectUniqueName": "C:\\Users\\HP LAPTOP\\Desktop\\xml proj\\AirbnbXWS\\backend\\AccommodationService\\AccommodationService.csproj",
         "projectName": "AccommodationService",
-        "projectPath": "C:\\Users\\Todor\\Desktop\\xml_final\\AirbnbXWS\\backend\\AccommodationService\\AccommodationService.csproj",
-        "packagesPath": "C:\\Users\\Todor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Todor\\Desktop\\xml_final\\AirbnbXWS\\backend\\AccommodationService\\obj\\",
+        "projectPath": "C:\\Users\\HP LAPTOP\\Desktop\\xml proj\\AirbnbXWS\\backend\\AccommodationService\\AccommodationService.csproj",
+        "packagesPath": "C:\\Users\\HP LAPTOP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP LAPTOP\\Desktop\\xml proj\\AirbnbXWS\\backend\\AccommodationService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Todor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HP LAPTOP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -68,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
