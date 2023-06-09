@@ -2,7 +2,7 @@
 
 namespace AccommodationService.Services
 {
-    public interface IAccommodationService
+    public interface IAppAccommodationService
     {
         public List<Accommodation> Get();
 

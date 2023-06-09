@@ -7,9 +7,9 @@ namespace AccommodationService.Handlers
     public class AccommodationHandler : AccommodationServiceRPC.AccommodationServiceRPCBase
     {
         private readonly ILogger<AccommodationHandler> _logger;
-        private readonly IAccommodationService _accommodationService;
+        private readonly IAppAccommodationService _accommodationService;
 
-        public AccommodationHandler(ILogger<AccommodationHandler> logger, IAccommodationService accommodationService)
+        public AccommodationHandler(ILogger<AccommodationHandler> logger, IAppAccommodationService accommodationService)
         {
             _logger = logger;
             _accommodationService = accommodationService;
@@ -38,26 +38,5 @@ namespace AccommodationService.Handlers
         {
             return base.GetAccommodation(request, context);
         }
-
-        public override Task<DeleteAllForHostResponse> DeleteAllForHost(DeleteAllForHostRequest request, ServerCallContext context)
-        {
-            return base.DeleteAllForHost(request, context);
-        }
-
-        public override Task<ModifyAccommodationResponse> ModifyAccommodation(ModifyAccommodationRequest request, ServerCallContext context)
-        {
-            return base.ModifyAccommodation(request, context);
-        }
-
-        public override Task<SearchAcommodationsResponse> SearchAcommodations(SearchAcommodationsRequest request, ServerCallContext context)
-        {
-            return base.SearchAcommodations(request, context);
-        }
-
-        public override Task<SetReservationOptionResponse> SetReservationOption(SetReservationOptionRequest request, ServerCallContext context)
-        {
-            return base.SetReservationOption(request, context);
-        }
-
     }
 }

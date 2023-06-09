@@ -5,7 +5,7 @@ using AutoMapper;
 
 namespace AccommodationService.Services
 {
-    public class AppAccommodationService : IAccommodationService
+    public class AppAccommodationService : IAppAccommodationService
     {
         private readonly IConfiguration _configuration;
         private readonly IRepository<AppAccommodation> _repository;

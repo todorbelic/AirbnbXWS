@@ -7,6 +7,9 @@ import (
 	cfg "airbnb/api-gateway/startup/config"
 	"context"
 	"fmt"
+	"log"
+	"net/http"
+
 	"github.com/gorilla/mux"
 	grpc_opentracing "github.com/grpc-ecosystem/go-grpc-middleware/tracing/opentracing"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
@@ -14,8 +17,6 @@ import (
 	muxprom "gitlab.com/msvechla/mux-prometheus/pkg/middleware"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	"log"
-	"net/http"
 )
 
 type Server struct {
@@ -48,7 +49,7 @@ func (server *Server) initHandlers() {
 
 	accommodationEndpoint := fmt.Sprintf("%s", server.config.AccommodationServiceAddress)
 	log.Println(accommodationEndpoint)
-	err = accommodation.RegisterAccommodationServiceHandlerFromEndpoint(context.TODO(), server.mux, accommodationEndpoint, opts)
+	err = accommodation.RegisterAccommodationServiceRPCHandlerFromEndpoint(context.TODO(), server.mux, accommodationEndpoint, opts)
 	if err != nil {
 		panic(err)
 	}

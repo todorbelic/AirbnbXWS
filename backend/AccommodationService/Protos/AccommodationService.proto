@@ -1,6 +1,6 @@
 syntax = "proto3";
-
 option go_package = "proto/accommodation";
+//option csharp_namespace = "AccommodationService";
 
 service AccommodationServiceRPC {
 	rpc DeleteAllForHost(DeleteAllForHostRequest) returns (DeleteAllForHostResponse);
