@@ -1,0 +1,30 @@
+.host-profile-page{
+    height: 100vh;
+    display: flex;
+    align-content: center;
+}
+
+.host-profile-mat-card-header{
+    color:white;
+}
+
+.host-profile-mat-card-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.host-profile-mat-card {
+    display: flex;
+    align-self: center;
+    width: max-content;
+    border-radius: 5px;
+    margin:auto;
+    background-color: rgb(163, 211, 95);
+
+    
+}
+
+.delete-profile-mat-button{
+    align-self: flex-end;
+}

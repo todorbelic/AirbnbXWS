@@ -1,0 +1,43 @@
+h3 {
+  
+    text-align: center;
+    font-size: 40px;
+    color: rgb(67, 126, 73);
+    font-weight:200;
+    font-stretch:ultra-condensed;
+  }
+  .login-mat-card-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-mat-card {
+    display: flex;
+    align-self: center;
+    width: max-content;
+    border-radius: 5px;
+    margin:auto;
+    background-color: rgb(163, 211, 95);
+
+    
+}
+
+.login-mat-card mat-form-field {
+    width: 300px;
+    padding-left: 4px;
+    padding-right: 4px;
+    
+}
+
+.login-mat-card-buttons{
+display: flex;
+justify-content: center;
+}
+
+.login-page{
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}

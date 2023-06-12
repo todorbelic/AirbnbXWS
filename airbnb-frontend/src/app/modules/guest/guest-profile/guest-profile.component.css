@@ -1,0 +1,29 @@
+
+.guest-profile-page{
+    height: 100vh;
+    display: flex;
+    align-content: center;
+}
+
+.guest-profile-mat-card-header{
+    color:white;
+}
+
+.guest-profile-mat-card-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.guest-profile-mat-card {
+    display: flex;
+    align-self: center;
+    width: max-content;
+    border-radius: 5px;
+    margin:auto;
+    background-color: rgb(163, 211, 95);  
+}
+
+.delete-profile-mat-button{
+    align-self: flex-end;
+}

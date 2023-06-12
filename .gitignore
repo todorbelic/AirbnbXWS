@@ -718,3 +718,4 @@ $RECYCLE.BIN/
 #JetBrains
 .DS_Store
 .idea
+airbnb-frontend/.editorconfig
