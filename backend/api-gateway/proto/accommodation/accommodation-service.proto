@@ -2,7 +2,7 @@ syntax = "proto3";
 option go_package = "proto/accommodation";
 import "google/api/annotations.proto";
 
-service AccommodationService{
+service AccommodationServiceRPC{
   rpc DeleteAllForHost(DeleteAllForHostRequest) returns (DeleteAllForHostResponse){
      option (google.api.http) = {
       delete: "/accommodation"
@@ -26,7 +26,7 @@ service AccommodationService{
   }
   rpc GetAccommodation (GetAccommodationRequest) returns (GetAccommodationResponse){
      option (google.api.http) = {
-      post: "/accommodation/{id}"
+      get: "/accommodation/{id}"
     };
   }
   rpc SetReservationOption (SetReservationOptionRequest) returns (SetReservationOptionResponse){

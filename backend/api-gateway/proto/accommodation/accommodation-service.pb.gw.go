@@ -32,17 +32,17 @@ var _ = utilities.NewDoubleArray
 var _ = metadata.Join
 
 var (
-	filter_AccommodationService_DeleteAllForHost_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_AccommodationServiceRPC_DeleteAllForHost_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_AccommodationService_DeleteAllForHost_0(ctx context.Context, marshaler runtime.Marshaler, client AccommodationServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_AccommodationServiceRPC_DeleteAllForHost_0(ctx context.Context, marshaler runtime.Marshaler, client AccommodationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeleteAllForHostRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AccommodationService_DeleteAllForHost_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AccommodationServiceRPC_DeleteAllForHost_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -51,14 +51,14 @@ func request_AccommodationService_DeleteAllForHost_0(ctx context.Context, marsha
 
 }
 
-func local_request_AccommodationService_DeleteAllForHost_0(ctx context.Context, marshaler runtime.Marshaler, server AccommodationServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_AccommodationServiceRPC_DeleteAllForHost_0(ctx context.Context, marshaler runtime.Marshaler, server AccommodationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeleteAllForHostRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AccommodationService_DeleteAllForHost_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AccommodationServiceRPC_DeleteAllForHost_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -67,7 +67,7 @@ func local_request_AccommodationService_DeleteAllForHost_0(ctx context.Context, 
 
 }
 
-func request_AccommodationService_CreateAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, client AccommodationServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_AccommodationServiceRPC_CreateAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, client AccommodationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq CreateAccommodationRequest
 	var metadata runtime.ServerMetadata
 
@@ -84,7 +84,7 @@ func request_AccommodationService_CreateAccommodation_0(ctx context.Context, mar
 
 }
 
-func local_request_AccommodationService_CreateAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, server AccommodationServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_AccommodationServiceRPC_CreateAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, server AccommodationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq CreateAccommodationRequest
 	var metadata runtime.ServerMetadata
 
@@ -102,17 +102,17 @@ func local_request_AccommodationService_CreateAccommodation_0(ctx context.Contex
 }
 
 var (
-	filter_AccommodationService_ModifyAccommodation_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_AccommodationServiceRPC_ModifyAccommodation_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_AccommodationService_ModifyAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, client AccommodationServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_AccommodationServiceRPC_ModifyAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, client AccommodationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ModifyAccommodationRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AccommodationService_ModifyAccommodation_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AccommodationServiceRPC_ModifyAccommodation_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -121,14 +121,14 @@ func request_AccommodationService_ModifyAccommodation_0(ctx context.Context, mar
 
 }
 
-func local_request_AccommodationService_ModifyAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, server AccommodationServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_AccommodationServiceRPC_ModifyAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, server AccommodationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ModifyAccommodationRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AccommodationService_ModifyAccommodation_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AccommodationServiceRPC_ModifyAccommodation_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -138,17 +138,17 @@ func local_request_AccommodationService_ModifyAccommodation_0(ctx context.Contex
 }
 
 var (
-	filter_AccommodationService_SearchAcommodations_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_AccommodationServiceRPC_SearchAcommodations_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_AccommodationService_SearchAcommodations_0(ctx context.Context, marshaler runtime.Marshaler, client AccommodationServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_AccommodationServiceRPC_SearchAcommodations_0(ctx context.Context, marshaler runtime.Marshaler, client AccommodationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq SearchAcommodationsRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AccommodationService_SearchAcommodations_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AccommodationServiceRPC_SearchAcommodations_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -157,14 +157,14 @@ func request_AccommodationService_SearchAcommodations_0(ctx context.Context, mar
 
 }
 
-func local_request_AccommodationService_SearchAcommodations_0(ctx context.Context, marshaler runtime.Marshaler, server AccommodationServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_AccommodationServiceRPC_SearchAcommodations_0(ctx context.Context, marshaler runtime.Marshaler, server AccommodationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq SearchAcommodationsRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AccommodationService_SearchAcommodations_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AccommodationServiceRPC_SearchAcommodations_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -173,7 +173,7 @@ func local_request_AccommodationService_SearchAcommodations_0(ctx context.Contex
 
 }
 
-func request_AccommodationService_GetAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, client AccommodationServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_AccommodationServiceRPC_GetAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, client AccommodationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq GetAccommodationRequest
 	var metadata runtime.ServerMetadata
 
@@ -199,7 +199,7 @@ func request_AccommodationService_GetAccommodation_0(ctx context.Context, marsha
 
 }
 
-func local_request_AccommodationService_GetAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, server AccommodationServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_AccommodationServiceRPC_GetAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, server AccommodationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq GetAccommodationRequest
 	var metadata runtime.ServerMetadata
 
@@ -226,17 +226,17 @@ func local_request_AccommodationService_GetAccommodation_0(ctx context.Context, 
 }
 
 var (
-	filter_AccommodationService_SetReservationOption_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_AccommodationServiceRPC_SetReservationOption_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_AccommodationService_SetReservationOption_0(ctx context.Context, marshaler runtime.Marshaler, client AccommodationServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_AccommodationServiceRPC_SetReservationOption_0(ctx context.Context, marshaler runtime.Marshaler, client AccommodationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq SetReservationOptionRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AccommodationService_SetReservationOption_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AccommodationServiceRPC_SetReservationOption_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -245,14 +245,14 @@ func request_AccommodationService_SetReservationOption_0(ctx context.Context, ma
 
 }
 
-func local_request_AccommodationService_SetReservationOption_0(ctx context.Context, marshaler runtime.Marshaler, server AccommodationServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_AccommodationServiceRPC_SetReservationOption_0(ctx context.Context, marshaler runtime.Marshaler, server AccommodationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq SetReservationOptionRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AccommodationService_SetReservationOption_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AccommodationServiceRPC_SetReservationOption_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -261,7 +261,7 @@ func local_request_AccommodationService_SetReservationOption_0(ctx context.Conte
 
 }
 
-func request_AccommodationService_GetAllAccommodations_0(ctx context.Context, marshaler runtime.Marshaler, client AccommodationServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_AccommodationServiceRPC_GetAllAccommodations_0(ctx context.Context, marshaler runtime.Marshaler, client AccommodationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq GetAllRequest
 	var metadata runtime.ServerMetadata
 
@@ -270,7 +270,7 @@ func request_AccommodationService_GetAllAccommodations_0(ctx context.Context, ma
 
 }
 
-func local_request_AccommodationService_GetAllAccommodations_0(ctx context.Context, marshaler runtime.Marshaler, server AccommodationServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_AccommodationServiceRPC_GetAllAccommodations_0(ctx context.Context, marshaler runtime.Marshaler, server AccommodationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq GetAllRequest
 	var metadata runtime.ServerMetadata
 
@@ -279,13 +279,13 @@ func local_request_AccommodationService_GetAllAccommodations_0(ctx context.Conte
 
 }
 
-// RegisterAccommodationServiceHandlerServer registers the http handlers for service AccommodationService to "mux".
-// UnaryRPC     :call AccommodationServiceServer directly.
+// RegisterAccommodationServiceRPCHandlerServer registers the http handlers for service AccommodationServiceRPC to "mux".
+// UnaryRPC     :call AccommodationServiceRPCServer directly.
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
-// Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterAccommodationServiceHandlerFromEndpoint instead.
-func RegisterAccommodationServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server AccommodationServiceServer) error {
+// Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterAccommodationServiceRPCHandlerFromEndpoint instead.
+func RegisterAccommodationServiceRPCHandlerServer(ctx context.Context, mux *runtime.ServeMux, server AccommodationServiceRPCServer) error {
 
-	mux.Handle("DELETE", pattern_AccommodationService_DeleteAllForHost_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_AccommodationServiceRPC_DeleteAllForHost_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -293,12 +293,12 @@ func RegisterAccommodationServiceHandlerServer(ctx context.Context, mux *runtime
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.AccommodationService/DeleteAllForHost", runtime.WithHTTPPathPattern("/accommodation"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.AccommodationServiceRPC/DeleteAllForHost", runtime.WithHTTPPathPattern("/accommodation"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_AccommodationService_DeleteAllForHost_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_AccommodationServiceRPC_DeleteAllForHost_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -306,11 +306,11 @@ func RegisterAccommodationServiceHandlerServer(ctx context.Context, mux *runtime
 			return
 		}
 
-		forward_AccommodationService_DeleteAllForHost_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AccommodationServiceRPC_DeleteAllForHost_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_AccommodationService_CreateAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_AccommodationServiceRPC_CreateAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -318,12 +318,12 @@ func RegisterAccommodationServiceHandlerServer(ctx context.Context, mux *runtime
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.AccommodationService/CreateAccommodation", runtime.WithHTTPPathPattern("/accommodation/new"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.AccommodationServiceRPC/CreateAccommodation", runtime.WithHTTPPathPattern("/accommodation/new"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_AccommodationService_CreateAccommodation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_AccommodationServiceRPC_CreateAccommodation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -331,11 +331,11 @@ func RegisterAccommodationServiceHandlerServer(ctx context.Context, mux *runtime
 			return
 		}
 
-		forward_AccommodationService_CreateAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AccommodationServiceRPC_CreateAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_AccommodationService_ModifyAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_AccommodationServiceRPC_ModifyAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -343,12 +343,12 @@ func RegisterAccommodationServiceHandlerServer(ctx context.Context, mux *runtime
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.AccommodationService/ModifyAccommodation", runtime.WithHTTPPathPattern("/accommodation/modify"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.AccommodationServiceRPC/ModifyAccommodation", runtime.WithHTTPPathPattern("/accommodation/modify"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_AccommodationService_ModifyAccommodation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_AccommodationServiceRPC_ModifyAccommodation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -356,11 +356,11 @@ func RegisterAccommodationServiceHandlerServer(ctx context.Context, mux *runtime
 			return
 		}
 
-		forward_AccommodationService_ModifyAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AccommodationServiceRPC_ModifyAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_AccommodationService_SearchAcommodations_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_AccommodationServiceRPC_SearchAcommodations_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -368,12 +368,12 @@ func RegisterAccommodationServiceHandlerServer(ctx context.Context, mux *runtime
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.AccommodationService/SearchAcommodations", runtime.WithHTTPPathPattern("/accommodation/search"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.AccommodationServiceRPC/SearchAcommodations", runtime.WithHTTPPathPattern("/accommodation/search"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_AccommodationService_SearchAcommodations_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_AccommodationServiceRPC_SearchAcommodations_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -381,11 +381,11 @@ func RegisterAccommodationServiceHandlerServer(ctx context.Context, mux *runtime
 			return
 		}
 
-		forward_AccommodationService_SearchAcommodations_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AccommodationServiceRPC_SearchAcommodations_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_AccommodationService_GetAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_AccommodationServiceRPC_GetAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -393,12 +393,12 @@ func RegisterAccommodationServiceHandlerServer(ctx context.Context, mux *runtime
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.AccommodationService/GetAccommodation", runtime.WithHTTPPathPattern("/accommodation/{id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.AccommodationServiceRPC/GetAccommodation", runtime.WithHTTPPathPattern("/accommodation/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_AccommodationService_GetAccommodation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_AccommodationServiceRPC_GetAccommodation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -406,11 +406,11 @@ func RegisterAccommodationServiceHandlerServer(ctx context.Context, mux *runtime
 			return
 		}
 
-		forward_AccommodationService_GetAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AccommodationServiceRPC_GetAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_AccommodationService_SetReservationOption_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_AccommodationServiceRPC_SetReservationOption_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -418,12 +418,12 @@ func RegisterAccommodationServiceHandlerServer(ctx context.Context, mux *runtime
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.AccommodationService/SetReservationOption", runtime.WithHTTPPathPattern("/accommodation/reservation-option"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.AccommodationServiceRPC/SetReservationOption", runtime.WithHTTPPathPattern("/accommodation/reservation-option"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_AccommodationService_SetReservationOption_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_AccommodationServiceRPC_SetReservationOption_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -431,11 +431,11 @@ func RegisterAccommodationServiceHandlerServer(ctx context.Context, mux *runtime
 			return
 		}
 
-		forward_AccommodationService_SetReservationOption_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AccommodationServiceRPC_SetReservationOption_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_AccommodationService_GetAllAccommodations_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_AccommodationServiceRPC_GetAllAccommodations_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -443,12 +443,12 @@ func RegisterAccommodationServiceHandlerServer(ctx context.Context, mux *runtime
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.AccommodationService/GetAllAccommodations", runtime.WithHTTPPathPattern("/accommodation"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.AccommodationServiceRPC/GetAllAccommodations", runtime.WithHTTPPathPattern("/accommodation"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_AccommodationService_GetAllAccommodations_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_AccommodationServiceRPC_GetAllAccommodations_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -456,16 +456,16 @@ func RegisterAccommodationServiceHandlerServer(ctx context.Context, mux *runtime
 			return
 		}
 
-		forward_AccommodationService_GetAllAccommodations_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AccommodationServiceRPC_GetAllAccommodations_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
 	return nil
 }
 
-// RegisterAccommodationServiceHandlerFromEndpoint is same as RegisterAccommodationServiceHandler but
+// RegisterAccommodationServiceRPCHandlerFromEndpoint is same as RegisterAccommodationServiceRPCHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
-func RegisterAccommodationServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+func RegisterAccommodationServiceRPCHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
 	conn, err := grpc.DialContext(ctx, endpoint, opts...)
 	if err != nil {
 		return err
@@ -485,173 +485,173 @@ func RegisterAccommodationServiceHandlerFromEndpoint(ctx context.Context, mux *r
 		}()
 	}()
 
-	return RegisterAccommodationServiceHandler(ctx, mux, conn)
+	return RegisterAccommodationServiceRPCHandler(ctx, mux, conn)
 }
 
-// RegisterAccommodationServiceHandler registers the http handlers for service AccommodationService to "mux".
+// RegisterAccommodationServiceRPCHandler registers the http handlers for service AccommodationServiceRPC to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
-func RegisterAccommodationServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	return RegisterAccommodationServiceHandlerClient(ctx, mux, NewAccommodationServiceClient(conn))
+func RegisterAccommodationServiceRPCHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	return RegisterAccommodationServiceRPCHandlerClient(ctx, mux, NewAccommodationServiceRPCClient(conn))
 }
 
-// RegisterAccommodationServiceHandlerClient registers the http handlers for service AccommodationService
-// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "AccommodationServiceClient".
-// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "AccommodationServiceClient"
+// RegisterAccommodationServiceRPCHandlerClient registers the http handlers for service AccommodationServiceRPC
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "AccommodationServiceRPCClient".
+// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "AccommodationServiceRPCClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
-// "AccommodationServiceClient" to call the correct interceptors.
-func RegisterAccommodationServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client AccommodationServiceClient) error {
+// "AccommodationServiceRPCClient" to call the correct interceptors.
+func RegisterAccommodationServiceRPCHandlerClient(ctx context.Context, mux *runtime.ServeMux, client AccommodationServiceRPCClient) error {
 
-	mux.Handle("DELETE", pattern_AccommodationService_DeleteAllForHost_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_AccommodationServiceRPC_DeleteAllForHost_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.AccommodationService/DeleteAllForHost", runtime.WithHTTPPathPattern("/accommodation"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.AccommodationServiceRPC/DeleteAllForHost", runtime.WithHTTPPathPattern("/accommodation"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_AccommodationService_DeleteAllForHost_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_AccommodationServiceRPC_DeleteAllForHost_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_AccommodationService_DeleteAllForHost_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AccommodationServiceRPC_DeleteAllForHost_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_AccommodationService_CreateAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_AccommodationServiceRPC_CreateAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.AccommodationService/CreateAccommodation", runtime.WithHTTPPathPattern("/accommodation/new"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.AccommodationServiceRPC/CreateAccommodation", runtime.WithHTTPPathPattern("/accommodation/new"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_AccommodationService_CreateAccommodation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_AccommodationServiceRPC_CreateAccommodation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_AccommodationService_CreateAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AccommodationServiceRPC_CreateAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_AccommodationService_ModifyAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_AccommodationServiceRPC_ModifyAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.AccommodationService/ModifyAccommodation", runtime.WithHTTPPathPattern("/accommodation/modify"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.AccommodationServiceRPC/ModifyAccommodation", runtime.WithHTTPPathPattern("/accommodation/modify"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_AccommodationService_ModifyAccommodation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_AccommodationServiceRPC_ModifyAccommodation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_AccommodationService_ModifyAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AccommodationServiceRPC_ModifyAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_AccommodationService_SearchAcommodations_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_AccommodationServiceRPC_SearchAcommodations_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.AccommodationService/SearchAcommodations", runtime.WithHTTPPathPattern("/accommodation/search"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.AccommodationServiceRPC/SearchAcommodations", runtime.WithHTTPPathPattern("/accommodation/search"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_AccommodationService_SearchAcommodations_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_AccommodationServiceRPC_SearchAcommodations_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_AccommodationService_SearchAcommodations_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AccommodationServiceRPC_SearchAcommodations_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_AccommodationService_GetAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_AccommodationServiceRPC_GetAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.AccommodationService/GetAccommodation", runtime.WithHTTPPathPattern("/accommodation/{id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.AccommodationServiceRPC/GetAccommodation", runtime.WithHTTPPathPattern("/accommodation/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_AccommodationService_GetAccommodation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_AccommodationServiceRPC_GetAccommodation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_AccommodationService_GetAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AccommodationServiceRPC_GetAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_AccommodationService_SetReservationOption_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_AccommodationServiceRPC_SetReservationOption_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.AccommodationService/SetReservationOption", runtime.WithHTTPPathPattern("/accommodation/reservation-option"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.AccommodationServiceRPC/SetReservationOption", runtime.WithHTTPPathPattern("/accommodation/reservation-option"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_AccommodationService_SetReservationOption_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_AccommodationServiceRPC_SetReservationOption_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_AccommodationService_SetReservationOption_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AccommodationServiceRPC_SetReservationOption_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_AccommodationService_GetAllAccommodations_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_AccommodationServiceRPC_GetAllAccommodations_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.AccommodationService/GetAllAccommodations", runtime.WithHTTPPathPattern("/accommodation"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.AccommodationServiceRPC/GetAllAccommodations", runtime.WithHTTPPathPattern("/accommodation"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_AccommodationService_GetAllAccommodations_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_AccommodationServiceRPC_GetAllAccommodations_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_AccommodationService_GetAllAccommodations_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AccommodationServiceRPC_GetAllAccommodations_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -659,33 +659,33 @@ func RegisterAccommodationServiceHandlerClient(ctx context.Context, mux *runtime
 }
 
 var (
-	pattern_AccommodationService_DeleteAllForHost_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"accommodation"}, ""))
+	pattern_AccommodationServiceRPC_DeleteAllForHost_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"accommodation"}, ""))
 
-	pattern_AccommodationService_CreateAccommodation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"accommodation", "new"}, ""))
+	pattern_AccommodationServiceRPC_CreateAccommodation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"accommodation", "new"}, ""))
 
-	pattern_AccommodationService_ModifyAccommodation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"accommodation", "modify"}, ""))
+	pattern_AccommodationServiceRPC_ModifyAccommodation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"accommodation", "modify"}, ""))
 
-	pattern_AccommodationService_SearchAcommodations_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"accommodation", "search"}, ""))
+	pattern_AccommodationServiceRPC_SearchAcommodations_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"accommodation", "search"}, ""))
 
-	pattern_AccommodationService_GetAccommodation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"accommodation", "id"}, ""))
+	pattern_AccommodationServiceRPC_GetAccommodation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"accommodation", "id"}, ""))
 
-	pattern_AccommodationService_SetReservationOption_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"accommodation", "reservation-option"}, ""))
+	pattern_AccommodationServiceRPC_SetReservationOption_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"accommodation", "reservation-option"}, ""))
 
-	pattern_AccommodationService_GetAllAccommodations_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"accommodation"}, ""))
+	pattern_AccommodationServiceRPC_GetAllAccommodations_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"accommodation"}, ""))
 )
 
 var (
-	forward_AccommodationService_DeleteAllForHost_0 = runtime.ForwardResponseMessage
+	forward_AccommodationServiceRPC_DeleteAllForHost_0 = runtime.ForwardResponseMessage
 
-	forward_AccommodationService_CreateAccommodation_0 = runtime.ForwardResponseMessage
+	forward_AccommodationServiceRPC_CreateAccommodation_0 = runtime.ForwardResponseMessage
 
-	forward_AccommodationService_ModifyAccommodation_0 = runtime.ForwardResponseMessage
+	forward_AccommodationServiceRPC_ModifyAccommodation_0 = runtime.ForwardResponseMessage
 
-	forward_AccommodationService_SearchAcommodations_0 = runtime.ForwardResponseMessage
+	forward_AccommodationServiceRPC_SearchAcommodations_0 = runtime.ForwardResponseMessage
 
-	forward_AccommodationService_GetAccommodation_0 = runtime.ForwardResponseMessage
+	forward_AccommodationServiceRPC_GetAccommodation_0 = runtime.ForwardResponseMessage
 
-	forward_AccommodationService_SetReservationOption_0 = runtime.ForwardResponseMessage
+	forward_AccommodationServiceRPC_SetReservationOption_0 = runtime.ForwardResponseMessage
 
-	forward_AccommodationService_GetAllAccommodations_0 = runtime.ForwardResponseMessage
+	forward_AccommodationServiceRPC_GetAllAccommodations_0 = runtime.ForwardResponseMessage
 )

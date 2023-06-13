@@ -27,3 +27,32 @@ C:\Users\Todor\source\repos\AirbnbBackend\ReservationService\obj\Debug\net6.0\re
 C:\Users\Todor\source\repos\AirbnbBackend\ReservationService\obj\Debug\net6.0\ReservationService.pdb
 C:\Users\Todor\source\repos\AirbnbBackend\ReservationService\obj\Debug\net6.0\ReservationService.genruntimeconfig.cache
 C:\Users\Todor\source\repos\AirbnbBackend\ReservationService\obj\Debug\net6.0\ref\ReservationService.dll
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\bin\Debug\net6.0\appsettings.json
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\bin\Debug\net6.0\ReservationService.exe
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\bin\Debug\net6.0\ReservationService.deps.json
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\bin\Debug\net6.0\ReservationService.runtimeconfig.json
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\bin\Debug\net6.0\ReservationService.dll
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\bin\Debug\net6.0\ReservationService.pdb
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\bin\Debug\net6.0\Google.Protobuf.dll
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\bin\Debug\net6.0\Grpc.AspNetCore.Server.dll
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\bin\Debug\net6.0\Grpc.AspNetCore.Server.ClientFactory.dll
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\bin\Debug\net6.0\Grpc.Core.Api.dll
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\bin\Debug\net6.0\Grpc.Net.Client.dll
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\bin\Debug\net6.0\Grpc.Net.ClientFactory.dll
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\bin\Debug\net6.0\Grpc.Net.Common.dll
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\obj\Debug\net6.0\ReservationService.csproj.AssemblyReference.cache
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\obj\Debug\net6.0\ReservationService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\obj\Debug\net6.0\ReservationService.AssemblyInfoInputs.cache
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\obj\Debug\net6.0\ReservationService.AssemblyInfo.cs
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\obj\Debug\net6.0\ReservationService.csproj.CoreCompileInputs.cache
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\obj\Debug\net6.0\ReservationService.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\obj\Debug\net6.0\scopedcss\bundle\ReservationService.styles.css
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\obj\Debug\net6.0\ReservationService.csproj.CopyComplete
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\obj\Debug\net6.0\ReservationService.dll
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\obj\Debug\net6.0\refint\ReservationService.dll
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\obj\Debug\net6.0\ReservationService.pdb
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\obj\Debug\net6.0\ReservationService.genruntimeconfig.cache
+C:\Users\HP LAPTOP\Desktop\xml proj\AirbnbXWS\backend\ReservationService\obj\Debug\net6.0\ref\ReservationService.dll
