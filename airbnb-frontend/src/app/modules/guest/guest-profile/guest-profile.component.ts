@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RegistrationRequestData } from 'src/app/model/registrationRequestData';
-import { UserProfileData } from 'src/app/model/userProfileData';
+import { RegistrationRequestData } from 'src/app/dto/registrationRequestData';
+import { UserProfileData } from 'src/app/dto/userProfileData';
 
 @Component({
   selector: 'app-guest-profile',

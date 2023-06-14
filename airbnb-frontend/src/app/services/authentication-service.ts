@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
-import { LogInRequestData } from '../model/logInRequestData'
+import { LogInRequestData } from '../dto/logInRequestData'
 import jwt_decode from 'jwt-decode';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   registerUser(user: User): Observable<any> {
-    return this.http.post(this.apiHost + 'user/register', {user: user}, { headers: this.headers})
+    return this.http.post(this.apiHost + 'api/user/register', {user: user}, { headers: this.headers})
   }
 
   logInUser(credentials:LogInRequestData): Observable<any> {

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { LogInRequestData } from 'src/app/model/logInRequestData';
+import { LogInRequestData } from 'src/app/dto/logInRequestData';
 import { AuthenticationService } from 'src/app/services/authentication-service';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserProfileData } from 'src/app/model/userProfileData';
+import { UserProfileData } from 'src/app/dto/userProfileData';
 
 @Component({
   selector: 'app-host-profile',

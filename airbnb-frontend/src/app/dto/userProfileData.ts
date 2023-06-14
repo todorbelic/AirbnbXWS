@@ -1,14 +1,16 @@
-import { Address } from "./address"
+import { Address } from "../model/address"
 
 export class UserProfileData {
-    firstName: string = ''
-    lastName: string = ''
-    username: string  = ''
-    password: string = ''
+    id = 0
+    firstName = ''
+    lastName = ''
+    username  = ''
+    password  = ''
     address: Address = new Address()
 
     public constructor(obj? : UserProfileData){
         if(obj){
+            this.id = obj.id
             this.firstName = obj.firstName
             this.lastName = obj.lastName
             this.username = obj.username
