@@ -33,13 +33,22 @@ namespace UserService.Handlers
             };
         }
 
-        [Authorize(Roles = "GUEST")]
+        [Authorize]
         public override async Task<EditUserProfileResponse> EditUserProfile(EditUserProfileRequest request, ServerCallContext context)
         {
             await _appUserService.UpdateUser(request.User);
             return new EditUserProfileResponse()
             {
                 Response = ""
+            };
+        }
+
+        public override async Task<GetCurrentUserResponse> GetCurrentUser(GetCurrentUserRequest request, ServerCallContext context)
+        {
+            User user = await _appUserService.GetCurrentUser(request.Id);
+            return new GetCurrentUserResponse()
+            {
+                User = user
             };
         }
     }

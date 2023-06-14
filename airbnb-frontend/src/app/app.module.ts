@@ -29,7 +29,12 @@ import {MatListModule} from '@angular/material/list';
     GuestModule,
     HttpClientModule,
     MatListModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(({
+      timeOut: 3000,
+      preventDuplicates: true,
+      closeButton: true,
+      enableHtml: true
+   }))
 
   ],
   providers: [{
