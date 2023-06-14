@@ -1,4 +1,4 @@
-import { Address } from "./address"
+import { Address } from "../model/address"
 
 export class RegistrationRequestData {
     firstName: string = ''

@@ -13,6 +13,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { ToastrModule } from 'ngx-toastr';
 
+import {MatListModule} from '@angular/material/list';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -26,7 +28,13 @@ import { ToastrModule } from 'ngx-toastr';
     HostModule,
     GuestModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    MatListModule,
+    ToastrModule.forRoot(({
+      timeOut: 3000,
+      preventDuplicates: true,
+      closeButton: true,
+      enableHtml: true
+   }))
 
   ],
   providers: [{
