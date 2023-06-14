@@ -27,34 +27,37 @@ namespace AccommodationService.BackgroundTasks
                     var repository = scope.ServiceProvider.GetRequiredService<IRepository<AppAccommodation>>();
                     foreach (AppAccommodation accommodation in repository.GetAll())
                     {
-                        DateTime now = DateTime.Now;
-                        List<int> months = accommodation.Occasions[0];
-                        List<int> days = accommodation.Occasions[1];
-                        List<int> holidays = accommodation.Occasions[2];
-
-                        foreach (int month in months)
+                        if (accommodation.Occasions != null)
                         {
-                            if (now.Month == month) accommodation.CurrentPrice = accommodation.SpecialPrice;
-                            else accommodation.CurrentPrice = accommodation.BasePrice;
-                        }
+                            DateTime now = DateTime.Now;
+                            List<int> months = accommodation.Occasions[0];
+                            List<int> days = accommodation.Occasions[1];
+                            List<int> holidays = accommodation.Occasions[2];
 
-                        foreach (int day in days)
-                        {
-                            if ((int)now.DayOfWeek == day) accommodation.CurrentPrice = accommodation.SpecialPrice;
-                            else accommodation.CurrentPrice = accommodation.BasePrice;
-                        }
-                        foreach (int holiday in holidays)
-                        {
-                            HolidaysEnum holidayEnum = HolidaysEnum.FindHoliday(holiday);
-                            DateTime holidayStart = new DateTime(now.Year, holidayEnum.StartDate.Month, holidayEnum.StartDate.Day);
-                            DateTime holidayEnd = new DateTime(now.Year, holidayEnum.EndDate.Month, holidayEnum.EndDate.Day);
-
-                            if (DateTime.Compare(now, holidayStart) >= 0 && DateTime.Compare(now, holidayEnd) <= 0)
+                            foreach (int month in months)
                             {
-                                accommodation.CurrentPrice = accommodation.SpecialPrice;
+                                if (now.Month == month) accommodation.CurrentPrice = accommodation.SpecialPrice;
+                                else accommodation.CurrentPrice = accommodation.BasePrice;
                             }
-                            else accommodation.CurrentPrice = accommodation.BasePrice;
 
+                            foreach (int day in days)
+                            {
+                                if ((int)now.DayOfWeek == day) accommodation.CurrentPrice = accommodation.SpecialPrice;
+                                else accommodation.CurrentPrice = accommodation.BasePrice;
+                            }
+                            foreach (int holiday in holidays)
+                            {
+                                HolidaysEnum holidayEnum = HolidaysEnum.FindHoliday(holiday);
+                                DateTime holidayStart = new DateTime(now.Year, holidayEnum.StartDate.Month, holidayEnum.StartDate.Day);
+                                DateTime holidayEnd = new DateTime(now.Year, holidayEnum.EndDate.Month, holidayEnum.EndDate.Day);
+
+                                if (DateTime.Compare(now, holidayStart) >= 0 && DateTime.Compare(now, holidayEnd) <= 0)
+                                {
+                                    accommodation.CurrentPrice = accommodation.SpecialPrice;
+                                }
+                                else accommodation.CurrentPrice = accommodation.BasePrice;
+
+                            }
                         }
 
                     }
