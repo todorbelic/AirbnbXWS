@@ -1,0 +1,78 @@
+<body>
+    <app-host-toolbar> </app-host-toolbar>
+    <div class="horizontal-flex" style="margin-top:7%">
+        <div class="vertical-flex" style="flex-grow:7">
+            <article class="card" [(ngModel)]="card">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                      <div mat-card-avatar class="example-header-image"></div>
+                      <mat-card-title>{{card.name}}</mat-card-title>
+                      <mat-card-subtitle></mat-card-subtitle>
+                    </mat-card-header>
+                    <div class="carousel_container">
+                      <div *ngFor="let picture of card.pictures">
+                        <img mat-card-image [src]="picture" >          
+                      </div>
+                    </div>
+                    
+                   
+                    <mat-card-content>
+                      <p>
+                        {{card.benefits}}
+                      </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <button mat-button>LIKE</button>
+                      <button mat-button>SHARE</button>
+                    </mat-card-actions>
+                  </mat-card>
+                </article>
+
+
+                <div class="vertical-flex">
+                    <h2>Availability</h2>
+                    <h3>Start</h3>
+                    <input type="date" style="margin-left: 15%;">
+                    <h3>-</h3>
+                    <input type="date" style="margin-left: 15%;">
+                </div>
+        </div>
+
+        <div class="vertical-flex">
+            <div class="vertical-flex" style="border: 1px;">
+                <h1>Update Prices</h1>
+                <div class="horizontal-flex" style="justify-content: space-evenly;">
+                    <input type="checkbox" id="month" name="month" >
+                    <input type="checkbox" id="day" name="day" >
+                    <input type="checkbox" id="holiday" name="holiday" >
+                </div>
+                <div class="horizontal-flex" style="justify-content: space-evenly; margin-top:-10%">
+                    <label for="month">By Month</label>
+                    <label for="day">By Day</label>
+                    <label for="holiday">By Holiday</label>
+
+
+
+                </div>
+            </div>
+
+            <div class="vertical-flex">
+                <div class="horizontal-flex">
+                    <h3>Base Price:</h3>
+                    <h3>387</h3>
+                </div>
+                <div class="horizontal-flex">
+                    <h3>Special Price:</h3>
+                    <input type="number">
+                </div>
+            </div>
+    </div>
+
+        <div class="vertical-flex" style="flex-grow:3">
+            <h2>Special Price Occasions:</h2>
+            <mat-list>
+                <mat-list-item></mat-list-item>
+             </mat-list>
+        </div>
+    </div>
+</body>  
