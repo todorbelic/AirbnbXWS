@@ -1,6 +1,5 @@
 ﻿using Grpc.Core.Interceptors;
 using Grpc.Core;
-using Microsoft.AspNetCore.Http;
 using UserService.Exceptions;
 
 namespace UserService.Middleware

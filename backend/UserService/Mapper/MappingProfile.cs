@@ -9,7 +9,7 @@ namespace UserService.Mapper
         {
             CreateMap<RegistrationUser, AppUser>().ReverseMap();
             CreateMap<Address, UserAddress>().ReverseMap();
-            CreateMap<User, AppUser>();
+            CreateMap<User, AppUser>().ReverseMap();
         }
     }
 }
