@@ -1,4 +1,5 @@
-﻿using AccommodationService.Exceptions;
+﻿using AccommodationService.DTO;
+using AccommodationService.Exceptions;
 using AccommodationService.Model;
 using AccommodationService.Repository;
 using AutoMapper;
@@ -43,5 +44,21 @@ namespace AccommodationService.Services
             AppAccommodation accommodationToUpdate = _mapper.Map<AppAccommodation>(dto);
             await _repository.ReplaceOneAsync(accommodationToUpdate);
         }
+
+        public async Task UpdateAccomDetails(UpdateAccomDetailsDTO dto)
+        {
+            AppAccommodation accommodation = await GetById(dto.AccomId);
+            if (accommodation == null)
+            {
+                throw new AccommodationNotFoundException();
+            }
+            accommodation.SpecialPrice = dto.NewPrice;
+            accommodation.Occasions = dto.Occasions;
+            await _repository.ReplaceOneAsync(accommodation);
+
+
+        }
+
+
     }
 }

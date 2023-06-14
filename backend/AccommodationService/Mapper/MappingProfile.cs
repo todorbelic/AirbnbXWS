@@ -1,5 +1,4 @@
-﻿
-using AccommodationService.Model;
+﻿using AccommodationService.Model;
 using AutoMapper;
 
 namespace AccommodationService.Mapper

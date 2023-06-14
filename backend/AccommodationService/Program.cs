@@ -1,3 +1,4 @@
+using AccommodationService.BackgroundTasks;
 using AccommodationService.Handlers;
 using AccommodationService.Mapper;
 using AccommodationService.Middleware;
@@ -20,12 +21,17 @@ builder.Services.AddGrpc(options =>
 builder.Services.AddScoped<IAppAccommodationService, AppAccommodationService>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
+
+
 IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", true, true).Build();
 builder.Services.AddSingleton<IMongoDbSettings>(serviceProvider =>
        serviceProvider.GetRequiredService<IOptions<MongoDbSettings>>().Value);
 builder.Services.Configure<MongoDbSettings>(configuration.GetSection("MongoDbSettings"));
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+builder.Services.AddHostedService<UpdatePricesService>();
+
 
 var app = builder.Build();
 

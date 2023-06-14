@@ -58,6 +58,11 @@ namespace UserService.Service
 
         public async Task<bool> UsernameMatchesPasswordAsync(Credentials dto)
         {
+            if(dto == null)
+            {
+                throw new IncorrectCredentialsException();
+            }
+
             AppUser userByEmail = await GetUserByUsernameAsync(dto.Username);
             if (userByEmail != null)
             {
@@ -69,6 +74,11 @@ namespace UserService.Service
 
         public async Task<string> LogInUserAsync(Credentials dto)
         {
+            if (dto == null)
+            {
+                throw new IncorrectCredentialsException();
+            }
+
             if (!await UsernameMatchesPasswordAsync(dto))
             {
                 throw new IncorrectCredentialsException();
@@ -118,6 +128,16 @@ namespace UserService.Service
             userDto.Password = HashPassword(userDto.Password);
             AppUser userToUpdate = _mapper.Map<AppUser>(userDto);
             await _userRepository.ReplaceOneAsync(userToUpdate);
+        }
+
+        public async Task<User> GetCurrentUser(string id)
+        {
+            var user = await GetById(id);
+            if (user == null)
+            {
+                throw new UserNotFoundException();
+            }
+            return _mapper.Map<User>(user);
         }
     }
 }

@@ -21,7 +21,10 @@ namespace AccommodationService.Model
         public int MaxGuests { get; set; }
 
         public PaymentOption PaymentOption { get; set; }
+        public int CurrentPrice { get; set; }
 
-        public int Price { get; set; }
+        public int BasePrice { get; set; }
+        public int SpecialPrice { get; set; }
+        public List<List<int>> Occasions { get; set; }
     }
 }

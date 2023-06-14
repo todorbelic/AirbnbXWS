@@ -14,7 +14,7 @@ namespace UserService.Service
         Task<bool> UsernameMatchesPasswordAsync(Credentials dto);
 
         Task<string> LogInUserAsync(Credentials dto);
-
+        Task<User> GetCurrentUser(string id);
         Task UpdateUser(User userDto);
     }
 }
