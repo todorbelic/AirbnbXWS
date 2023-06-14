@@ -20,9 +20,14 @@ export class RegistrationPageComponent {
   signUp() {
     if(this.validityChecked()) {
       this.registrationUser.address = this.registrationAddress
-      this.authService.registerUser(this.registrationUser).subscribe(res => {
+      this.authService.registerUser(this.registrationUser).subscribe((res) => {
         console.log(res)
         this.toast.success('Registration successful!')
+      }, error=> {
+        
+        if(error.status === 409) {
+          this.toast.error(error.error.message);
+        }
       })
     }
   }

@@ -26,7 +26,12 @@ import { ToastrModule } from 'ngx-toastr';
     HostModule,
     GuestModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(({
+      timeOut: 3000,
+      preventDuplicates: true,
+      closeButton: true,
+      enableHtml: true
+   }))
 
   ],
   providers: [{
