@@ -3,11 +3,12 @@ package main
 import (
 	"airbnb/api-gateway/startup"
 	"airbnb/api-gateway/startup/config"
-	"github.com/joho/godotenv"
-	"github.com/prometheus/common/log"
 	"os"
 	"os/signal"
 	"syscall"
+
+	"github.com/joho/godotenv"
+	"github.com/prometheus/common/log"
 )
 
 func main() {
