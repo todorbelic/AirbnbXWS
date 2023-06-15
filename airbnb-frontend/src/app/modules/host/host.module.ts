@@ -8,12 +8,16 @@ import { HostEditProfileComponent } from "./host-edit-profile/host-edit-profile.
 import { HostHomeComponent } from "./host-home/host-home.component";
 import { HostProfileComponent } from "./host-profile/host-profile.component";
 import { HostToolbarComponent } from "./host-toolbar/host-toolbar.component";
+import { NewAccomComponent } from "../pages/new-accom/new-accom.component";
+import { MatInputModule } from "@angular/material/input";
+import { MatFormFieldModule } from "@angular/material/form-field";
 
 
 const routes: Routes = [
     { path: 'host-profile', component: HostProfileComponent },
     { path: 'host-edit', component: HostEditProfileComponent},
     { path:'host-home', component: HostHomeComponent},
+    { path: 'host-add-accommodation', component: NewAccomComponent}
   ];
   
 
@@ -29,6 +33,8 @@ const routes: Routes = [
       AppRoutingModule,
       MaterialModule,
       FormsModule,
+      MatInputModule,
+      MatFormFieldModule,
       RouterModule.forChild(routes)
     ]
   })

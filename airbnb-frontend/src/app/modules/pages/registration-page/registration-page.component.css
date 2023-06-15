@@ -28,8 +28,8 @@ body {
 }
 
 .registration-mat-card-buttons{
-display: flex;
-justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .registration-page{
