@@ -12,6 +12,9 @@ import { GuestModule } from './modules/guest/guest.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 import {MatListModule} from '@angular/material/list';
 
@@ -27,6 +30,10 @@ import {MatListModule} from '@angular/material/list';
     PagesModule,
     HostModule,
     GuestModule,
+    HttpClientModule,   
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
     HttpClientModule,
     MatListModule,
     ToastrModule.forRoot(({

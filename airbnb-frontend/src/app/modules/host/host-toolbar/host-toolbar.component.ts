@@ -28,4 +28,8 @@ export class HostToolbarComponent {
     this.router.navigate(['/host-reservations']);
 
   }
+
+  NewAccommodationClick(){
+    this.router.navigate(['/host-add-accommodation']);
+  }
 }
