@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+
 import { LogInRequest } from 'src/app/model/log-in-request';
-import { LogInRequestData } from 'src/app/model/logInRequestData';
+
+import { LogInRequestData } from 'src/app/dto/logInRequestData';
+
 import { AuthenticationService } from 'src/app/services/authentication-service';
 
 @Component({
@@ -21,8 +24,7 @@ export class LoginPageComponent {
         console.log(res)
         this.authService.setSession(res.accessToken);
         //ovo ce biti naknadno implementirano
-        //let role=this.authService.getRole();
-        let role = 'HOST'
+        let role=this.authService.getRole();
         if(role==='HOST') this.router.navigate(['/host-home']);
         else if (role==='GUEST') this.router.navigate(['/guest-home']);
         else console.log('ERROR: no such user type');

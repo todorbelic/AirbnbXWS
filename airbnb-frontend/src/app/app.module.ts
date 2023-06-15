@@ -16,6 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
+import {MatListModule} from '@angular/material/list';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -32,7 +34,14 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    ToastrModule.forRoot()
+    HttpClientModule,
+    MatListModule,
+    ToastrModule.forRoot(({
+      timeOut: 3000,
+      preventDuplicates: true,
+      closeButton: true,
+      enableHtml: true
+   }))
 
   ],
   providers: [{

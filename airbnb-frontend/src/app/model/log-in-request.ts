@@ -1,4 +1,5 @@
-import { LogInRequestData } from "./logInRequestData";
+import { LogInRequestData } from "../dto/logInRequestData"
+
 
 export class LogInRequest {
     credentials: LogInRequestData = new LogInRequestData()

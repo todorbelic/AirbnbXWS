@@ -29,6 +29,7 @@ namespace AccommodationService.Repository
         void DeleteById(string id);
 
         Task DeleteByIdAsync(string id);
+        IEnumerable<TDocument> GetAll();
     }
 }
     

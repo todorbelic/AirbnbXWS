@@ -97,5 +97,10 @@ namespace AccommodationService.Repository
             var filter = Builders<TDocument>.Filter.Eq(doc => doc.Id, objectId);
             await _collection.FindOneAndDeleteAsync(filter);
         }
+
+        public IEnumerable<TDocument> GetAll()
+        {
+            return _collection.Find(_ => true).ToList();
+        }
     }
 }
