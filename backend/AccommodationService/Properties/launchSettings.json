@@ -3,16 +3,15 @@
     "AccommodationService": {
       "commandName": "Project",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:8080/"
       },
-      "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5198;https://localhost:7198"
-    },
-    "Docker": {
-      "commandName": "Docker",
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
-      "publishAllPorts": true,
-      "useSSL": true
-    }
+      "dotnetRunMessages": true},
+      "Docker": {
+        "commandName": "Docker",
+        "launchUrl": "{Scheme}://accommodation_service:8080",
+        "publishAllPorts": true,
+        "useSSL": true
+      }
   }
 }

@@ -2,22 +2,6 @@ version: "3.8"
 
 services:
 
-  accommodation_service:
-    image: accommodation_service
-    container_name: accommodation_service
-    hostname: accommodation_service
-    build:
-      context: ./AccommodationService
-      dockerfile: Dockerfile
-    restart: always
-    environment:
-      ACCOMMODATION_SERVICE_ADDRESS: ${ACCOMMODATION_SERVICE_ADDRESS}
-      ACCOMMODATION_DB_URI : ${ACCOMMODATION_DB_URI}
-    networks:
-      - network
-    env_file:
-      - .env
-
   reservation_service:
     image: reservation_service
     container_name: reservation_service
@@ -29,10 +13,29 @@ services:
     environment:
       RESERVATION_SERVICE_ADDRESS: ${RESERVATION_SERVICE_ADDRESS}
       RESERVATION_DB_URI: ${RESERVATION_DB_URI}
+      ASPNETCORE_URLS: http://+:8080/
     networks:
       - network
     env_file:
-      - .env
+      - ./.env
+
+
+  accommodation_service:
+    image: accommodation_service
+    container_name: accommodation_service
+    hostname: accommodation_service
+    build:
+      context: ./AccommodationService
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      ACCOMMODATION_SERVICE_ADDRESS: ${ACCOMMODATION_SERVICE_ADDRESS}
+      ACCOMMODATION_DB_URI : ${ACCOMMODATION_DB_URI}
+      ASPNETCORE_URLS: http://+:8080/
+    networks:
+      - network
+    env_file:
+      - ./.env
 
   user_service:
     image: user_service
@@ -45,10 +48,11 @@ services:
     environment:
       USER_SERVICE_ADDRESS: ${USER_SERVICE_ADDRESS}
       USER_DB_URI : ${USER_DB_URI}
+      ASPNETCORE_URLS: http://+:8080/
     networks:
       - network
     env_file:
-      - .env
+      - ./.env
 
   api_gateway:
     image: api_gateway
@@ -59,9 +63,9 @@ services:
       dockerfile: Dockerfile
     restart: always
     environment:
-      USER_SERVICE_ADDRESS: user_service:8000
-      ACCOMMODATION_SERVICE_ADDRESS: accommodation_service:8000
-      RESERVATION_SERVICE_ADDRESS: reservation_service:8000
+      USER_SERVICE_ADDRESS: user_service:8080
+      ACCOMMODATION_SERVICE_ADDRESS: accommodation_service:8080
+      RESERVATION_SERVICE_ADDRESS: reservation_service:8080
       GATEWAY_ADDRESS: ${GATEWAY_ADDRESS}
     depends_on:
       - user_service
@@ -72,7 +76,7 @@ services:
     ports:
       - "8000:8000"
     env_file:
-      - .env
+      - ./.env
 
 networks:
   network:

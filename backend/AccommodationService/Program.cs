@@ -21,7 +21,6 @@ builder.Services.AddScoped<IAppAccommodationService, AppAccommodationService>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 
-
 IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", true, true).Build();
 builder.Services.AddSingleton<IMongoDbSettings>(serviceProvider =>
        serviceProvider.GetRequiredService<IOptions<MongoDbSettings>>().Value);

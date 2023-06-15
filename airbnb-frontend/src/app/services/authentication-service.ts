@@ -3,8 +3,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
 import jwt_decode from 'jwt-decode';
+import { LogInRequest } from '../model/log-in-request';
+
 import { UserProfileData } from '../dto/userProfileData';
 import { LogInRequestData } from '../dto/logInRequestData';
+
 
 
 @Injectable({
@@ -21,9 +24,11 @@ export class AuthenticationService {
     return this.http.post(this.apiHost + 'user/register', {user: user}, { headers: this.headers})
   }
 
-  logInUser(credentials:LogInRequestData): Observable<any> {
-    return this.http.post(this.apiHost + 'user/login', {credentials: credentials}, { headers: this.headers })
+
+  logInUser(credentials: LogInRequest): Observable<any> {
+    return this.http.post(this.apiHost + 'user/login', credentials, { headers: this.headers })
   }
+
 
   getCurrentUser() : Observable<any> {
     return this.http.get(this.apiHost + 'user/' + localStorage.getItem('userId'), {headers: this.headers});
@@ -31,6 +36,7 @@ export class AuthenticationService {
 
   updateUser(user: UserProfileData) : Observable<any> {
     return this.http.post(this.apiHost + 'user', {user: user}, {headers: this.headers});
+
   }
 
   public setSession(token:any) {

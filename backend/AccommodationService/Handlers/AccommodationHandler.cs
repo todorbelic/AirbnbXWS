@@ -8,7 +8,7 @@ namespace AccommodationService.Handlers
     {
         private readonly ILogger<AccommodationHandler> _logger;
         private readonly IAppAccommodationService _accommodationService;
-
+        
         public AccommodationHandler(ILogger<AccommodationHandler> logger, IAppAccommodationService accommodationService)
         {
             _logger = logger;

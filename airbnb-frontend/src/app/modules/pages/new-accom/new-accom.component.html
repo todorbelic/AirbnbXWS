@@ -1,1 +1,50 @@
-<p>new-accom works!</p>
+<body>
+    <div class="create-page">
+        <mat-card class="create-mat-card">
+            <mat-card-content class="create-mat-card-content">
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput required type="text" [(ngModel)]="createAccommodationRequest.request.name" />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Country</mat-label>
+                    <input matInput required type="text" [(ngModel)]="createAccommodationRequest.request.address.country" />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>City</mat-label>
+                    <input matInput required type="text" [(ngModel)]="createAccommodationRequest.request.address.city" />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Street</mat-label>
+                    <input matInput required type="text" [(ngModel)]="createAccommodationRequest.request.address.streetAddress" />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Benefits</mat-label>
+                    <input matInput required type="text" [(ngModel)]="benefits" />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Minimum number of guests</mat-label>
+                    <input matInput required type="number" [(ngModel)]="createAccommodationRequest.request.minGuests" min="0" max="10" />
+                </mat-form-field><mat-form-field>
+                    <mat-label>Maximum number of guests</mat-label>
+                    <input matInput required type="number" [(ngModel)]="createAccommodationRequest.request.maxGuests" min="0" max="10" />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Price</mat-label>
+                    <input matInput required type="number" [(ngModel)]="createAccommodationRequest.request.price" min="0" />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Payment option</mat-label>
+                    <mat-select matInput required type="number" [(value)]="paymentOption">
+                        <mat-option value="0">Per person</mat-option>
+                        <mat-option value="1">Per unit</mat-option>
+                    </mat-select>
+                </mat-form-field>               
+                <input type="file" reqired (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg" />    
+            </mat-card-content>
+            <mat-card-actions class="create-mat-card-buttons">
+                <button mat-raised-button (click)="addAccommodation()">Add new accommodation</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>   
+</body>
