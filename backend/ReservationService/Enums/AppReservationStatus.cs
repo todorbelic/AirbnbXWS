@@ -1,6 +1,6 @@
 ﻿namespace ReservationService.Enums
 {
-    public enum ReservationStatus
+    public enum AppReservationStatus
     {
         PENDING,
         ACTIVE,

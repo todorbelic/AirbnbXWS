@@ -2,7 +2,7 @@
 
 namespace ReservationService.Model
 {
-    public class Reservation: Document
+    public class ReservationModel: Document
     {
         public string AccommodationId { get; set; }
         public string HostId { get; set; }
@@ -11,7 +11,17 @@ namespace ReservationService.Model
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
-        public ReservationStatus Status { get; set; }
-        public Reservation() { }
+        public AppReservationStatus Status { get; set; }
+
+        public ReservationModel(string accommodationId, string hostId, string guestId, int guestCount, DateTime startDate, DateTime endDate, AppReservationStatus status)
+        {
+            AccommodationId = accommodationId;
+            HostId = hostId;
+            GuestId = guestId;
+            GuestCount = guestCount;
+            StartDate = startDate;
+            EndDate = endDate;
+            Status = status;
+        }
     }
 }

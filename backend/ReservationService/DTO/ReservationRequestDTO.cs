@@ -12,5 +12,16 @@ namespace ReservationService.DTO
         public string EndDate { get; set; }
 
         public string Status { get; set; }
+
+        public ReservationRequestDTO(string accommodationId, string hostId, string guestId, int guestCount, string startDate, string endDate, string status)
+        {
+            AccommodationId = accommodationId;
+            HostId = hostId;
+            GuestId = guestId;
+            GuestCount = guestCount;
+            StartDate = startDate;
+            EndDate = endDate;
+            Status = status;
+        }
     }
 }

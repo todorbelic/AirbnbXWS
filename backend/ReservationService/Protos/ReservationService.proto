@@ -8,6 +8,7 @@ service ReservationServiceRPC{
   rpc ApproveReservation(ApproveReservationRequest) returns (ApproveReservationResponse);
   rpc CancelReservation(CancelReservationRequest) returns (CancelReservationResponse);
   rpc Create(CreateReservationRequest) returns (CreateReservationResponse);
+}
 
 enum ReservationStatus {
  PENDING = 0;
@@ -22,8 +23,8 @@ message Reservation {
   string hostId = 2;
   string guestId = 3;
   string accommodationId = 4;
-  google.protobuf.Timestamp startDate = 5;
-  google.protobuf.Timestamp endDate = 6;
+  string startDate = 5;
+  string endDate = 6;
   int32 guestCount = 7;
   ReservationStatus reservationStatus = 8;
 }
@@ -32,8 +33,8 @@ message ReservationRequest {
   string hostId = 2;
   string guestId = 3;
   string accommodationId = 4;
-  google.protobuf.Timestamp startDate = 5;
-  google.protobuf.Timestamp endDate = 6;
+  string startDate = 5;
+  string endDate = 6;
   int32 guestCount = 7;
 }
 
@@ -50,14 +51,14 @@ message ReservationView {
     string GuestName         =3;
     string AccommodationName =4;
     ReservationAddress Address = 5;
-    google.protobuf.Timestamp startDate = 6;
-    google.protobuf.Timestamp endDate = 7;
+    string startDate = 6;
+    string endDate = 7;
     int32 GuestCount = 8;
 }
 
 message ReservationTimeFrame {
-  google.protobuf.Timestamp startDate = 6;
-  google.protobuf.Timestamp endDate = 7;
+  string startDate = 6;
+  string endDate = 7;
 }
 
 message GetActiveForHostRequest{

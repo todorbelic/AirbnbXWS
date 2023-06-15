@@ -1,7 +1,7 @@
 ﻿using Grpc.Core;
 namespace ReservationService.Handler
 {
-    public class ReservationHandler 
+    public class ReservationHandler: ReservationServiceRPC.ReservationServiceRPCBase
     {
     }
 }
