@@ -2,23 +2,6 @@ version: "3.8"
 
 services:
 
-  reservation_service:
-    image: reservation_service
-    container_name: reservation_service
-    hostname: reservation_service
-    build:
-      context: ./ReservationService
-      dockerfile: Dockerfile
-    restart: always
-    environment:
-      RESERVATION_SERVICE_ADDRESS: ${RESERVATION_SERVICE_ADDRESS}
-      RESERVATION_DB_URI: ${RESERVATION_DB_URI}
-    networks:
-      - network
-    env_file:
-      - .env
-
-
   accommodation_service:
     image: accommodation_service
     container_name: accommodation_service
@@ -30,6 +13,22 @@ services:
     environment:
       ACCOMMODATION_SERVICE_ADDRESS: ${ACCOMMODATION_SERVICE_ADDRESS}
       ACCOMMODATION_DB_URI : ${ACCOMMODATION_DB_URI}
+    networks:
+      - network
+    env_file:
+      - .env
+
+  reservation_service:
+    image: reservation_service
+    container_name: reservation_service
+    hostname: reservation_service
+    build:
+      context: ./ReservationService
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      RESERVATION_SERVICE_ADDRESS: ${RESERVATION_SERVICE_ADDRESS}
+      RESERVATION_DB_URI: ${RESERVATION_DB_URI}
     networks:
       - network
     env_file:
