@@ -3,14 +3,14 @@
     "UserService": {
       "commandName": "Project",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://user_service:8080/"
       },
-      "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5030;https://localhost:7030"
+      "dotnetRunMessages": true
     },
     "Docker": {
       "commandName": "Docker",
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "launchUrl": "{Scheme}://user_service:8000",
       "publishAllPorts": true,
       "useSSL": true
     }

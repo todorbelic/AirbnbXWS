@@ -23,7 +23,7 @@ func main() {
 		done <- true
 		os.Exit(0)
 	}()
-	err := godotenv.Load()
+	err := godotenv.Load(".env")
 	if err != nil {
 		log.Fatal(err)
 	}

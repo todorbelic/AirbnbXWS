@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+
+import { LogInRequest } from 'src/app/model/log-in-request';
+
 import { LogInRequestData } from 'src/app/dto/logInRequestData';
+
 import { AuthenticationService } from 'src/app/services/authentication-service';
 
 @Component({
@@ -10,12 +14,14 @@ import { AuthenticationService } from 'src/app/services/authentication-service';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
-  credentials : LogInRequestData = new LogInRequestData()
+  //credentials : LogInRequestData = new LogInRequestData()
+  loginRequest: LogInRequest = new LogInRequest()
   constructor(private authService : AuthenticationService,  private toast : ToastrService, private router: Router) { }
 
   logInUser(){
     if(this.validityChecked()) {
-      this.authService.logInUser(this.credentials).subscribe(res => {
+      this.authService.logInUser(this.loginRequest).subscribe(res => {
+        console.log(res)
         this.authService.setSession(res.accessToken);
         //ovo ce biti naknadno implementirano
         let role=this.authService.getRole();
@@ -27,7 +33,7 @@ export class LoginPageComponent {
   }
 
   validityChecked(){
-    if(this.credentials.username !=='' && this.credentials.password !== '') return true
+    if(this.loginRequest.credentials.username !=='' && this.loginRequest.credentials.password !== '') return true
     this.toast.error('you have to fill up all fields!')
     return false
   }

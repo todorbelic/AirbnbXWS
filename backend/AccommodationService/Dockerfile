@@ -2,14 +2,12 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["AccommodationService/AccommodationService.csproj", "AccommodationService/"]
+COPY ["AccommodationService.csproj", "AccommodationService/"]
 RUN dotnet restore "AccommodationService/AccommodationService.csproj"
-COPY . .
+COPY . ./AccommodationService
 WORKDIR "/src/AccommodationService"
 RUN dotnet build "AccommodationService.csproj" -c Release -o /app/build
 

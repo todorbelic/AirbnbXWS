@@ -40,21 +40,21 @@ func (server *Server) initHandlers() {
 			grpc_opentracing.WithTracer(otgo.GlobalTracer()))),
 	}
 
-	userEndpoint := fmt.Sprintf("localhost%s", server.config.UserServiceAddress)
+	userEndpoint := fmt.Sprintf("user_service%s", server.config.UserServiceAddress)
 	log.Println(userEndpoint)
 	err := user.RegisterUserServiceRPCHandlerFromEndpoint(context.TODO(), server.mux, userEndpoint, opts)
 	if err != nil {
 		panic(err)
 	}
 
-	accommodationEndpoint := fmt.Sprintf("%s", server.config.AccommodationServiceAddress)
+	accommodationEndpoint := fmt.Sprintf("accommodation_service%s", server.config.AccommodationServiceAddress)
 	log.Println(accommodationEndpoint)
 	err = accommodation.RegisterAccommodationServiceRPCHandlerFromEndpoint(context.TODO(), server.mux, accommodationEndpoint, opts)
 	if err != nil {
 		panic(err)
 	}
 
-	reservationEndpoint := fmt.Sprintf("%s", server.config.ReservationServiceAddress)
+	reservationEndpoint := fmt.Sprintf("reservation_service%s", server.config.ReservationServiceAddress)
 	err = reservation.RegisterReservationServiceHandlerFromEndpoint(context.TODO(), server.mux, reservationEndpoint, opts)
 	if err != nil {
 		panic(err)
@@ -63,14 +63,12 @@ func (server *Server) initHandlers() {
 
 func (server *Server) Start() {
 	r := mux.NewRouter()
-
 	// Add CORS headers
 	r.Use(func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			w.Header().Set("Access-Control-Allow-Origin", "*") // Set the Access-Control-Allow-Origin header to "*"
 			w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 			w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
-
 			if r.Method == http.MethodOptions {
 				w.WriteHeader(http.StatusOK)
 				return
@@ -81,8 +79,6 @@ func (server *Server) Start() {
 	})
 	instrumentation := muxprom.NewDefaultInstrumentation()
 	r.Use(instrumentation.Middleware)
-
 	r.PathPrefix("/").Handler(server.mux) // Use the gRPC server's ServeMux
-
 	log.Fatal(http.ListenAndServe(fmt.Sprintf("%s", server.config.Address), r))
 }
