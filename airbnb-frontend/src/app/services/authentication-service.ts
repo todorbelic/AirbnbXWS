@@ -20,7 +20,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   registerUser(user: User): Observable<any> {
-    return this.http.post(this.apiHost + 'api/user/register', {user: user}, { headers: this.headers})
+    return this.http.post(this.apiHost + 'user/register', {user: user}, { headers: this.headers})
   }
 
 

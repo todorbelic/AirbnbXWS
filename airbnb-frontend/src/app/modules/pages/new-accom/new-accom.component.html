@@ -20,7 +20,7 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Benefits</mat-label>
-                    <input matInput required type="text" [(ngModel)]="createAccommodationRequest.request.benefits" />
+                    <input matInput required type="text" [(ngModel)]="benefits" />
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Minimum number of guests</mat-label>
@@ -35,7 +35,7 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Payment option</mat-label>
-                    <mat-select matInput required type="number" [(value)]="createAccommodationRequest.request.paymentOption">
+                    <mat-select matInput required type="number" [(value)]="paymentOption">
                         <mat-option value="0">Per person</mat-option>
                         <mat-option value="1">Per unit</mat-option>
                     </mat-select>
