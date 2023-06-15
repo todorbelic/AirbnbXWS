@@ -1,0 +1,111 @@
+﻿syntax = "proto3";
+option go_package = "proto/reservation";
+
+service ReservationServiceRPC{
+  rpc GetActiveForHost(GetActiveForHostRequest) returns (GetActiveForHostResponse);
+  rpc GetActiveForGuest(GetActiveForGuestRequest) returns (GetActiveForGuestResponse);
+  rpc GetFutureForAccommodation(GetFutureForAccommodationRequest) returns (GetFutureForAccommodationResponse);
+  rpc ApproveReservation(ApproveReservationRequest) returns (ApproveReservationResponse);
+  rpc CancelReservation(CancelReservationRequest) returns (CancelReservationResponse);
+  rpc Create(CreateReservationRequest) returns (CreateReservationResponse);
+
+enum ReservationStatus {
+ PENDING = 0;
+ ACTIVE = 1;
+ CANCELLED = 2;
+ DENIED = 3;
+ EXPIRED = 4;
+}
+
+message Reservation {
+  string id = 1;
+  string hostId = 2;
+  string guestId = 3;
+  string accommodationId = 4;
+  google.protobuf.Timestamp startDate = 5;
+  google.protobuf.Timestamp endDate = 6;
+  int32 guestCount = 7;
+  ReservationStatus reservationStatus = 8;
+}
+
+message ReservationRequest {
+  string hostId = 2;
+  string guestId = 3;
+  string accommodationId = 4;
+  google.protobuf.Timestamp startDate = 5;
+  google.protobuf.Timestamp endDate = 6;
+  int32 guestCount = 7;
+}
+
+message ReservationAddress {
+  string id = 1;
+  string country = 2;
+  string city = 3;
+  string streetAddress = 4;
+}
+
+message ReservationView {
+    string ReservationId     =1;
+    string HostName          =2;
+    string GuestName         =3;
+    string AccommodationName =4;
+    ReservationAddress Address = 5;
+    google.protobuf.Timestamp startDate = 6;
+    google.protobuf.Timestamp endDate = 7;
+    int32 GuestCount = 8;
+}
+
+message ReservationTimeFrame {
+  google.protobuf.Timestamp startDate = 6;
+  google.protobuf.Timestamp endDate = 7;
+}
+
+message GetActiveForHostRequest{
+  string hostId = 1;
+}
+
+message GetActiveForHostResponse{
+  repeated ReservationView reservations =1;
+}
+
+message GetActiveForGuestRequest{
+ string guestId = 1;
+}
+
+message GetActiveForGuestResponse{
+ repeated ReservationView reservations = 1;
+}
+
+message GetFutureForAccommodationRequest{
+ string accommodationId = 1;
+}
+
+message GetFutureForAccommodationResponse{
+ repeated ReservationTimeFrame reservations = 1;
+}
+
+message CancelReservationRequest{
+ string id = 1;
+}
+
+message CancelReservationResponse{
+ string response = 1;
+}
+
+message ApproveReservationRequest{
+ string id = 1;
+}
+
+message ApproveReservationResponse{
+ string response = 1;
+}
+
+message CreateReservationRequest{
+  ReservationRequest request = 1;
+}
+
+message CreateReservationResponse{
+  string response = 1;
+}
+
+

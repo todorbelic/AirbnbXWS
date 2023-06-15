@@ -3,6 +3,7 @@ using ReservationService.Handler;
 using ReservationService.Mapper;
 using ReservationService.Middleware;
 using ReservationService.Repository;
+using ReservationService.Service;
 using ReservationService.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +17,7 @@ builder.Services.AddGrpc(options =>
     options.Interceptors.Add<ErrorHandlingInterceptor>();
 });
 
-//builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<IReservationService, ReservationService.Service.ReservationService>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", true, true).Build();

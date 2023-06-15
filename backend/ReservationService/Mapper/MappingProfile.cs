@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ReservationService.DTO;
 using ReservationService.Model;
 
 namespace ReservationService.Mapper
@@ -7,7 +8,8 @@ namespace ReservationService.Mapper
     {
         public MappingProfile()
         {
-           
+            CreateMap<ReservationRequestDTO, Reservation>();
+            CreateMap<Reservation, ReservationViewDTO>();
         }
     }
 }
