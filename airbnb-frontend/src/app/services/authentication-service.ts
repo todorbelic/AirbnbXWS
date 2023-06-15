@@ -2,11 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
-import { LogInRequestData } from '../dto/logInRequestData'
 import jwt_decode from 'jwt-decode';
 import { LogInRequest } from '../model/log-in-request';
 
 import { UserProfileData } from '../dto/userProfileData';
+import { LogInRequestData } from '../dto/logInRequestData';
+
+
 
 
 @Injectable({
