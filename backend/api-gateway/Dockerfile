@@ -5,14 +5,15 @@ FROM golang:latest as builder
 WORKDIR /app
 
 # Copy go mod and sum files
-COPY ./api-gateway/go.mod ./api-gateway/go.sum ./
+COPY  ./go.mod ./go.sum ./
 
-COPY /shared ../shared
+COPY ./proto ./proto
+COPY .env ./.env
 # Download all dependencies. Dependencies will be cached if the go.mod and go.sum files are not changed
 RUN go mod download
 
 # Copy everything from the current directory to the Working Directory inside the container
-COPY ./api-gateway .
+COPY ./ .
 
 # Build the Go app
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
@@ -26,6 +27,11 @@ WORKDIR /root/
 
 # Copy the Pre-built binary file from the previous stage
 COPY --from=builder /app/main .
+# Copy the .env file to the /root/ directory
+COPY --from=builder /app/.env .
+COPY --from=builder /app/proto ./proto
+COPY --from=builder /app/go.mod ./
+COPY --from=builder /app/go.sum ./
 
 # Expose port 8000 to the outside world
 EXPOSE 8000
