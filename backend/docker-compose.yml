@@ -13,6 +13,7 @@ services:
     environment:
       RESERVATION_SERVICE_ADDRESS: ${RESERVATION_SERVICE_ADDRESS}
       RESERVATION_DB_URI: ${RESERVATION_DB_URI}
+      ASPNETCORE_URLS: http://+:8080/
     networks:
       - network
     env_file:
@@ -30,6 +31,7 @@ services:
     environment:
       ACCOMMODATION_SERVICE_ADDRESS: ${ACCOMMODATION_SERVICE_ADDRESS}
       ACCOMMODATION_DB_URI : ${ACCOMMODATION_DB_URI}
+      ASPNETCORE_URLS: http://+:8080/
     networks:
       - network
     env_file:
@@ -46,6 +48,7 @@ services:
     environment:
       USER_SERVICE_ADDRESS: ${USER_SERVICE_ADDRESS}
       USER_DB_URI : ${USER_DB_URI}
+      ASPNETCORE_URLS: http://+:8080/
     networks:
       - network
     env_file:
@@ -60,9 +63,9 @@ services:
       dockerfile: Dockerfile
     restart: always
     environment:
-      USER_SERVICE_ADDRESS: user_service:8000
-      ACCOMMODATION_SERVICE_ADDRESS: accommodation_service:8000
-      RESERVATION_SERVICE_ADDRESS: reservation_service:8000
+      USER_SERVICE_ADDRESS: ${USER_SERVICE_ADDRESS}
+      ACCOMMODATION_SERVICE_ADDRESS: ${ACCOMMODATION_SERVICE_ADDRESS}
+      RESERVATION_SERVICE_ADDRESS: ${RESERVATION_SERVICE_ADDRESS}
       GATEWAY_ADDRESS: ${GATEWAY_ADDRESS}
     depends_on:
       - user_service
