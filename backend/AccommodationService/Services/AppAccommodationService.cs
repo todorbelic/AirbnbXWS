@@ -3,6 +3,7 @@ using AccommodationService.Exceptions;
 using AccommodationService.Model;
 using AccommodationService.Repository;
 using AutoMapper;
+using System.Linq.Expressions;
 
 namespace AccommodationService.Services
 {
@@ -20,6 +21,7 @@ namespace AccommodationService.Services
         }
         public async Task AddAccommodation(AccommodationRequest dto)
         {
+           
            AppAccommodation accommodation = _mapper.Map<AppAccommodation>(dto);
            await _repository.InsertOneAsync(accommodation);
         }
@@ -55,10 +57,20 @@ namespace AccommodationService.Services
             accommodation.SpecialPrice = dto.NewPrice;
             accommodation.Occasions = dto.Occasions;
             await _repository.ReplaceOneAsync(accommodation);
-
-
         }
 
-
+        public List<AccommodationSearch> SearchAccommodations(SearchAccommodationsRequest request)
+        {
+            Expression<Func<AppAccommodation, bool>> filterExpression = a => a.MinGuests <= request.NumberOfGuests
+                                                                       && a.MaxGuests >= request.NumberOfGuests
+                                                                       && a.Address.Country.ToLower().Contains(request.Country.ToLower())
+                                                                       && a.Address.City.ToLower().Contains(request.City.ToLower())
+                                                                       && a.Address.StreetAddress.ToLower().Contains(request.StreetAddress.ToLower());
+            
+            List<AppAccommodation> accommodations = _repository.FilterBy(filterExpression).ToList();
+            List<AccommodationSearch> accommodationsSearched = _mapper.Map<List<AccommodationSearch>>(accommodations);
+            accommodationsSearched.ForEach(accommodations => accommodations.PriceTotal = accommodations.BasePrice * request.NumberOfGuests);
+            return accommodationsSearched;
+        }
     }
 }

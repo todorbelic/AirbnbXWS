@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { Accommodation } from 'src/app/model/accommodation';
 import { AccomService } from 'src/app/services/accom-service';
+import * as moment from 'moment';
+import { AccommodationSearchRequest } from 'src/app/dto/accommodation-search-request';
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.css']
+  styleUrls: ['./landing-page.component.css'],
 })
 export class LandingPageComponent {
 
@@ -20,25 +22,36 @@ export class LandingPageComponent {
 
   // ];
 
-  public cards:Accommodation[]=[]
-
-  
-  constructor(private accomService:AccomService) { }
+  public cards:any[]=[]
+  public showSearched = false;
+  public accSearch: AccommodationSearchRequest = new AccommodationSearchRequest();
+  constructor(private accomService:AccomService) { 
+  }
 
   ngOnInit(): void {
     this.loadAccom();
   }
 
-  
+  resetSearch() {
+    this.accSearch = new AccommodationSearchRequest();
+    this.showSearched = false;
+    this.loadAccom();
+  }
+
   applySearch() {
+    this.showSearched = true;
+    this.accomService.getSearched(this.accSearch).subscribe(res=> {
+      this.cards = res.accommodations;
+    })
   }
 
   loadAccom(){
     this.accomService.getAll().subscribe(res=>{
-      this.cards=res
+      this.cards=res.accommodations
     })
 
   }
+
 
   loadPictures(){
 
