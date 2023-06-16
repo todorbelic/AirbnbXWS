@@ -20,7 +20,6 @@ namespace ReservationService.Middleware
             {
                 // Handle and process the exception
                 var status = new Status(ExceptionStatusCode.GetExceptionStatusCode(ex), ex.Message);
-                throw new Exception(ex.StackTrace);
                 throw new RpcException(status);
             }
         }

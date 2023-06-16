@@ -47,7 +47,7 @@ namespace ReservationService.Service
             }
             //ovde provera za smestaj ako automatski prihvata rezervacije odmah status = active, ako ne, status = pending
             if (true) dtoReservation.Status = ReservationStatus.ACTIVE;
-            else dtoReservation.Status = ReservationStatus.PENDING;
+            //else dtoReservation.Status = ReservationStatus.PENDING;
             await _repository.InsertOneAsync(dtoReservation);
             return true;
         }

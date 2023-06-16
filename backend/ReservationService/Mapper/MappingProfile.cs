@@ -8,7 +8,7 @@ namespace ReservationService.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<ReservationRequestDTO, Reservation>();
+            CreateMap<SendReservationRequestRequest, Reservation>();
             CreateMap<Reservation, ReservationViewDTO>();
         }
     }
