@@ -55,7 +55,8 @@ func (server *Server) initHandlers() {
 	}
 
 	reservationEndpoint := fmt.Sprintf("reservation_service%s", server.config.ReservationServiceAddress)
-	err = reservation.RegisterReservationServiceHandlerFromEndpoint(context.TODO(), server.mux, reservationEndpoint, opts)
+	log.Println(reservationEndpoint)
+	err = reservation.RegisterReservationServiceRPCHandlerFromEndpoint(context.TODO(), server.mux, reservationEndpoint, opts)
 	if err != nil {
 		panic(err)
 	}
