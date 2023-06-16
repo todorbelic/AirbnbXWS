@@ -2,6 +2,7 @@ package startup
 
 import (
 	"airbnb/api-gateway/proto/accommodation"
+	"airbnb/api-gateway/proto/notification"
 	"airbnb/api-gateway/proto/reservation"
 	"airbnb/api-gateway/proto/user"
 	cfg "airbnb/api-gateway/startup/config"
@@ -57,6 +58,13 @@ func (server *Server) initHandlers() {
 	reservationEndpoint := fmt.Sprintf("%s", server.config.ReservationServiceAddress)
 	log.Println(reservationEndpoint)
 	err = reservation.RegisterReservationServiceRPCHandlerFromEndpoint(context.TODO(), server.mux, reservationEndpoint, opts)
+	if err != nil {
+		panic(err)
+	}
+
+	notificationEndpoint := fmt.Sprintf("%s", server.config.NotificationServiceAddress)
+	log.Println(notificationEndpoint)
+	err = notification.RegisterNotificationServiceRPCHandlerFromEndpoint(context.TODO(), server.mux, notificationEndpoint, opts)
 	if err != nil {
 		panic(err)
 	}
