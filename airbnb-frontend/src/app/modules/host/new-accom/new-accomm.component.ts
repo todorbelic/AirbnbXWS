@@ -1,18 +1,18 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { CreateAccommodationRequest } from 'src/app/model/create-accommodation-request';
+import { ToastrService } from 'ngx-toastr';
 import { AccomService } from 'src/app/services/accom-service';
-import { AuthenticationService } from 'src/app/services/authentication-service';
-import { NgSelectComponent } from '@ng-select/ng-select';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+
+
 
 @Component({
-  selector: 'app-new-accom',
-  templateUrl: './new-accom.component.html',
-  styleUrls: ['./new-accom.component.css'],
+  selector: 'app-new-accomm',
+  templateUrl: './new-accomm.component.html',
+  styleUrls: ['./new-accomm.component.css']
 })
-export class NewAccomComponent {
+export class NewAccommComponent {
   createAccommodationRequest: CreateAccommodationRequest = new CreateAccommodationRequest
   base64Images: string[] = []
   benefits: string=''
@@ -119,5 +119,3 @@ export class NewAccomComponent {
   }
 
 }
-
-

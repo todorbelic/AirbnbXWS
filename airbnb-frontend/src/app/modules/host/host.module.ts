@@ -8,18 +8,19 @@ import { HostEditProfileComponent } from "./host-edit-profile/host-edit-profile.
 import { HostHomeComponent } from "./host-home/host-home.component";
 import { HostProfileComponent } from "./host-profile/host-profile.component";
 import { HostToolbarComponent } from "./host-toolbar/host-toolbar.component";
-import { NewAccomComponent } from "../pages/new-accom/new-accom.component";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { HostUpdateAccomComponent } from './host-update-accom/host-update-accom.component';
 import {MatListModule} from '@angular/material/list';
+import { NewAccommComponent } from './new-accom/new-accomm.component';
+import { NgSelectModule } from "@ng-select/ng-select";
 
 
 const routes: Routes = [
     { path: 'host-profile', component: HostProfileComponent },
     { path: 'host-edit', component: HostEditProfileComponent},
     { path:'host-home', component: HostHomeComponent},
-    { path: 'host-add-accommodation', component: NewAccomComponent},
+    { path: 'host-add-accommodation', component: NewAccommComponent},
     { path:'host-update-accom', component: HostUpdateAccomComponent},
 
 
@@ -33,6 +34,7 @@ const routes: Routes = [
         HostHomeComponent,
         HostToolbarComponent,
         HostUpdateAccomComponent,
+        NewAccommComponent,
   ],
     imports: [
       CommonModule,
@@ -42,6 +44,7 @@ const routes: Routes = [
       MatInputModule,
       MatFormFieldModule,
       MatListModule,
+      NgSelectModule,
       RouterModule.forChild(routes)
     ]
   })
