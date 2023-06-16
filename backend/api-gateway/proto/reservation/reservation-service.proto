@@ -1,129 +1,194 @@
-syntax = "proto3";
+﻿syntax = "proto3";
 option go_package = "proto/reservation";
 import "google/api/annotations.proto";
-import "google/protobuf/timestamp.proto";
 
-service ReservationService{
+service ReservationServiceRPC{
   rpc GetActiveForHost(GetActiveForHostRequest) returns (GetActiveForHostResponse){
-    option (google.api.http) = {
-      get: "/reservation/host"
+  	option (google.api.http) = {
+        get: "/reservation/host/active"
     };
   }
   rpc GetActiveForGuest(GetActiveForGuestRequest) returns (GetActiveForGuestResponse){
     option (google.api.http) = {
-      get: "/reservation/guest"
+        get: "/reservation/guest/active"
     };
   }
-  rpc GetFutureForAccommodation(GetFutureForAccommodationRequest) returns (GetFutureForAccommodationResponse){
+  rpc GetCancellationNumberForGuest(GetCancellationNumberForGuestRequest) returns (GetCancellationNumberForGuestResponse){
     option (google.api.http) = {
-      get: "/reservation/accommodation"
+        post: "/reservation/guest/cancellation-number"
     };
   }
-  rpc ManualReservation(ManualReservationRequest) returns (ManualReservationResponse){
+  rpc AcceptReservation(AcceptReservationRequest) returns (AcceptReservationResponse){
     option (google.api.http) = {
-      post: "/reservation/manual"
+        post: "/reservation/accept-request"
+        body: "*"
     };
   }
-  rpc AutomaticReservation(AutomaticReservationRequest) returns (AutomaticReservationResponse){
+  rpc SendReservationRequest(SendReservationRequestRequest) returns (SendReservationRequestResponse){
     option (google.api.http) = {
-      post: "/reservation/automatic"
+        post: "/reservation/send-request"
+        body: "*"
     };
   }
-  rpc ApproveReservation(ApproveReservationRequest) returns (ApproveReservationResponse){
+  rpc DeleteReservationRequest(DeleteReservationRequestRequest) returns (DeleteReservationRequestResponse){
     option (google.api.http) = {
-      post: "/reservation/approve"
+        post: "/reservation/delete-request"
+        body: "*"
     };
   }
   rpc CancelReservation(CancelReservationRequest) returns (CancelReservationResponse){
     option (google.api.http) = {
-      post: "/reservation/cancel"
+        post: "/reservation/cancel"
+        body: "*"
     };
   }
+  rpc GetReservationRequestsForGuest(GetReservationRequestsForGuestRequest) returns (GetReservationRequestsForGuestResponse){
+    option (google.api.http) = {
+        get: "/reservation/guest/requests"
+    };
+  }
+  rpc GetReservationRequestsForHost(GetReservationRequestsForHostRequest) returns (GetReservationRequestsForHostResponse){
+    option (google.api.http) = {
+        get: "/reservation/host/requests"
+    };
+  }
+  rpc DenyReservationRequest(DenyReservationRequestRequest) returns (DenyReservationRequestResponse){
+    option (google.api.http) = {
+        post: "/reservation/deny-request"
+        body: "*"
+    };
+  }
+
 }
 
-enum ReservationStatus {
+enum ReservationStatusProto {
  PENDING = 0;
  ACTIVE = 1;
  CANCELLED = 2;
  DENIED = 3;
- EXPIRED = 4;
+ FINISHED = 4;
+ DELETED = 5;
 }
 
-message Reservation {
+message ReservationProto {
   string id = 1;
   string hostId = 2;
   string guestId = 3;
   string accommodationId = 4;
-  google.protobuf.Timestamp startDate = 5;
-  google.protobuf.Timestamp endDate = 6;
+  string startDate = 5;
+  string endDate = 6;
   int32 guestCount = 7;
-  ReservationStatus reservationStatus = 8;
+  ReservationStatusProto reservationStatus = 8;
 }
 
 message ReservationRequest {
   string hostId = 2;
   string guestId = 3;
   string accommodationId = 4;
-  google.protobuf.Timestamp startDate = 5;
-  google.protobuf.Timestamp endDate = 6;
+  string startDate = 5;
+  string endDate = 6;
   int32 guestCount = 7;
 }
 
+message ReservationAddress {
+  string id = 1;
+  string country = 2;
+  string city = 3;
+  string streetAddress = 4;
+}
+
+message ReservationView {
+    string ReservationId     =1;
+    string HostName          =2;
+    string GuestName         =3;
+    string AccommodationName =4;
+    string Address = 5;
+    string startDate = 6;
+    string endDate = 7;
+    int32 GuestCount = 8;
+}
+
+message ReservationTimeFrame {
+  string startDate = 6;
+  string endDate = 7;
+}
+
 message GetActiveForHostRequest{
-  string hostId = 1;
+    string hostId = 1;
 }
 
 message GetActiveForHostResponse{
-  repeated Reservation reservations =1;
+    repeated ReservationView reservations =1;
 }
 
 message GetActiveForGuestRequest{
- string guestId = 1;
+    string guestId = 1;
 }
 
 message GetActiveForGuestResponse{
- repeated Reservation reservations = 1;
+    repeated ReservationView reservations = 1;
 }
 
-message GetFutureForAccommodationRequest{
- string accommodationId = 1;
+message GetCancellationNumberForGuestRequest{
+    string guestId = 1;
 }
 
-message GetFutureForAccommodationResponse{
- repeated Reservation reservations = 1;
+message GetCancellationNumberForGuestResponse{
+    int32 cancellationNumber = 1;
 }
 
-message AutomaticReservationRequest{
- ReservationRequest request = 1;
+message AcceptReservationRequest{
+    string id = 1;
 }
 
-message AutomaticReservationResponse{
- string response = 1;
+message AcceptReservationResponse{
+    string response = 1;
 }
 
-message ManualReservationRequest{
- ReservationRequest request = 1;
+message SendReservationRequestRequest{
+    ReservationRequest request = 1;
 }
 
-message ManualReservationResponse{
- string response = 1;
+message SendReservationRequestResponse{
+    bool response = 1;
+}
+
+message DeleteReservationRequestRequest{
+    string requestId = 1;
+}
+
+message DeleteReservationRequestResponse{
+    bool response = 1;
 }
 
 message CancelReservationRequest{
- string id = 1;
+    string reservationId = 1;
 }
 
 message CancelReservationResponse{
- string response = 1;
+    bool response = 1;
 }
 
-message ApproveReservationRequest{
- string id = 1;
+message GetReservationRequestsForGuestRequest{
+    string guestId = 1;
 }
 
-message ApproveReservationResponse{
- string response = 1;
+message GetReservationRequestsForGuestResponse{
+    repeated ReservationView requests = 1; 
 }
 
+message GetReservationRequestsForHostRequest{
+    string hostId = 1;
+}
 
+message GetReservationRequestsForHostResponse{
+    repeated ReservationView requests = 1; 
+}
 
+message DenyReservationRequestRequest{
+    string requestId = 1;
+}
+
+message DenyReservationRequestResponse{
+    bool response = 1;
+}

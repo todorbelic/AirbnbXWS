@@ -1,11 +1,12 @@
 ﻿namespace ReservationService.Enums
 {
-    public enum AppReservationStatus
+    public enum ReservationStatus
     {
         PENDING,
         ACTIVE,
         CANCELLED,
         DENIED,
-        EXPIRED,
+        FINISHED,
+        DELETED
     }
 }
