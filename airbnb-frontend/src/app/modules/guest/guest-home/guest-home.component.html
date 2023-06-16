@@ -1,5 +1,69 @@
 <body>
 <app-guest-toolbar></app-guest-toolbar>
-    <p>guest-home works!</p>
-</body>
+<div class="centered" style="margin-top:20vh">
+  
+    <div class="row">
+      <div class="col">
+        <input type="text" class="input-search" placeholder="Country" [(ngModel)]="accSearch.country" style="margin-bottom:1%; margin-left: 1%;">
+      </div>
+      <div class="col">
+        <input type="text" class="input-search" placeholder="City" [(ngModel)]="accSearch.city"  style="margin-bottom:1%; margin-left: 1%;">
+      </div>
+      <div class="col">
+        <input type="text" class="input-search" placeholder="Street" [(ngModel)]="accSearch.streetAddress" style="margin-bottom:1%; margin-left: 1%;">
+      </div>
+    </div>
+   
+    <input type="number" class="input-search" placeholder="Number of guests" [(ngModel)]="accSearch.numberOfGuests" style="margin-left:1%">
+    <input matInput [matDatepicker] = "startPicker" placeholder = "Start date" style="margin-left:1%" >
+    <mat-datepicker-toggle matSuffix [for] = "startPicker"></mat-datepicker-toggle>
+    <mat-datepicker #startPicker></mat-datepicker>
+    <input matInput [matDatepicker] = "endPicker" placeholder = "End date" style="margin-left:1%" >
+    <mat-datepicker-toggle matSuffix [for] = "endPicker"></mat-datepicker-toggle>
+    <mat-datepicker #endPicker></mat-datepicker>
+    <button mat-raised-button style="margin-left:1%" (click)="applySearch()">Search</button>
+    <button mat-raised-button style="margin-left:1%" (click)="resetSearch()">Reset</button>
+  
+    <section class="cards" >
+      <article class="card" *ngFor="let card of cards">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{card.name}}</mat-card-title>
+            <mat-card-subtitle></mat-card-subtitle>
+          </mat-card-header>
+          <div class="carousel_container">
+            <div>
+              <img mat-card-image [src]="card.pictures[0]" style="width: 300px; height: 300px;">
+            </div>
+          </div>
+          <mat-card-content>
+            <p>{{card.benefits}}</p>
+          </mat-card-content>
+          <mat-card-content *ngIf="card.address">
+            <p>{{card.address.country}}, {{card.address.city}}, {{card.address.streetAddress}}</p>
+          </mat-card-content>
+          <mat-card-content>
+            <p>Min guests: {{card.minGuests}}</p>
+          </mat-card-content>
+          <mat-card-content>
+            <p>Max guests: {{card.maxGuests}}</p>
+          </mat-card-content>
+          <mat-card-content>
+            <p>Price: {{card.basePrice}}</p>
+          </mat-card-content>
+          <mat-card-content *ngIf="showSearched">
+            <p>Total price: {{card.priceTotal}}</p>
+          </mat-card-content>
+          <mat-card-content>
+            <p>{{card.paymentOption}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>RATE</button>
+          </mat-card-actions>
+        </mat-card>
+      </article>  
+  </section>
+  </div>
+  </body>
 

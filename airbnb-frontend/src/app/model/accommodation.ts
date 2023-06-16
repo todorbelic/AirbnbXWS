@@ -3,12 +3,12 @@ import { Address } from "./address"
 export class Accommodation {
     id : string = ''
     name: string = ''
-    address : Address=new Address
+    address !: Address
     benefits: string[]=[]
     pictures: any[]=[]
     minGuests:number=0
     maxGuests:number=0
-    price:number=0
+    basePrice:number=0
     paymentOption:any
 
 
@@ -21,7 +21,7 @@ export class Accommodation {
             this.pictures = obj.pictures
             this.minGuests = obj.minGuests
             this.maxGuests = obj.maxGuests
-            this.price = obj.price
+            this.basePrice = obj.basePrice
             this.paymentOption = obj.paymentOption
         }
     }

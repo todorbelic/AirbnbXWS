@@ -17,10 +17,8 @@ builder.Services.AddGrpc(options =>
     { options.Interceptors.Add<ErrorHandlingInterceptor>(); }
 );
 
-
 builder.Services.AddScoped<IAppAccommodationService, AppAccommodationService>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-
 
 
 IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", true, true).Build();

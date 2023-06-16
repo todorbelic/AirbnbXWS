@@ -40,21 +40,21 @@ func (server *Server) initHandlers() {
 			grpc_opentracing.WithTracer(otgo.GlobalTracer()))),
 	}
 
-	userEndpoint := fmt.Sprintf("user_service%s", server.config.UserServiceAddress)
+	userEndpoint := fmt.Sprintf("%s", server.config.UserServiceAddress)
 	log.Println(userEndpoint)
 	err := user.RegisterUserServiceRPCHandlerFromEndpoint(context.TODO(), server.mux, userEndpoint, opts)
 	if err != nil {
 		panic(err)
 	}
 
-	accommodationEndpoint := fmt.Sprintf("accommodation_service%s", server.config.AccommodationServiceAddress)
+	accommodationEndpoint := fmt.Sprintf("%s", server.config.AccommodationServiceAddress)
 	log.Println(accommodationEndpoint)
 	err = accommodation.RegisterAccommodationServiceRPCHandlerFromEndpoint(context.TODO(), server.mux, accommodationEndpoint, opts)
 	if err != nil {
 		panic(err)
 	}
 
-	reservationEndpoint := fmt.Sprintf("reservation_service%s", server.config.ReservationServiceAddress)
+	reservationEndpoint := fmt.Sprintf("%s", server.config.ReservationServiceAddress)
 	log.Println(reservationEndpoint)
 	err = reservation.RegisterReservationServiceRPCHandlerFromEndpoint(context.TODO(), server.mux, reservationEndpoint, opts)
 	if err != nil {

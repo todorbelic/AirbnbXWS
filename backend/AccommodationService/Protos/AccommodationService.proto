@@ -6,7 +6,7 @@ service AccommodationServiceRPC {
 	rpc DeleteAllForHost(DeleteAllForHostRequest) returns (DeleteAllForHostResponse);
 	rpc CreateAccommodation(CreateAccommodationRequest) returns (CreateAccommodationResponse);
 	rpc ModifyAccommodation(ModifyAccommodationRequest) returns (ModifyAccommodationResponse);
-	rpc SearchAcommodations(SearchAcommodationsRequest) returns (SearchAcommodationsResponse);
+	rpc SearchAccommodations(SearchAccommodationsRequest) returns (SearchAccommodationsResponse);
 	rpc GetAccommodation (GetAccommodationRequest) returns (GetAccommodationResponse);
 	rpc SetReservationOption (SetReservationOptionRequest) returns (SetReservationOptionResponse);
 	rpc GetAllAccommodations (GetAllRequest) returns (GetAllResponse);
@@ -25,16 +25,30 @@ enum PaymentOption {
 }
 
 message Accommodation{
- string id = 1;
- string hostId = 2;
- string name = 3;
- Address address = 4;
- repeated string benefits = 5;
- repeated string pictures = 6;
- int32 minGuests = 7;
- int32 maxGuests = 8;
- int32 price = 9;
- PaymentOption paymentOption = 10;
+  string id = 1;
+  string hostId = 2;
+  string name = 3;
+  Address address = 4;
+  repeated string benefits = 5;
+  repeated string pictures = 6;
+  int32 minGuests = 7;
+  int32 maxGuests = 8;
+  int32 basePrice = 9;
+  PaymentOption paymentOption = 10;
+}
+
+message AccommodationSearch{
+  string id = 1;
+  string hostId = 2;
+  string name = 3;
+  Address address = 4;
+  repeated string benefits = 5;
+  repeated string pictures = 6;
+  int32 minGuests = 7;
+  int32 maxGuests = 8;
+  int32 basePrice = 9;
+  int32 priceTotal = 10;
+  PaymentOption paymentOption = 11;
 }
 
 message AccommodationRequest{
@@ -45,7 +59,7 @@ message AccommodationRequest{
   repeated string pictures = 5;
   int32 minGuests = 6;
   int32 maxGuests = 7;
-  int32 price = 8;
+  int32 basePrice = 8;
   PaymentOption paymentOption = 9;
 }
 
@@ -58,44 +72,48 @@ message DeleteAllForHostResponse{
 }
 
 message CreateAccommodationRequest{
- AccommodationRequest request = 1;
+  AccommodationRequest request = 1;
 }
 
 message CreateAccommodationResponse{
- string response = 1;
+  string response = 1;
 }
 
 message ModifyAccommodationRequest{
- Accommodation accommodation = 1;
+  Accommodation accommodation = 1;
 }
 
 message ModifyAccommodationResponse{
- string response = 1;
+  string response = 1;
 }
 
-message SearchAcommodationsRequest{
- string criteria = 1;
- string content = 2;
+message SearchAccommodationsRequest{
+  string country = 1;
+  string city = 2;
+  string streetAddress = 3;
+  string startDate = 4;
+  string endDate = 5;
+  int32 numberOfGuests = 6;
 }
 
-message SearchAcommodationsResponse{
- repeated Accommodation accommodations = 1;
+message SearchAccommodationsResponse{
+  repeated AccommodationSearch accommodations = 1;
 }
 
 message GetAccommodationRequest{
- string id = 1;
+  string id = 1;
 }
 
 message GetAccommodationResponse{
- Accommodation accommodation = 1;
+  Accommodation accommodation = 1;
 }
 
 message SetReservationOptionRequest{
- string option = 1;
+  string option = 1;
 }
 
 message SetReservationOptionResponse{
- string response = 1;
+  string response = 1;
 }
 
 message GetAllRequest {}

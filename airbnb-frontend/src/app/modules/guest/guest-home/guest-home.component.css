@@ -1,0 +1,68 @@
+.example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  
+ .cards {
+    display: flex;
+    flex-wrap: wrap;
+ }
+  
+ .card {
+     flex: 0 1 calc(50% - 1em);
+ }
+
+ @media screen and (min-width: 40em) {
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+ 
+    .card {
+        flex: 1 0 500px;
+        box-sizing: border-box;
+        margin: 1rem .20em;   }
+}
+
+@media screen and (min-width: 40em) {
+    .card {
+        flex: 0 1 calc(50% - 1em);
+    }
+}
+
+.input-search{
+    height: 15px;
+    width: 200px;
+    border-style: none;
+    padding: 10px;
+    font-size: 15px;
+    outline: none;
+    border-radius: 25px;
+    transition: all .5s ease-in-out;
+    background-color: #dcdcdc;
+    padding-right: 40px;
+    color:#4a4a4a;
+  }
+  .select-filter{
+    height: 20px;
+    width: 200px;
+    border-style: none;
+    font-size: 15px;
+    outline: none;
+    border-radius: 25px;
+    transition: all .5s ease-in-out;
+    background-color: #dcdcdc;
+    color:#4a4a4a;
+  }
+  .input-search::placeholder{
+    color:#979797;
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 100;
+  }

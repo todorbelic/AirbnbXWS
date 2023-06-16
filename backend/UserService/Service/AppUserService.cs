@@ -125,7 +125,7 @@ namespace UserService.Service
             {
                 throw new UserAlreadyExistsException();
             }
-            userDto.Password = HashPassword(userDto.Password);
+            userDto.Password = HashPassword(user.Password);
             AppUser userToUpdate = _mapper.Map<AppUser>(userDto);
             await _userRepository.ReplaceOneAsync(userToUpdate);
         }

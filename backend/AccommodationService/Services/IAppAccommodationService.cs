@@ -11,5 +11,6 @@ namespace AccommodationService.Services
         Task AddAccommodation(AccommodationRequest dto);
 
         Task UpdateAccommodation(Accommodation dto);
+        List<AccommodationSearch> SearchAccommodations(SearchAccommodationsRequest request);
     }
 }

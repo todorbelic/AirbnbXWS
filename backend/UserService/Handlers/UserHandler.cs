@@ -43,6 +43,7 @@ namespace UserService.Handlers
             };
         }
 
+        [Authorize]
         public override async Task<GetCurrentUserResponse> GetCurrentUser(GetCurrentUserRequest request, ServerCallContext context)
         {
             User user = await _appUserService.GetCurrentUser(request.Id);

@@ -63,9 +63,9 @@ services:
       dockerfile: Dockerfile
     restart: always
     environment:
-      USER_SERVICE_ADDRESS: ${USER_SERVICE_ADDRESS}
-      ACCOMMODATION_SERVICE_ADDRESS: ${ACCOMMODATION_SERVICE_ADDRESS}
-      RESERVATION_SERVICE_ADDRESS: ${RESERVATION_SERVICE_ADDRESS}
+      USER_SERVICE_ADDRESS: user_service:8080
+      ACCOMMODATION_SERVICE_ADDRESS: accommodation_service:8080
+      RESERVATION_SERVICE_ADDRESS: reservation_service:8080
       GATEWAY_ADDRESS: ${GATEWAY_ADDRESS}
     depends_on:
       - user_service

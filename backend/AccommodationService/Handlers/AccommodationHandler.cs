@@ -1,5 +1,4 @@
-﻿using AccommodationService.Model;
-using AccommodationService.Services;
+﻿using AccommodationService.Services;
 using Grpc.Core;
 
 namespace AccommodationService.Handlers
@@ -8,7 +7,7 @@ namespace AccommodationService.Handlers
     {
         private readonly ILogger<AccommodationHandler> _logger;
         private readonly IAppAccommodationService _accommodationService;
-
+        
         public AccommodationHandler(ILogger<AccommodationHandler> logger, IAppAccommodationService accommodationService)
         {
             _logger = logger;
@@ -30,13 +29,22 @@ namespace AccommodationService.Handlers
 
             return Task.FromResult(new GetAllResponse()
             {
-                Accommodations= {accommodations}
+                Accommodations = {accommodations}
             });
         }
 
         public override Task<GetAccommodationResponse> GetAccommodation(GetAccommodationRequest request, ServerCallContext context)
         {
             return base.GetAccommodation(request, context);
+        }
+
+        public override Task<SearchAccommodationsResponse> SearchAccommodations(SearchAccommodationsRequest request, ServerCallContext context)
+        {
+            List<AccommodationSearch> accommodationSearched = _accommodationService.SearchAccommodations(request);
+            return Task.FromResult(new SearchAccommodationsResponse()
+            {
+                Accommodations = { accommodationSearched}
+            });
         }
     }
 }
