@@ -32,17 +32,17 @@ var _ = utilities.NewDoubleArray
 var _ = metadata.Join
 
 var (
-	filter_ReservationService_GetActiveForHost_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_ReservationServiceRPC_GetActiveForHost_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_ReservationService_GetActiveForHost_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ReservationServiceRPC_GetActiveForHost_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq GetActiveForHostRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationService_GetActiveForHost_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationServiceRPC_GetActiveForHost_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -51,14 +51,14 @@ func request_ReservationService_GetActiveForHost_0(ctx context.Context, marshale
 
 }
 
-func local_request_ReservationService_GetActiveForHost_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_ReservationServiceRPC_GetActiveForHost_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq GetActiveForHostRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationService_GetActiveForHost_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationServiceRPC_GetActiveForHost_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -68,17 +68,17 @@ func local_request_ReservationService_GetActiveForHost_0(ctx context.Context, ma
 }
 
 var (
-	filter_ReservationService_GetActiveForGuest_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_ReservationServiceRPC_GetActiveForGuest_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_ReservationService_GetActiveForGuest_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ReservationServiceRPC_GetActiveForGuest_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq GetActiveForGuestRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationService_GetActiveForGuest_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationServiceRPC_GetActiveForGuest_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -87,14 +87,14 @@ func request_ReservationService_GetActiveForGuest_0(ctx context.Context, marshal
 
 }
 
-func local_request_ReservationService_GetActiveForGuest_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_ReservationServiceRPC_GetActiveForGuest_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq GetActiveForGuestRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationService_GetActiveForGuest_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationServiceRPC_GetActiveForGuest_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -104,161 +104,152 @@ func local_request_ReservationService_GetActiveForGuest_0(ctx context.Context, m
 }
 
 var (
-	filter_ReservationService_GetFutureForAccommodation_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_ReservationServiceRPC_GetCancellationNumberForGuest_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_ReservationService_GetFutureForAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetFutureForAccommodationRequest
+func request_ReservationServiceRPC_GetCancellationNumberForGuest_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetCancellationNumberForGuestRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationService_GetFutureForAccommodation_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationServiceRPC_GetCancellationNumberForGuest_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.GetFutureForAccommodation(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.GetCancellationNumberForGuest(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_ReservationService_GetFutureForAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetFutureForAccommodationRequest
+func local_request_ReservationServiceRPC_GetCancellationNumberForGuest_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetCancellationNumberForGuestRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationService_GetFutureForAccommodation_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationServiceRPC_GetCancellationNumberForGuest_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.GetFutureForAccommodation(ctx, &protoReq)
+	msg, err := server.GetCancellationNumberForGuest(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
-var (
-	filter_ReservationService_ManualReservation_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
-)
-
-func request_ReservationService_ManualReservation_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ManualReservationRequest
+func request_ReservationServiceRPC_AcceptReservation_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq AcceptReservationRequest
 	var metadata runtime.ServerMetadata
 
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	newReader, berr := utilities.IOReaderFactory(req.Body)
+	if berr != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationService_ManualReservation_0); err != nil {
+	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.ManualReservation(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.AcceptReservation(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_ReservationService_ManualReservation_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ManualReservationRequest
+func local_request_ReservationServiceRPC_AcceptReservation_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq AcceptReservationRequest
 	var metadata runtime.ServerMetadata
 
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	newReader, berr := utilities.IOReaderFactory(req.Body)
+	if berr != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationService_ManualReservation_0); err != nil {
+	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.ManualReservation(ctx, &protoReq)
+	msg, err := server.AcceptReservation(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
-var (
-	filter_ReservationService_AutomaticReservation_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
-)
-
-func request_ReservationService_AutomaticReservation_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq AutomaticReservationRequest
+func request_ReservationServiceRPC_SendReservationRequest_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq SendReservationRequestRequest
 	var metadata runtime.ServerMetadata
 
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	newReader, berr := utilities.IOReaderFactory(req.Body)
+	if berr != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationService_AutomaticReservation_0); err != nil {
+	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.AutomaticReservation(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.SendReservationRequest(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_ReservationService_AutomaticReservation_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq AutomaticReservationRequest
+func local_request_ReservationServiceRPC_SendReservationRequest_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq SendReservationRequestRequest
 	var metadata runtime.ServerMetadata
 
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	newReader, berr := utilities.IOReaderFactory(req.Body)
+	if berr != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationService_AutomaticReservation_0); err != nil {
+	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.AutomaticReservation(ctx, &protoReq)
+	msg, err := server.SendReservationRequest(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
-var (
-	filter_ReservationService_ApproveReservation_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
-)
-
-func request_ReservationService_ApproveReservation_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ApproveReservationRequest
+func request_ReservationServiceRPC_DeleteReservationRequest_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DeleteReservationRequestRequest
 	var metadata runtime.ServerMetadata
 
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	newReader, berr := utilities.IOReaderFactory(req.Body)
+	if berr != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationService_ApproveReservation_0); err != nil {
+	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.ApproveReservation(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.DeleteReservationRequest(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_ReservationService_ApproveReservation_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ApproveReservationRequest
+func local_request_ReservationServiceRPC_DeleteReservationRequest_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DeleteReservationRequestRequest
 	var metadata runtime.ServerMetadata
 
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	newReader, berr := utilities.IOReaderFactory(req.Body)
+	if berr != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationService_ApproveReservation_0); err != nil {
+	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.ApproveReservation(ctx, &protoReq)
+	msg, err := server.DeleteReservationRequest(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
-var (
-	filter_ReservationService_CancelReservation_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
-)
-
-func request_ReservationService_CancelReservation_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ReservationServiceRPC_CancelReservation_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq CancelReservationRequest
 	var metadata runtime.ServerMetadata
 
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	newReader, berr := utilities.IOReaderFactory(req.Body)
+	if berr != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationService_CancelReservation_0); err != nil {
+	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -267,14 +258,15 @@ func request_ReservationService_CancelReservation_0(ctx context.Context, marshal
 
 }
 
-func local_request_ReservationService_CancelReservation_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_ReservationServiceRPC_CancelReservation_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq CancelReservationRequest
 	var metadata runtime.ServerMetadata
 
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	newReader, berr := utilities.IOReaderFactory(req.Body)
+	if berr != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationService_CancelReservation_0); err != nil {
+	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -283,13 +275,119 @@ func local_request_ReservationService_CancelReservation_0(ctx context.Context, m
 
 }
 
-// RegisterReservationServiceHandlerServer registers the http handlers for service ReservationService to "mux".
-// UnaryRPC     :call ReservationServiceServer directly.
+var (
+	filter_ReservationServiceRPC_GetReservationRequestsForGuest_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+)
+
+func request_ReservationServiceRPC_GetReservationRequestsForGuest_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetReservationRequestsForGuestRequest
+	var metadata runtime.ServerMetadata
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationServiceRPC_GetReservationRequestsForGuest_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.GetReservationRequestsForGuest(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+func local_request_ReservationServiceRPC_GetReservationRequestsForGuest_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetReservationRequestsForGuestRequest
+	var metadata runtime.ServerMetadata
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationServiceRPC_GetReservationRequestsForGuest_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := server.GetReservationRequestsForGuest(ctx, &protoReq)
+	return msg, metadata, err
+
+}
+
+var (
+	filter_ReservationServiceRPC_GetReservationRequestsForHost_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+)
+
+func request_ReservationServiceRPC_GetReservationRequestsForHost_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetReservationRequestsForHostRequest
+	var metadata runtime.ServerMetadata
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationServiceRPC_GetReservationRequestsForHost_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.GetReservationRequestsForHost(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+func local_request_ReservationServiceRPC_GetReservationRequestsForHost_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetReservationRequestsForHostRequest
+	var metadata runtime.ServerMetadata
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ReservationServiceRPC_GetReservationRequestsForHost_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := server.GetReservationRequestsForHost(ctx, &protoReq)
+	return msg, metadata, err
+
+}
+
+func request_ReservationServiceRPC_DenyReservationRequest_0(ctx context.Context, marshaler runtime.Marshaler, client ReservationServiceRPCClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DenyReservationRequestRequest
+	var metadata runtime.ServerMetadata
+
+	newReader, berr := utilities.IOReaderFactory(req.Body)
+	if berr != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
+	}
+	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq); err != nil && err != io.EOF {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.DenyReservationRequest(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+func local_request_ReservationServiceRPC_DenyReservationRequest_0(ctx context.Context, marshaler runtime.Marshaler, server ReservationServiceRPCServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DenyReservationRequestRequest
+	var metadata runtime.ServerMetadata
+
+	newReader, berr := utilities.IOReaderFactory(req.Body)
+	if berr != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
+	}
+	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq); err != nil && err != io.EOF {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := server.DenyReservationRequest(ctx, &protoReq)
+	return msg, metadata, err
+
+}
+
+// RegisterReservationServiceRPCHandlerServer registers the http handlers for service ReservationServiceRPC to "mux".
+// UnaryRPC     :call ReservationServiceRPCServer directly.
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
-// Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterReservationServiceHandlerFromEndpoint instead.
-func RegisterReservationServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server ReservationServiceServer) error {
+// Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterReservationServiceRPCHandlerFromEndpoint instead.
+func RegisterReservationServiceRPCHandlerServer(ctx context.Context, mux *runtime.ServeMux, server ReservationServiceRPCServer) error {
 
-	mux.Handle("GET", pattern_ReservationService_GetActiveForHost_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ReservationServiceRPC_GetActiveForHost_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -297,12 +395,12 @@ func RegisterReservationServiceHandlerServer(ctx context.Context, mux *runtime.S
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationService/GetActiveForHost", runtime.WithHTTPPathPattern("/reservation/host"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationServiceRPC/GetActiveForHost", runtime.WithHTTPPathPattern("/reservation/host/active"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ReservationService_GetActiveForHost_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ReservationServiceRPC_GetActiveForHost_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -310,11 +408,11 @@ func RegisterReservationServiceHandlerServer(ctx context.Context, mux *runtime.S
 			return
 		}
 
-		forward_ReservationService_GetActiveForHost_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ReservationServiceRPC_GetActiveForHost_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_ReservationService_GetActiveForGuest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ReservationServiceRPC_GetActiveForGuest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -322,12 +420,12 @@ func RegisterReservationServiceHandlerServer(ctx context.Context, mux *runtime.S
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationService/GetActiveForGuest", runtime.WithHTTPPathPattern("/reservation/guest"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationServiceRPC/GetActiveForGuest", runtime.WithHTTPPathPattern("/reservation/guest/active"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ReservationService_GetActiveForGuest_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ReservationServiceRPC_GetActiveForGuest_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -335,11 +433,11 @@ func RegisterReservationServiceHandlerServer(ctx context.Context, mux *runtime.S
 			return
 		}
 
-		forward_ReservationService_GetActiveForGuest_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ReservationServiceRPC_GetActiveForGuest_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_ReservationService_GetFutureForAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ReservationServiceRPC_GetCancellationNumberForGuest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -347,12 +445,12 @@ func RegisterReservationServiceHandlerServer(ctx context.Context, mux *runtime.S
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationService/GetFutureForAccommodation", runtime.WithHTTPPathPattern("/reservation/accommodation"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationServiceRPC/GetCancellationNumberForGuest", runtime.WithHTTPPathPattern("/reservation/guest/cancellation-number"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ReservationService_GetFutureForAccommodation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ReservationServiceRPC_GetCancellationNumberForGuest_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -360,11 +458,11 @@ func RegisterReservationServiceHandlerServer(ctx context.Context, mux *runtime.S
 			return
 		}
 
-		forward_ReservationService_GetFutureForAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ReservationServiceRPC_GetCancellationNumberForGuest_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_ReservationService_ManualReservation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ReservationServiceRPC_AcceptReservation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -372,12 +470,12 @@ func RegisterReservationServiceHandlerServer(ctx context.Context, mux *runtime.S
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationService/ManualReservation", runtime.WithHTTPPathPattern("/reservation/manual"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationServiceRPC/AcceptReservation", runtime.WithHTTPPathPattern("/reservation/accept-request"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ReservationService_ManualReservation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ReservationServiceRPC_AcceptReservation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -385,11 +483,11 @@ func RegisterReservationServiceHandlerServer(ctx context.Context, mux *runtime.S
 			return
 		}
 
-		forward_ReservationService_ManualReservation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ReservationServiceRPC_AcceptReservation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_ReservationService_AutomaticReservation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ReservationServiceRPC_SendReservationRequest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -397,12 +495,12 @@ func RegisterReservationServiceHandlerServer(ctx context.Context, mux *runtime.S
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationService/AutomaticReservation", runtime.WithHTTPPathPattern("/reservation/automatic"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationServiceRPC/SendReservationRequest", runtime.WithHTTPPathPattern("/reservation/send-request"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ReservationService_AutomaticReservation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ReservationServiceRPC_SendReservationRequest_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -410,11 +508,11 @@ func RegisterReservationServiceHandlerServer(ctx context.Context, mux *runtime.S
 			return
 		}
 
-		forward_ReservationService_AutomaticReservation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ReservationServiceRPC_SendReservationRequest_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_ReservationService_ApproveReservation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ReservationServiceRPC_DeleteReservationRequest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -422,12 +520,12 @@ func RegisterReservationServiceHandlerServer(ctx context.Context, mux *runtime.S
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationService/ApproveReservation", runtime.WithHTTPPathPattern("/reservation/approve"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationServiceRPC/DeleteReservationRequest", runtime.WithHTTPPathPattern("/reservation/delete-request"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ReservationService_ApproveReservation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ReservationServiceRPC_DeleteReservationRequest_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -435,11 +533,11 @@ func RegisterReservationServiceHandlerServer(ctx context.Context, mux *runtime.S
 			return
 		}
 
-		forward_ReservationService_ApproveReservation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ReservationServiceRPC_DeleteReservationRequest_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_ReservationService_CancelReservation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ReservationServiceRPC_CancelReservation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -447,12 +545,12 @@ func RegisterReservationServiceHandlerServer(ctx context.Context, mux *runtime.S
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationService/CancelReservation", runtime.WithHTTPPathPattern("/reservation/cancel"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationServiceRPC/CancelReservation", runtime.WithHTTPPathPattern("/reservation/cancel"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ReservationService_CancelReservation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ReservationServiceRPC_CancelReservation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -460,16 +558,91 @@ func RegisterReservationServiceHandlerServer(ctx context.Context, mux *runtime.S
 			return
 		}
 
-		forward_ReservationService_CancelReservation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ReservationServiceRPC_CancelReservation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("GET", pattern_ReservationServiceRPC_GetReservationRequestsForGuest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		var stream runtime.ServerTransportStream
+		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		var err error
+		var annotatedContext context.Context
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationServiceRPC/GetReservationRequestsForGuest", runtime.WithHTTPPathPattern("/reservation/guest/requests"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := local_request_ReservationServiceRPC_GetReservationRequestsForGuest_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ReservationServiceRPC_GetReservationRequestsForGuest_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("GET", pattern_ReservationServiceRPC_GetReservationRequestsForHost_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		var stream runtime.ServerTransportStream
+		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		var err error
+		var annotatedContext context.Context
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationServiceRPC/GetReservationRequestsForHost", runtime.WithHTTPPathPattern("/reservation/host/requests"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := local_request_ReservationServiceRPC_GetReservationRequestsForHost_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ReservationServiceRPC_GetReservationRequestsForHost_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("POST", pattern_ReservationServiceRPC_DenyReservationRequest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		var stream runtime.ServerTransportStream
+		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		var err error
+		var annotatedContext context.Context
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ReservationServiceRPC/DenyReservationRequest", runtime.WithHTTPPathPattern("/reservation/deny-request"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := local_request_ReservationServiceRPC_DenyReservationRequest_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ReservationServiceRPC_DenyReservationRequest_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
 	return nil
 }
 
-// RegisterReservationServiceHandlerFromEndpoint is same as RegisterReservationServiceHandler but
+// RegisterReservationServiceRPCHandlerFromEndpoint is same as RegisterReservationServiceRPCHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
-func RegisterReservationServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+func RegisterReservationServiceRPCHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
 	conn, err := grpc.DialContext(ctx, endpoint, opts...)
 	if err != nil {
 		return err
@@ -489,173 +662,239 @@ func RegisterReservationServiceHandlerFromEndpoint(ctx context.Context, mux *run
 		}()
 	}()
 
-	return RegisterReservationServiceHandler(ctx, mux, conn)
+	return RegisterReservationServiceRPCHandler(ctx, mux, conn)
 }
 
-// RegisterReservationServiceHandler registers the http handlers for service ReservationService to "mux".
+// RegisterReservationServiceRPCHandler registers the http handlers for service ReservationServiceRPC to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
-func RegisterReservationServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	return RegisterReservationServiceHandlerClient(ctx, mux, NewReservationServiceClient(conn))
+func RegisterReservationServiceRPCHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	return RegisterReservationServiceRPCHandlerClient(ctx, mux, NewReservationServiceRPCClient(conn))
 }
 
-// RegisterReservationServiceHandlerClient registers the http handlers for service ReservationService
-// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "ReservationServiceClient".
-// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "ReservationServiceClient"
+// RegisterReservationServiceRPCHandlerClient registers the http handlers for service ReservationServiceRPC
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "ReservationServiceRPCClient".
+// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "ReservationServiceRPCClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
-// "ReservationServiceClient" to call the correct interceptors.
-func RegisterReservationServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client ReservationServiceClient) error {
+// "ReservationServiceRPCClient" to call the correct interceptors.
+func RegisterReservationServiceRPCHandlerClient(ctx context.Context, mux *runtime.ServeMux, client ReservationServiceRPCClient) error {
 
-	mux.Handle("GET", pattern_ReservationService_GetActiveForHost_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ReservationServiceRPC_GetActiveForHost_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationService/GetActiveForHost", runtime.WithHTTPPathPattern("/reservation/host"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationServiceRPC/GetActiveForHost", runtime.WithHTTPPathPattern("/reservation/host/active"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_ReservationService_GetActiveForHost_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ReservationServiceRPC_GetActiveForHost_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_ReservationService_GetActiveForHost_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ReservationServiceRPC_GetActiveForHost_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_ReservationService_GetActiveForGuest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ReservationServiceRPC_GetActiveForGuest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationService/GetActiveForGuest", runtime.WithHTTPPathPattern("/reservation/guest"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationServiceRPC/GetActiveForGuest", runtime.WithHTTPPathPattern("/reservation/guest/active"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_ReservationService_GetActiveForGuest_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ReservationServiceRPC_GetActiveForGuest_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_ReservationService_GetActiveForGuest_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ReservationServiceRPC_GetActiveForGuest_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_ReservationService_GetFutureForAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ReservationServiceRPC_GetCancellationNumberForGuest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationService/GetFutureForAccommodation", runtime.WithHTTPPathPattern("/reservation/accommodation"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationServiceRPC/GetCancellationNumberForGuest", runtime.WithHTTPPathPattern("/reservation/guest/cancellation-number"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_ReservationService_GetFutureForAccommodation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ReservationServiceRPC_GetCancellationNumberForGuest_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_ReservationService_GetFutureForAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ReservationServiceRPC_GetCancellationNumberForGuest_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_ReservationService_ManualReservation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ReservationServiceRPC_AcceptReservation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationService/ManualReservation", runtime.WithHTTPPathPattern("/reservation/manual"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationServiceRPC/AcceptReservation", runtime.WithHTTPPathPattern("/reservation/accept-request"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_ReservationService_ManualReservation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ReservationServiceRPC_AcceptReservation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_ReservationService_ManualReservation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ReservationServiceRPC_AcceptReservation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_ReservationService_AutomaticReservation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ReservationServiceRPC_SendReservationRequest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationService/AutomaticReservation", runtime.WithHTTPPathPattern("/reservation/automatic"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationServiceRPC/SendReservationRequest", runtime.WithHTTPPathPattern("/reservation/send-request"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_ReservationService_AutomaticReservation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ReservationServiceRPC_SendReservationRequest_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_ReservationService_AutomaticReservation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ReservationServiceRPC_SendReservationRequest_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_ReservationService_ApproveReservation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ReservationServiceRPC_DeleteReservationRequest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationService/ApproveReservation", runtime.WithHTTPPathPattern("/reservation/approve"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationServiceRPC/DeleteReservationRequest", runtime.WithHTTPPathPattern("/reservation/delete-request"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_ReservationService_ApproveReservation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ReservationServiceRPC_DeleteReservationRequest_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_ReservationService_ApproveReservation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ReservationServiceRPC_DeleteReservationRequest_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_ReservationService_CancelReservation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ReservationServiceRPC_CancelReservation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationService/CancelReservation", runtime.WithHTTPPathPattern("/reservation/cancel"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationServiceRPC/CancelReservation", runtime.WithHTTPPathPattern("/reservation/cancel"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_ReservationService_CancelReservation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ReservationServiceRPC_CancelReservation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_ReservationService_CancelReservation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ReservationServiceRPC_CancelReservation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("GET", pattern_ReservationServiceRPC_GetReservationRequestsForGuest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		var err error
+		var annotatedContext context.Context
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationServiceRPC/GetReservationRequestsForGuest", runtime.WithHTTPPathPattern("/reservation/guest/requests"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_ReservationServiceRPC_GetReservationRequestsForGuest_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ReservationServiceRPC_GetReservationRequestsForGuest_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("GET", pattern_ReservationServiceRPC_GetReservationRequestsForHost_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		var err error
+		var annotatedContext context.Context
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationServiceRPC/GetReservationRequestsForHost", runtime.WithHTTPPathPattern("/reservation/host/requests"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_ReservationServiceRPC_GetReservationRequestsForHost_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ReservationServiceRPC_GetReservationRequestsForHost_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("POST", pattern_ReservationServiceRPC_DenyReservationRequest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		var err error
+		var annotatedContext context.Context
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ReservationServiceRPC/DenyReservationRequest", runtime.WithHTTPPathPattern("/reservation/deny-request"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_ReservationServiceRPC_DenyReservationRequest_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ReservationServiceRPC_DenyReservationRequest_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -663,33 +902,45 @@ func RegisterReservationServiceHandlerClient(ctx context.Context, mux *runtime.S
 }
 
 var (
-	pattern_ReservationService_GetActiveForHost_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"reservation", "host"}, ""))
+	pattern_ReservationServiceRPC_GetActiveForHost_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"reservation", "host", "active"}, ""))
 
-	pattern_ReservationService_GetActiveForGuest_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"reservation", "guest"}, ""))
+	pattern_ReservationServiceRPC_GetActiveForGuest_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"reservation", "guest", "active"}, ""))
 
-	pattern_ReservationService_GetFutureForAccommodation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"reservation", "accommodation"}, ""))
+	pattern_ReservationServiceRPC_GetCancellationNumberForGuest_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"reservation", "guest", "cancellation-number"}, ""))
 
-	pattern_ReservationService_ManualReservation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"reservation", "manual"}, ""))
+	pattern_ReservationServiceRPC_AcceptReservation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"reservation", "accept-request"}, ""))
 
-	pattern_ReservationService_AutomaticReservation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"reservation", "automatic"}, ""))
+	pattern_ReservationServiceRPC_SendReservationRequest_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"reservation", "send-request"}, ""))
 
-	pattern_ReservationService_ApproveReservation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"reservation", "approve"}, ""))
+	pattern_ReservationServiceRPC_DeleteReservationRequest_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"reservation", "delete-request"}, ""))
 
-	pattern_ReservationService_CancelReservation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"reservation", "cancel"}, ""))
+	pattern_ReservationServiceRPC_CancelReservation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"reservation", "cancel"}, ""))
+
+	pattern_ReservationServiceRPC_GetReservationRequestsForGuest_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"reservation", "guest", "requests"}, ""))
+
+	pattern_ReservationServiceRPC_GetReservationRequestsForHost_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"reservation", "host", "requests"}, ""))
+
+	pattern_ReservationServiceRPC_DenyReservationRequest_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"reservation", "deny-request"}, ""))
 )
 
 var (
-	forward_ReservationService_GetActiveForHost_0 = runtime.ForwardResponseMessage
+	forward_ReservationServiceRPC_GetActiveForHost_0 = runtime.ForwardResponseMessage
 
-	forward_ReservationService_GetActiveForGuest_0 = runtime.ForwardResponseMessage
+	forward_ReservationServiceRPC_GetActiveForGuest_0 = runtime.ForwardResponseMessage
 
-	forward_ReservationService_GetFutureForAccommodation_0 = runtime.ForwardResponseMessage
+	forward_ReservationServiceRPC_GetCancellationNumberForGuest_0 = runtime.ForwardResponseMessage
 
-	forward_ReservationService_ManualReservation_0 = runtime.ForwardResponseMessage
+	forward_ReservationServiceRPC_AcceptReservation_0 = runtime.ForwardResponseMessage
 
-	forward_ReservationService_AutomaticReservation_0 = runtime.ForwardResponseMessage
+	forward_ReservationServiceRPC_SendReservationRequest_0 = runtime.ForwardResponseMessage
 
-	forward_ReservationService_ApproveReservation_0 = runtime.ForwardResponseMessage
+	forward_ReservationServiceRPC_DeleteReservationRequest_0 = runtime.ForwardResponseMessage
 
-	forward_ReservationService_CancelReservation_0 = runtime.ForwardResponseMessage
+	forward_ReservationServiceRPC_CancelReservation_0 = runtime.ForwardResponseMessage
+
+	forward_ReservationServiceRPC_GetReservationRequestsForGuest_0 = runtime.ForwardResponseMessage
+
+	forward_ReservationServiceRPC_GetReservationRequestsForHost_0 = runtime.ForwardResponseMessage
+
+	forward_ReservationServiceRPC_DenyReservationRequest_0 = runtime.ForwardResponseMessage
 )
