@@ -1,0 +1,54 @@
+syntax = "proto3";
+option go_package = "proto/review";
+
+
+service RatingService{
+  rpc RateHost(RateHostRequest) returns (RateHostResponse);
+  rpc RateAccommodation(RateAccommodationRequest) returns (RateAccommodationResponse);
+  rpc GetRatingsForHost(GetRatingsForHostRequest) returns (GetRatingsForHostResponse);
+  rpc GetRatingsForAccommodation(GetRatingsForAccommodationRequest) returns (GetRatingsForAccommodationResponse);
+}
+
+message RateHostRequest {
+  string guestId = 1;
+  string hostId = 2;
+  double rating =3;
+}
+
+message RateAccommodationRequest {
+  string guestId = 1;
+  string accommodationId = 2;
+  double rating = 3;
+}
+
+message RateHostResponse {}
+
+message RateAccommodationResponse {}
+
+message GetRatingsForHostRequest {
+  string hostId =1;
+}
+
+message GetRatingsForHostResponse {
+  repeated HostRating ratings = 1;
+  double averageRating = 2;
+}
+
+message HostRating {
+  string userId =1;
+  double rating =2;
+}
+
+message GetRatingsForAccommodationRequest{
+  string AccommodationId = 1;
+}
+
+message GetRatingsForAccommodationResponse {
+  repeated AccommodationRating ratings = 1;
+  double averageRating = 2;
+}
+
+message AccommodationRating {
+  string userId =1;
+  double rating =2;
+}
