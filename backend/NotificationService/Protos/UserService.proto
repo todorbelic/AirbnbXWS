@@ -1,0 +1,81 @@
+syntax = "proto3";
+option go_package = "proto/user";
+
+service UserServiceRPC{
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+  rpc GetCurrentUser(GetCurrentUserRequest) returns (GetCurrentUserResponse);
+  rpc EditUserProfile(EditUserProfileRequest) returns (EditUserProfileResponse);
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc LogIn(LogInRequest) returns (LogInResponse);
+}
+
+message Credentials {
+  string username = 1;
+  string password = 2;
+}
+
+message UserAddress {
+  string id = 1;
+  string country = 2;
+  string city = 3;
+  string streetAddress = 4;
+}
+
+message RegistrationUser {
+  string firstName = 1;
+  string lastName = 2;
+  UserAddress address = 3;
+  string username = 4;
+  string password = 5;
+  string role = 6;
+}
+
+message User {
+  string id = 1;
+  string firstName = 2;
+  string lastName = 3;
+  UserAddress address = 4;
+  string username = 5;
+  string password = 6;
+  string role = 7;
+}
+
+message DeleteUserRequest {
+  string id = 1;
+}
+
+message DeleteUserResponse {
+ string response = 1;
+}
+
+message GetCurrentUserRequest {
+  string id = 1;
+}
+
+message GetCurrentUserResponse {
+  User user = 1;
+}
+
+message EditUserProfileRequest {
+  User user = 1;
+}
+
+message EditUserProfileResponse {
+ string response = 1;
+}
+
+message RegisterRequest {
+  RegistrationUser user = 1;
+}
+
+message RegisterResponse {
+ string response = 1;
+}
+
+message LogInRequest {
+  Credentials credentials = 1;
+}
+
+message LogInResponse {
+  string accessToken = 1;
+}

@@ -1,0 +1,18 @@
+{
+  "profiles": {
+    "ReservationService": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:8083/"
+      },
+      "dotnetRunMessages": true
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://notification_service:8080",
+      "publishAllPorts": true,
+      "useSSL": true
+    }
+  }
+}

@@ -1,0 +1,38 @@
+syntax = "proto3";
+option go_package = "proto/reservation";
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+service ReservationService{
+  rpc GetNotificationsForUser(GetNotificationsForUserRequest) returns (GetNotificationsForUserResponse){
+    option (google.api.http) = {
+      get: "/notification/{userId}"
+    };
+  }
+
+}
+
+
+message Notification {
+  string notification=1;
+}
+
+message GetNotificationsForUserRequest {
+  string userId = 1;
+}
+
+message GetNotificationsForUserResponse {
+  repeated Notification notifications=1;
+}
+
+message  NotificationSettings {
+  bool RESERVATION_REQUEST=1;
+  bool RESERVATION_CANCEL=2;
+  bool HOST_RATE=3;
+  bool ACCOM_RATE=4;
+  bool GOT_FEATURED_HOST=5;
+  bool LOST_FEATURED_HOST=6;
+  bool GUEST_ACCEPTED=7;
+}
+
+
