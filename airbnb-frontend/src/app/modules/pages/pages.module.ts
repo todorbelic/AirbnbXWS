@@ -15,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbCarouselModule } from "@ng-bootstrap/ng-bootstrap";
 import { MatDatepicker } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { NgSelectModule } from "@ng-select/ng-select";
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
@@ -43,6 +44,7 @@ const routes: Routes = [
       NgbModule,
       NgbCarouselModule,
       MatNativeDateModule,
+      NgSelectModule,
       RouterModule.forChild(routes)
     ]
   })
