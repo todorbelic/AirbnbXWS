@@ -1,9 +1,7 @@
 ﻿using ReservationService.DTO;
 using ReservationService.Model;
 using ReservationService.Service;
-using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
-using Microsoft.AspNetCore.Mvc;
 
 namespace ReservationService.Handler
 {

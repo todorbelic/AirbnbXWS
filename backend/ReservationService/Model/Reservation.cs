@@ -1,7 +1,9 @@
-﻿using ReservationService.Enums;
+﻿using ReservationService.Attributes;
+using ReservationService.Enums;
 
 namespace ReservationService.Model
 {
+    [BsonCollection("reservations")]
     public class Reservation: Document
     {
         public string AccommodationId { get; set; }

@@ -1,7 +1,4 @@
 ﻿using Grpc.Core;
-using Microsoft.Extensions.Hosting;
-using ReservationService.DTO;
-using ReservationService.Model;
 using ReservationService.Service;
 
 namespace ReservationService.Handler

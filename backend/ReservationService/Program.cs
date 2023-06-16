@@ -22,21 +22,18 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", true, true).Build();
 builder.Services.AddSingleton<IMongoDbSettings>(serviceProvider =>
-       serviceProvider.GetRequiredService<IOptions<MongoDbSettings>>().Value);
+     serviceProvider.GetRequiredService<IOptions<MongoDbSettings>>().Value);
 builder.Services.Configure<MongoDbSettings>(configuration.GetSection("MongoDbSettings"));
 
-builder.Services.AddAuthorization();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 var app = builder.Build();
 
-
-//app.UseAuthentication();
 app.UseRouting();
-app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapGrpcService<ReservationHandler>();
+    endpoints.MapGrpcService<InternalReservationHandler>();
 });
 
 app.Run();
