@@ -9,6 +9,11 @@ service ReservationService{
       get: "/notification/{userId}"
     };
   }
+  rpc AddNotification(AddNotificationRequest) returns (AddNotificationResponse){
+    option (google.api.http) = {
+      get: "/notification/add/{notification}"
+    };
+  }
 
 }
 
@@ -25,7 +30,7 @@ message GetNotificationsForUserResponse {
   repeated Notification notifications=1;
 }
 
-message  NotificationSettings {
+message  NotificationType {
   bool RESERVATION_REQUEST=1;
   bool RESERVATION_CANCEL=2;
   bool HOST_RATE=3;
@@ -33,6 +38,14 @@ message  NotificationSettings {
   bool GOT_FEATURED_HOST=5;
   bool LOST_FEATURED_HOST=6;
   bool GUEST_ACCEPTED=7;
+}
+
+message AddNotificationRequest {
+  Notification notification=1;
+}
+
+message AddNotificationResponse {
+  string response = 1;
 }
 
 
