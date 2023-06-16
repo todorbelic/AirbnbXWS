@@ -1,5 +1,5 @@
 syntax = "proto3";
-option go_package = "proto/user";
+option go_package = "proto/notification";
 
 service UserServiceRPC{
   rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
