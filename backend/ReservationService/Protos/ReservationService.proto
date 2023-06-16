@@ -1,64 +1,17 @@
 ﻿syntax = "proto3";
 option go_package = "proto/reservation";
-import "google/api/annotations.proto";
 
 service ReservationServiceRPC{
-  rpc GetActiveForHost(GetActiveForHostRequest) returns (GetActiveForHostResponse){
-  	option (google.api.http) = {
-        get: "/reservation/host/active"
-    };
-  }
-  rpc GetActiveForGuest(GetActiveForGuestRequest) returns (GetActiveForGuestResponse){
-    option (google.api.http) = {
-        get: "/reservation/guest/active"
-    };
-  }
-  rpc GetCancellationNumberForGuest(GetCancellationNumberForGuestRequest) returns (GetCancellationNumberForGuestResponse){
-    option (google.api.http) = {
-        post: "/reservation/guest/cancellation-number"
-    };
-  }
-  rpc AcceptReservation(AcceptReservationRequest) returns (AcceptReservationResponse){
-    option (google.api.http) = {
-        post: "/reservation/accept-request"
-        body: "*"
-    };
-  }
-  rpc SendReservationRequest(SendReservationRequestRequest) returns (SendReservationRequestResponse){
-    option (google.api.http) = {
-        post: "/reservation/send-request"
-        body: "*"
-    };
-  }
-  rpc DeleteReservationRequest(DeleteReservationRequestRequest) returns (DeleteReservationRequestResponse){
-    option (google.api.http) = {
-        post: "/reservation/delete-request"
-        body: "*"
-    };
-  }
-  rpc CancelReservation(CancelReservationRequest) returns (CancelReservationResponse){
-    option (google.api.http) = {
-        post: "/reservation/cancel"
-        body: "*"
-    };
-  }
-  rpc GetReservationRequestsForGuest(GetReservationRequestsForGuestRequest) returns (GetReservationRequestsForGuestResponse){
-    option (google.api.http) = {
-        get: "/reservation/guest/requests"
-    };
-  }
-  rpc GetReservationRequestsForHost(GetReservationRequestsForHostRequest) returns (GetReservationRequestsForHostResponse){
-    option (google.api.http) = {
-        get: "/reservation/host/requests"
-    };
-  }
-  rpc DenyReservationRequest(DenyReservationRequestRequest) returns (DenyReservationRequestResponse){
-    option (google.api.http) = {
-        post: "/reservation/deny-request"
-        body: "*"
-    };
-  }
-
+  rpc GetActiveForHost(GetActiveForHostRequest) returns (GetActiveForHostResponse);
+  rpc GetActiveForGuest(GetActiveForGuestRequest) returns (GetActiveForGuestResponse);
+  rpc GetCancellationNumberForGuest(GetCancellationNumberForGuestRequest) returns (GetCancellationNumberForGuestResponse);
+  rpc AcceptReservation(AcceptReservationRequest) returns (AcceptReservationResponse);
+  rpc SendReservationRequest(SendReservationRequestRequest) returns (SendReservationRequestResponse);
+  rpc DeleteReservationRequest(DeleteReservationRequestRequest) returns (DeleteReservationRequestResponse);
+  rpc CancelReservation(CancelReservationRequest) returns (CancelReservationResponse);
+  rpc GetReservationRequestsForGuest(GetReservationRequestsForGuestRequest) returns (GetReservationRequestsForGuestResponse);
+  rpc GetReservationRequestsForHost(GetReservationRequestsForHostRequest) returns (GetReservationRequestsForHostResponse);
+  rpc DenyReservationRequest(DenyReservationRequestRequest) returns (DenyReservationRequestResponse);
 }
 
 enum ReservationStatusProto {
@@ -142,7 +95,7 @@ message AcceptReservationRequest{
 }
 
 message AcceptReservationResponse{
-    string response = 1;
+    bool response = 1;
 }
 
 message SendReservationRequestRequest{
@@ -192,3 +145,8 @@ message DenyReservationRequestRequest{
 message DenyReservationRequestResponse{
     bool response = 1;
 }
+
+
+
+
+
