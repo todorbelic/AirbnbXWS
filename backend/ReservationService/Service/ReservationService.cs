@@ -29,7 +29,7 @@ namespace ReservationService.Service
             await _repository.ReplaceOneAsync(reservation);
 
 
-            using var channel = GrpcChannel.ForAddress("https://localhost:8083");
+            using var channel = GrpcChannel.ForAddress("http://localhost:8083");
             var client = new ReservationNotification.ReservationNotificationClient(channel);
             var reply = await client.ReservationAcceptedAsync(
                             new ReservationAcceptedRequest { AccomId=reservation.AccommodationId, GuestId=reservation.GuestId, HostId=reservation.HostId});

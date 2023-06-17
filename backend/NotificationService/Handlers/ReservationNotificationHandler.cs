@@ -6,7 +6,8 @@ namespace NotificationService.Handlers
     {
         public override Task<ReservationAcceptedResponse> ReservationAccepted(ReservationAcceptedRequest request, ServerCallContext context)
         {
-            return base.ReservationAccepted(request, context);
+            Console.WriteLine("Ushaooo");
+            return Task.FromResult(new ReservationAcceptedResponse());
         }
     }
 }
