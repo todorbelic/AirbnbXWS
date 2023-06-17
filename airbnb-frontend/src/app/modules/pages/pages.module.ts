@@ -8,13 +8,13 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginPageComponent } from "./login-page/login-page.component";
 import { RegistrationPageComponent } from "./registration-page/registration-page.component";
 import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
-import { NewAccomComponent } from './new-accom/new-accom.component';
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbCarouselModule } from "@ng-bootstrap/ng-bootstrap";
 import { MatDatepicker } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { NgSelectModule } from "@ng-select/ng-select";
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
@@ -31,7 +31,6 @@ const routes: Routes = [
       RegistrationPageComponent,
       LandingPageComponent,
       MainToolbarComponent,
-      NewAccomComponent
   ],
     imports: [
       CommonModule,
@@ -43,6 +42,7 @@ const routes: Routes = [
       NgbModule,
       NgbCarouselModule,
       MatNativeDateModule,
+      NgSelectModule,
       RouterModule.forChild(routes)
     ]
   })
