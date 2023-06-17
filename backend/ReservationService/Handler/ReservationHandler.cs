@@ -6,11 +6,10 @@ namespace ReservationService.Handler
     public class ReservationHandler : ReservationServiceRPC.ReservationServiceRPCBase
     {
         private readonly IReservationService _reservationService;
-        private readonly ILogger _logger;
-        public ReservationHandler(IReservationService reservationService, ILogger logger)
+
+        public ReservationHandler(IReservationService reservationService)
         {
             _reservationService = reservationService;
-            _logger = logger;
         }
 
         public override Task<GetActiveForHostResponse> GetActiveForHost(GetActiveForHostRequest request, ServerCallContext context)
