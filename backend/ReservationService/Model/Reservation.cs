@@ -12,18 +12,8 @@ namespace ReservationService.Model
         public int GuestCount { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public string Status { get; set; }
 
-        public ReservationStatus Status { get; set; }
-
-        public Reservation(string accommodationId, string hostId, string guestId, int guestCount, DateTime startDate, DateTime endDate, ReservationStatus status)
-        {
-            AccommodationId = accommodationId;
-            HostId = hostId;
-            GuestId = guestId;
-            GuestCount = guestCount;
-            StartDate = startDate;
-            EndDate = endDate;
-            Status = status;
-        }
+        public Reservation(){}
     }
 }
