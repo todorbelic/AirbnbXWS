@@ -2,16 +2,6 @@ syntax = "proto3";
 option go_package = "proto/accommodation";
 //option csharp_namespace = "AccommodationService";
 
-service AccommodationServiceRPC {
-	rpc DeleteAllForHost(DeleteAllForHostRequest) returns (DeleteAllForHostResponse);
-	rpc CreateAccommodation(CreateAccommodationRequest) returns (CreateAccommodationResponse);
-	rpc ModifyAccommodation(ModifyAccommodationRequest) returns (ModifyAccommodationResponse);
-	rpc SearchAccommodations(SearchAccommodationsRequest) returns (SearchAccommodationsResponse);
-	rpc GetAccommodation (GetAccommodationRequest) returns (GetAccommodationResponse);
-	rpc SetReservationOption (SetReservationOptionRequest) returns (SetReservationOptionResponse);
-	rpc GetAllAccommodations (GetAllRequest) returns (GetAllResponse);
-}
-
 message Address {
   string id = 1;
   string country = 2;

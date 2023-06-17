@@ -1,5 +1,6 @@
 ﻿using Amazon.Runtime.Internal;
 using AutoMapper;
+using Grpc.Net.Client;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.Extensions.Hosting;
 using ReservationService.DTO;
@@ -26,6 +27,13 @@ namespace ReservationService.Service
             reservation.Status = Enums.ReservationStatus.ACTIVE;
             await DenyAllReservationsThatOverlap(reservation);
             await _repository.ReplaceOneAsync(reservation);
+
+
+            using var channel = GrpcChannel.ForAddress("https://localhost:8083");
+            var client = new ReservationNotification.ReservationNotificationClient(channel);
+            var reply = await client.ReservationAcceptedAsync(
+                            new ReservationAcceptedRequest { AccomId=reservation.AccommodationId, GuestId=reservation.GuestId, HostId=reservation.HostId});
+            
             return true;
         }
 

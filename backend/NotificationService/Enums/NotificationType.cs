@@ -2,12 +2,12 @@
 {
     public enum NotificationType
     {
-        RESERVATION_REQUEST,
-        RESERVATION_CANCEL,
-        HOST_RATE,
-        ACCOM_RATE,
-        GOT_FEATURED_HOST,
-        LOST_FEATURED_HOST,
-        GUEST_ACCEPTED
+        RESERVATION_REQUEST, //res
+        RESERVATION_CANCEL, //res
+        HOST_RATE, //rating
+        ACCOM_RATE, //rating
+        GOT_FEATURED_HOST, //res
+        LOST_FEATURED_HOST, //res
+        GUEST_ACCEPTED //res
     }
 }

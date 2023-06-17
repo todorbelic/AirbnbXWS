@@ -1,10 +1,11 @@
 using NotificationService.Services;
-using UserService.Middleware;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using NotificationService.Middleware;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using NotificationService.Repository;
 using NotificationService.Settings;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 

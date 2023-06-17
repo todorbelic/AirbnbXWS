@@ -1,8 +1,8 @@
 ﻿using Grpc.Core.Interceptors;
 using Grpc.Core;
-using UserService.Exceptions;
+using NotificationService.Exceptions;
 
-namespace UserService.Middleware
+namespace NotificationService.Middleware
 {
     public class ErrorHandlingInterceptor : Interceptor
     {
