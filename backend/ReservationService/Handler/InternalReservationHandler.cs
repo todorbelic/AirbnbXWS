@@ -18,26 +18,34 @@ namespace ReservationService.Handler
             return new CanGuestRateHostResponse() { Response = response };
         }
 
-        public override Task<CanGuestRateAccommodationResponse> CanGuestRateAccommodation(CanGuestRateAccommodationRequest request, ServerCallContext context)
+        public override async Task<CanGuestRateAccommodationResponse> CanGuestRateAccommodation(CanGuestRateAccommodationRequest request, ServerCallContext context)
         {
-            //return _reservationService.CanGuestRateAccommodation(request.GuestId, request.AccommodationId);
-            return base.CanGuestRateAccommodation(request, context);
+             bool response = _reservationService.CanGuestRateAccommodation(request.GuestId, request.AccommodationId);
+           return new CanGuestRateAccommodationResponse() { Response = response };
         }
 
-        public override Task<IsAccommodationAvailableForDateRangeResponse> IsAccommodationAvailableForDateRange(IsAccommodationAvailableForDateRangeRequest request, ServerCallContext context)
+        public override async Task<IsAccommodationAvailableForDateRangeResponse> IsAccommodationAvailableForDateRange(IsAccommodationAvailableForDateRangeRequest request, ServerCallContext context)
         {
-            //return _reservationService.IsAccommodationAvailableForDateRange(dto);
-            return base.IsAccommodationAvailableForDateRange(request, context);
+            bool response = _reservationService.IsAccommodationAvailableForDateRange(request);
+            return new IsAccommodationAvailableForDateRangeResponse () { IsAvailable = response };
         }
 
-        public override Task<DoesGuestHaveActiveReservationsResponse> DoesGuestHaveActiveReservations(DoesGuestHaveActiveReservationsRequest request, ServerCallContext context)
+        public override async Task<DoesGuestHaveActiveReservationsResponse> DoesGuestHaveActiveReservations(DoesGuestHaveActiveReservationsRequest request, ServerCallContext context)
         {
-            return base.DoesGuestHaveActiveReservations(request, context);
+            bool response = _reservationService.GetActiveForGuest(request.GuestId).Count() > 0;
+            return new DoesGuestHaveActiveReservationsResponse() { Response = response };
         }
 
-        public override Task<DoesHostHaveActiveReservationsResponse> DoesHostHaveActiveReservations(DoesHostHaveActiveReservationsRequest request, ServerCallContext context)
+        public override async Task<DoesHostHaveActiveReservationsResponse> DoesHostHaveActiveReservations(DoesHostHaveActiveReservationsRequest request, ServerCallContext context)
         {
-            return base.DoesHostHaveActiveReservations(request, context);
+            bool response = _reservationService.GetActiveForHost(request.HostId).Count() > 0;
+            return new DoesHostHaveActiveReservationsResponse() { Response = response };
+        }
+
+        public override async Task<IsHostFeaturedResponse> IsHostFeatured(IsHostFeaturedRequest request, ServerCallContext context)
+        {
+            bool response = _reservationService.IsHostNoteworthyReservationWise(request.HostId);
+            return new IsHostFeaturedResponse() { IsFeatured = response };
         }
     }
 }

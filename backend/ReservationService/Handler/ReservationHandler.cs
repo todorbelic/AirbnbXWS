@@ -11,24 +11,21 @@ namespace ReservationService.Handler
             _reservationService = reservationService;
         }
 
-        public override Task<GetActiveForHostResponse> GetActiveForHost(GetActiveForHostRequest request, ServerCallContext context)
+        public override async Task<GetActiveForHostResponse> GetActiveForHost(GetActiveForHostRequest request, ServerCallContext context)
         {
-            /*
+            
+            var res = new GetActiveForHostResponse();
             var reservationViews = _reservationService.GetActiveForHost(request.HostId);
-            if (reservationViews == null) var res = new GetActiveForHostResponse() { Reservations = new IEnumerable<ReservationViewDTO>() };
-            var res = new GetActiveForHostResponse() {
-            */
-            return base.GetActiveForHost(request, context);
+            res.Reservations.AddRange(reservationViews);
+            return res;
         }
 
-        public override Task<GetActiveForGuestResponse> GetActiveForGuest(GetActiveForGuestRequest request, ServerCallContext context)
+        public override async Task<GetActiveForGuestResponse> GetActiveForGuest(GetActiveForGuestRequest request, ServerCallContext context)
         {
-            /*
-            var reservationViews = _reservationService.GetActiveForGuest(guestId);
-            if (reservationViews == null) return Enumerable.Empty<ReservationViewDTO>();
-            return reservationViews;
-            */
-            return base.GetActiveForGuest(request, context);
+            var res = new GetActiveForGuestResponse();
+            var reservationViews = _reservationService.GetActiveForGuest(request.GuestId);
+            res.Reservations.AddRange(reservationViews);
+            return res;
         }
 
         public override async Task<AcceptReservationResponse> AcceptReservation(AcceptReservationRequest request, ServerCallContext context)
@@ -41,6 +38,7 @@ namespace ReservationService.Handler
             
         }
 
+        //skontati sto ovde vraca prazan string
         public override async Task<SendReservationRequestResponse> SendReservationRequest(SendReservationRequestRequest request, ServerCallContext context)
         {
             bool response =  await _reservationService.SendReservationRequest(request);
@@ -68,25 +66,20 @@ namespace ReservationService.Handler
             };
         }
 
-        public override Task<GetReservationRequestsForGuestResponse> GetReservationRequestsForGuest(GetReservationRequestsForGuestRequest request, ServerCallContext context)
+        public override async Task<GetReservationRequestsForGuestResponse> GetReservationRequestsForGuest(GetReservationRequestsForGuestRequest request, ServerCallContext context)
         {
-            /*
+            var res = new GetReservationRequestsForGuestResponse();
             var reservationViews = _reservationService.GetReservationRequestsForGuest(request.GuestId);
-            if (reservationViews == null) return new GetReservationRequestsForGuestResponse() { Requests= new List<ReservationView>() };
-           
-            return reservationViews;
-            */
-            return base.GetReservationRequestsForGuest(request, context);
+            res.Requests.AddRange(reservationViews);
+            return res;
         }
 
-        public override Task<GetReservationRequestsForHostResponse> GetReservationRequestsForHost(GetReservationRequestsForHostRequest request, ServerCallContext context)
+        public override async Task<GetReservationRequestsForHostResponse> GetReservationRequestsForHost(GetReservationRequestsForHostRequest request, ServerCallContext context)
         {
-            /*
-            var reservationViews = _reservationService.GetReservationRequestsForHost(hostId);
-            if (reservationViews == null) return Enumerable.Empty<ReservationViewDTO>();
-            return reservationViews;
-            */
-            return base.GetReservationRequestsForHost(request, context);
+            var res = new GetReservationRequestsForHostResponse();
+            var reservationViews = _reservationService.GetReservationRequestsForHost(request.HostId);
+            res.Requests.AddRange(reservationViews);
+            return res;
         }
 
         public override async Task<DenyReservationRequestResponse> DenyReservationRequest(DenyReservationRequestRequest request, ServerCallContext context)
@@ -95,9 +88,10 @@ namespace ReservationService.Handler
             return new DenyReservationRequestResponse() { Response = response };
         }
 
-        public override Task<GetCancellationNumberForGuestResponse> GetCancellationNumberForGuest(GetCancellationNumberForGuestRequest request, ServerCallContext context)
+        public override async Task<GetCancellationNumberForGuestResponse> GetCancellationNumberForGuest(GetCancellationNumberForGuestRequest request, ServerCallContext context)
         {
-            return base.GetCancellationNumberForGuest(request, context);
+            int response =  _reservationService.GetCancellationNumberForGuest(request.GuestId);
+            return new GetCancellationNumberForGuestResponse() { CancellationNumber = response };
         }
     }
 }
