@@ -1,12 +1,7 @@
-﻿using Amazon.Runtime.Internal;
-using AutoMapper;
-using Microsoft.AspNetCore.Authorization.Infrastructure;
-using Microsoft.Extensions.Hosting;
+﻿using AutoMapper;
 using ReservationService.DTO;
-using ReservationService.Enums;
 using ReservationService.Model;
 using ReservationService.Repository;
-using System.Globalization;
 
 namespace ReservationService.Service
 {
@@ -14,16 +9,18 @@ namespace ReservationService.Service
     {
         private readonly IRepository<Reservation> _repository;
         private readonly IMapper _mapper;
-        public ReservationService(IMapper mapper, IRepository<Reservation> repository) {
+        private readonly ILogger<IReservationService> _logger;
+        public ReservationService(IMapper mapper, IRepository<Reservation> repository, ILogger<IReservationService> logger) {
             _repository= repository;
             _mapper= mapper;
+            _logger= logger;
         }
 
         public async Task<bool> AcceptReservation(string reservationId)
         {
             Reservation reservation = await _repository.FindByIdAsync(reservationId);
             if (reservation == null) return false;
-            reservation.Status = Enums.ReservationStatus.ACTIVE;
+            reservation.Status = "ACTIVE";
             await DenyAllReservationsThatOverlap(reservation);
             await _repository.ReplaceOneAsync(reservation);
             return true;
@@ -38,16 +35,20 @@ namespace ReservationService.Service
 
         public async Task<bool> SendReservationRequest(SendReservationRequestRequest dto)
         {
-            IEnumerable<Reservation> activeInAccommodation = _repository.FilterBy(r => r.AccommodationId == dto.Request.AccommodationId
-            && r.Status == Enums.ReservationStatus.ACTIVE);
+            _logger.Log(LogLevel.Information, "RADI LOGER");
+            IEnumerable<Reservation> activeInAccommodation = _repository.FilterBy(r => r.AccommodationId.Equals(dto.Request.AccommodationId)
+            && r.Status == "ACTIVE");
+            _logger.Log(LogLevel.Information, activeInAccommodation.Count().ToString());
             Reservation dtoReservation = _mapper.Map<Reservation>(dto);
-            foreach(Reservation reservation in activeInAccommodation)
+            _logger.Log(LogLevel.Information, dtoReservation.AccommodationId);
+            _logger.Log(LogLevel.Information, dtoReservation.GuestId);
+            foreach (Reservation reservation in activeInAccommodation)
             {
                 if (Overlaps(dtoReservation.StartDate, dtoReservation.EndDate, reservation.StartDate, reservation.EndDate)) return false;
             }
             //ovde provera za smestaj ako automatski prihvata rezervacije odmah status = active, ako ne, status = pending
-            if (true) dtoReservation.Status = ReservationStatus.ACTIVE;
-            //else dtoReservation.Status = ReservationStatus.PENDING;
+            if (true) dtoReservation.Status = "ACTIVE";
+            //else dtoReservation.Status = "PENDING";
             await _repository.InsertOneAsync(dtoReservation);
             return true;
         }
@@ -55,13 +56,13 @@ namespace ReservationService.Service
         private async Task DenyAllReservationsThatOverlap(Reservation reservation)
         {
             IEnumerable<Reservation> pendingInAccommodation = _repository.FilterBy(r => r.AccommodationId == reservation.AccommodationId
-            && r.Status == Enums.ReservationStatus.PENDING);
+            && r.Status == "PENDING");
             foreach(Reservation res in pendingInAccommodation)
             {
                 if(Overlaps(reservation.StartDate, reservation.EndDate, res.StartDate, res.EndDate))
                 {
                     Reservation newReservation = res;
-                    newReservation.Status = ReservationStatus.DENIED;
+                    newReservation.Status = "DENIED";
                     await _repository.ReplaceOneAsync(reservation);
                 }
             }
@@ -85,14 +86,14 @@ namespace ReservationService.Service
         public int GetCancellationNumberForGuest(string guestId)
         {
             return _repository.FilterBy(r => r.GuestId == guestId
-            && r.Status == ReservationStatus.CANCELLED).Count();
+            && r.Status == "CANCELLED").Count();
         }
 
         public bool CanGuestRateHost(string guestId, string hostId)
         {
             //ovo mozda promeniti jer pise da moze ako je imao bar jednu rezervaciju koju nije otkazao, znaci sve osim cancelled?
             IEnumerable<Reservation> guestHistoryWithHost = _repository.FilterBy(r => r.HostId == hostId && r.GuestId == guestId
-            && r.Status == ReservationStatus.FINISHED);
+            && r.Status == "FINISHED");
             if(guestHistoryWithHost.Any()) return true;
             return false;
         }
@@ -101,7 +102,7 @@ namespace ReservationService.Service
         {
             IEnumerable<Reservation> guestHistoryWithAccommodation = _repository.FilterBy(r => r.AccommodationId == accommodationId 
             && r.GuestId == guestId
-            && r.Status == ReservationStatus.FINISHED);
+            && r.Status == "FINISHED");
             if(guestHistoryWithAccommodation.Any()) return true;
             return false;
         }
@@ -111,7 +112,7 @@ namespace ReservationService.Service
             DateTime start = DateTime.Parse(request.TimeFrame.StartDate);
             DateTime end = DateTime.Parse(request.TimeFrame.EndDate);
             IEnumerable<Reservation> reservationsForAccommodation = _repository.FilterBy(r => r.AccommodationId == request.AccommodationId 
-            && r.Status == ReservationStatus.ACTIVE && DateTime.Compare(r.StartDate, DateTime.Now)>=0);
+            && r.Status == "ACTIVE" && DateTime.Compare(r.StartDate, DateTime.Now)>=0);
             if (!reservationsForAccommodation.Any()) return true;
             foreach(Reservation res in reservationsForAccommodation)
             {
@@ -123,14 +124,14 @@ namespace ReservationService.Service
         //ovde ce mi isto trebati get accommodation by id ili tako nesto
         public IEnumerable<ReservationViewDTO> GetActiveForHost(string hostId)
         {
-            IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.HostId == hostId && r.Status == ReservationStatus.ACTIVE);
+            IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.HostId == hostId && r.Status == "ACTIVE");
             return _mapper.Map<IEnumerable<ReservationViewDTO>>(reservations);
         }
 
         //ovde ce mi isto trebati get accommodation by id ili tako nesto
         public IEnumerable<ReservationViewDTO> GetActiveForGuest(string guestId)
         {
-            IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.GuestId == guestId && r.Status == ReservationStatus.ACTIVE);
+            IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.GuestId == guestId && r.Status == "ACTIVE");
             return _mapper.Map<IEnumerable<ReservationViewDTO>>(reservations);
         }
 
@@ -138,8 +139,8 @@ namespace ReservationService.Service
         {
             Reservation reservation = await _repository.FindByIdAsync(requestId);
             if (reservation == null) return false;
-            if (reservation.Status != ReservationStatus.PENDING) return false;
-            reservation.Status = ReservationStatus.DELETED;
+            if (reservation.Status != "PENDING") return false;
+            reservation.Status = "DELETED";
             await _repository.ReplaceOneAsync(reservation);
             return true;
         }
@@ -147,14 +148,14 @@ namespace ReservationService.Service
         //ovde ce mi isto trebati get accommodation by id ili tako nesto
         public IEnumerable<ReservationViewDTO> GetReservationRequestsForGuest(string guestId)
         {
-            IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.GuestId == guestId && r.Status == ReservationStatus.PENDING);
+            IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.GuestId == guestId && r.Status == "PENDING");
             return _mapper.Map<IEnumerable<ReservationViewDTO>>(reservations);
         }
 
         //ovde ce mi isto trebati get accommodation by id ili tako nesto
         public IEnumerable<ReservationViewDTO> GetReservationRequestsForHost(string hostId)
         {
-            IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.HostId == hostId && r.Status == ReservationStatus.PENDING);
+            IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.HostId == hostId && r.Status == "PENDING");
             return _mapper.Map<IEnumerable<ReservationViewDTO>>(reservations);
         }
 
@@ -162,7 +163,7 @@ namespace ReservationService.Service
         {
             Reservation reservation = await _repository.FindByIdAsync(requestId);
             if (reservation == null) return false;
-            reservation.Status = Enums.ReservationStatus.DENIED;
+            reservation.Status = "DENIED";
             await _repository.ReplaceOneAsync(reservation);
             return true;
         }
@@ -172,9 +173,9 @@ namespace ReservationService.Service
         {
             Reservation reservation = await _repository.FindByIdAsync(reservationId);
             if (reservation == null) return false;
-            if (reservation.Status != Enums.ReservationStatus.ACTIVE ||
+            if (reservation.Status != "ACTIVE" ||
                 DateTime.Compare(reservation.StartDate, DateTime.Now.AddDays(1)) > 0) return false;
-            reservation.Status = Enums.ReservationStatus.CANCELLED;
+            reservation.Status = "CANCELLED";
             await _repository.ReplaceOneAsync(reservation);
             return true;
         }
@@ -193,7 +194,7 @@ namespace ReservationService.Service
         {
             //da li da ubrojim i aktivne?
             int days = 0;
-            IEnumerable<Reservation> allFinished = _repository.FilterBy(r => r.HostId == hostId && r.Status == ReservationStatus.FINISHED );
+            IEnumerable<Reservation> allFinished = _repository.FilterBy(r => r.HostId == hostId && r.Status == "FINISHED");
             foreach(Reservation reservation in allFinished)
             {
                 days = days + reservation.EndDate.Day - reservation.StartDate.Day; 
@@ -203,11 +204,11 @@ namespace ReservationService.Service
 
         private int GetCancellationCountForHost(string hostId)
         {
-            return _repository.FilterBy(r => r.HostId == hostId && r.Status == ReservationStatus.CANCELLED).Count();
+            return _repository.FilterBy(r => r.HostId == hostId && r.Status == "CANCELLED").Count();
         }
         private int GetTotalCountForHost(string hostId)
         {
-            return _repository.FilterBy(r => r.HostId == hostId && r.Status != ReservationStatus.DENIED && r.Status != ReservationStatus.DELETED).Count();
+            return _repository.FilterBy(r => r.HostId == hostId && r.Status != "DENIED" && r.Status != "DELETED").Count();
         }
 
     }
