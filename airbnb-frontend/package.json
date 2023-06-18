@@ -27,6 +27,7 @@
     "angular-responsive-carousel": "^2.1.2",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.4",
+    "ng-select": "^1.0.2",
     "ngx-toastr": "^16.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
