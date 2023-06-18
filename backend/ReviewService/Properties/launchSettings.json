@@ -4,12 +4,13 @@
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_URLS": "http://localhost:8084/"
+        "ASPNETCORE_URLS": "http://localhost:8083/"
       },
-      "dotnetRunMessages": true},
+      "dotnetRunMessages": true
+    },
     "Docker": {
       "commandName": "Docker",
-      "launchUrl": "{Scheme}://reservation_service:8080",
+      "launchUrl": "{Scheme}://review_service:8080",
       "publishAllPorts": true,
       "useSSL": true
     }
