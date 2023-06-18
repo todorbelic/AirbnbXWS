@@ -142,7 +142,7 @@ message AcceptReservationRequest{
 }
 
 message AcceptReservationResponse{
-    string response = 1;
+    bool response = 1;
 }
 
 message SendReservationRequestRequest{

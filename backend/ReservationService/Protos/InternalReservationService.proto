@@ -7,6 +7,7 @@ service InternalReservationServiceRPC{
      rpc DoesGuestHaveActiveReservations(DoesGuestHaveActiveReservationsRequest) returns (DoesGuestHaveActiveReservationsResponse);
      rpc DoesHostHaveActiveReservations(DoesHostHaveActiveReservationsRequest) returns (DoesHostHaveActiveReservationsResponse);
 	 rpc IsAccommodationAvailableForDateRange(IsAccommodationAvailableForDateRangeRequest) returns (IsAccommodationAvailableForDateRangeResponse);
+     rpc IsHostFeatured(IsHostFeaturedRequest) returns (IsHostFeaturedResponse); 
 }
 
 message ReservationTimeFrameProto {
@@ -55,4 +56,12 @@ message IsAccommodationAvailableForDateRangeRequest{
 
 message IsAccommodationAvailableForDateRangeResponse{
     bool isAvailable = 1;
+}
+
+message IsHostFeaturedRequest{
+    string hostId = 1;
+}
+
+message IsHostFeaturedResponse{
+    bool isFeatured = 1;
 }

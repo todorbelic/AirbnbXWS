@@ -21,7 +21,7 @@ namespace ReservationService.Mapper
                  dest => dest.EndDate, opt => opt.MapFrom(src => src.Request.EndDate))
                 .ForMember(
                  dest => dest.GuestCount, opt => opt.MapFrom(src => src.Request.GuestCount));
-            CreateMap<Reservation, ReservationViewDTO>();
+            CreateMap<Reservation, ReservationView>();
         }
     }
 }
