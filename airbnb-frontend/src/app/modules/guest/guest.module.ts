@@ -8,6 +8,8 @@ import { GuestProfileComponent } from "./guest-profile/guest-profile.component";
 import { GuestEditProfileComponent } from "./guest-edit-profile/guest-edit-profile.component";
 import { GuestHomeComponent } from "./guest-home/guest-home.component";
 import { GuestToolbarComponent } from "./guest-toolbar/guest-toolbar.component";
+import { ReservationRequestsComponent } from './reservation-requests/reservation-requests.component';
+import { AllReservationsComponent } from './all-reservations/all-reservations.component';
 
 
 const routes: Routes = [
@@ -24,6 +26,8 @@ const routes: Routes = [
         GuestProfileComponent,
         GuestHomeComponent,
         GuestToolbarComponent,
+        ReservationRequestsComponent,
+        AllReservationsComponent,
   ],
     imports: [
       CommonModule,
