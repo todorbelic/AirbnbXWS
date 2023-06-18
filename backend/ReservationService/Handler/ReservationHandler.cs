@@ -35,6 +35,7 @@ namespace ReservationService.Handler
         public override async Task<AcceptReservationResponse> AcceptReservation(AcceptReservationRequest request, ServerCallContext context)
         {
             bool response = await _reservationService.AcceptReservation(request.Id);
+
             return new AcceptReservationResponse()
             {
                 Response = response
@@ -44,7 +45,6 @@ namespace ReservationService.Handler
 
         public override async Task<SendReservationRequestResponse> SendReservationRequest(SendReservationRequestRequest request, ServerCallContext context)
         {
-            _logger.Log(LogLevel.Information, "Entered send reservation request with host id " + request.Request.HostId);
             bool response =  await _reservationService.SendReservationRequest(request);
             return new SendReservationRequestResponse()
             {
