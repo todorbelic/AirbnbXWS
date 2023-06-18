@@ -18,10 +18,7 @@
                     <mat-label>Street</mat-label>
                     <input matInput required type="text" [(ngModel)]="createAccommodationRequest.request.address.streetAddress" />
                 </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Benefits</mat-label>
-                    <input matInput required type="text" [(ngModel)]="benefits" />
-                </mat-form-field>
+                
                 <mat-form-field>
                     <mat-label>Minimum number of guests</mat-label>
                     <input matInput required type="number" [(ngModel)]="createAccommodationRequest.request.minGuests" min="0" max="10" />
@@ -39,8 +36,17 @@
                         <mat-option value="0">Per person</mat-option>
                         <mat-option value="1">Per unit</mat-option>
                     </mat-select>
-                </mat-form-field>               
-                <input type="file" reqired (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg" />    
+                </mat-form-field>                  
+                <ng-select [items]="benefitsDropDown" 
+                            bindLabel="name" 
+                            bindValue="id" 
+                            [(ngModel)]="selectedBenefit"
+                            [multiple]="true"
+                            placeholder="Benefits*"
+                            required=""
+                            (change)="onChange($event)">
+                </ng-select>                 
+                <input type="file" reqired (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg" />  
             </mat-card-content>
             <mat-card-actions class="create-mat-card-buttons">
                 <button mat-raised-button (click)="addAccommodation()">Add new accommodation</button>
@@ -48,3 +54,4 @@
         </mat-card>
     </div>   
 </body>
+

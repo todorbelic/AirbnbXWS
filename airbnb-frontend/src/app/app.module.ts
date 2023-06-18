@@ -17,6 +17,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
 import {MatListModule} from '@angular/material/list';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -36,12 +39,15 @@ import {MatListModule} from '@angular/material/list';
     MatSelectModule,
     HttpClientModule,
     MatListModule,
+    NgSelectModule,
+    FormsModule,
+    CommonModule,
     ToastrModule.forRoot(({
       timeOut: 3000,
       preventDuplicates: true,
       closeButton: true,
       enableHtml: true
-   }))
+   })),
 
   ],
   providers: [{
