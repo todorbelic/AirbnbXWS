@@ -8,17 +8,16 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Protos\ReservationAccommodation.proto" />
-  </ItemGroup>
-
+  
   <ItemGroup>
 	<Protobuf Include="Protos\AccommodationService.proto" GrpcServices="Server" />
-	<Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
   </ItemGroup>
-  <ItemGroup>
-	<Protobuf Include="Protos\ReservationAccommodation.proto" GrpcServices="Server" />
-  </ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+	</ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="Protos\ReservationAccommodation.proto" GrpcServices="Server" />
+	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
@@ -30,6 +29,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
     <PackageReference Include="MongoDB.Bson" Version="2.19.2" />
     <PackageReference Include="MongoDB.Driver" Version="2.19.2" />
+    <PackageReference Include="Serilog" Version="2.12.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
   </ItemGroup>
 
 </Project>

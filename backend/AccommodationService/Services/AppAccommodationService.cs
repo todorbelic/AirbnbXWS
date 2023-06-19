@@ -12,12 +12,14 @@ namespace AccommodationService.Services
         private readonly IConfiguration _configuration;
         private readonly IRepository<AppAccommodation> _repository;
         private readonly IMapper _mapper;
+        private readonly ILogger<IAppAccommodationService> _logger;
 
-        public AppAccommodationService(IConfiguration configuration, IRepository<AppAccommodation> repository, IMapper mapper)
+        public AppAccommodationService(IConfiguration configuration, IRepository<AppAccommodation> repository, IMapper mapper, ILogger<IAppAccommodationService> logger)
         {
             _configuration = configuration;
             _repository = repository;
             _mapper = mapper;
+            _logger = logger;
         }
         public async Task AddAccommodation(AccommodationRequest dto)
         {
@@ -80,23 +82,24 @@ namespace AccommodationService.Services
             return _mapper.Map<AccommodationForReservationView>(accommodation);
         }
 
-        public List<AccommodationForReservationView> getAccommodationsForReservations(List<string> accommodationIds)
-        {     
+        public IEnumerable<AccommodationForReservationView> getAccommodationsForReservations(IEnumerable<string> accommodationIds)
+        {
             List<AppAccommodation> accommodations = _repository.AsQueryable().ToList();
-            if(accommodations.Count == 0) return new List<AccommodationForReservationView>();
-            List<AppAccommodation> accommodationViewsToReturn = new List<AppAccommodation>();
+            if (accommodations.Count == 0) return new List<AccommodationForReservationView>();
+            IEnumerable<AppAccommodation> accommodationViewsToReturn = new List<AppAccommodation>();
             foreach (string id in accommodationIds)
             {
                 foreach(AppAccommodation accommodation in accommodations)
                 {
                     if (id.Equals(accommodation.Id))
                     {
-                        accommodationViewsToReturn.Add(accommodation);
-                        break;
+                        _logger.Log(LogLevel.Information, "u if je uslo");
+                        accommodationViewsToReturn.Append(accommodation);
                     }
                 }
+                _logger.Log(LogLevel.Information,accommodationViewsToReturn.Count().ToString());
             }
-            return _mapper.Map<List<AccommodationForReservationView>>(accommodationViewsToReturn);
+            return _mapper.Map<IEnumerable<AccommodationForReservationView>>(accommodationViewsToReturn);
         }
     }
 }
