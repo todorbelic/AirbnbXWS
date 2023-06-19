@@ -6,6 +6,7 @@ namespace ReservationService.Handler
     public class ReservationHandler : ReservationServiceRPC.ReservationServiceRPCBase
     {
         private readonly IReservationService _reservationService;
+
         public ReservationHandler(IReservationService reservationService)
         {
             _reservationService = reservationService;
@@ -31,6 +32,7 @@ namespace ReservationService.Handler
         public override async Task<AcceptReservationResponse> AcceptReservation(AcceptReservationRequest request, ServerCallContext context)
         {
             bool response = await _reservationService.AcceptReservation(request.Id);
+
             return new AcceptReservationResponse()
             {
                 Response = response

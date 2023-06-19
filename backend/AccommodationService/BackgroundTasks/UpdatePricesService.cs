@@ -65,7 +65,7 @@ namespace AccommodationService.BackgroundTasks
                 }
 
 
-                await Task.Delay(TimeSpan.FromSeconds(60), stoppingToken); // Delay for 5 seconds
+                await Task.Delay(TimeSpan.FromSeconds(1000), stoppingToken); // Delay for 5 seconds
             }
         }
     }

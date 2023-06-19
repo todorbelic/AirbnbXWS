@@ -7,6 +7,7 @@ type Config struct {
 	UserServiceAddress          string
 	AccommodationServiceAddress string
 	ReservationServiceAddress   string
+	ReviewServiceAddress        string
 }
 
 func GetConfig() Config {
@@ -15,5 +16,6 @@ func GetConfig() Config {
 		AccommodationServiceAddress: os.Getenv("ACCOMMODATION_SERVICE_ADDRESS"),
 		ReservationServiceAddress:   os.Getenv("RESERVATION_SERVICE_ADDRESS"),
 		Address:                     os.Getenv("GATEWAY_ADDRESS"),
+		ReviewServiceAddress:        os.Getenv("REVIEW_SERVICE_ADDRESS"),
 	}
 }
