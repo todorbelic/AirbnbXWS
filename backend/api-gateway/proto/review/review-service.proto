@@ -1,9 +1,9 @@
 syntax = "proto3";
-option go_package = "proto/reservation";
+option go_package = "proto/review";
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
-service RatingService{
+service RatingServiceRPC{
   rpc RateHost(RateHostRequest) returns (RateHostResponse){
     option (google.api.http) = {
       post: "/review/host",
@@ -59,7 +59,7 @@ message HostRating {
 }
 
 message GetRatingsForAccommodationRequest{
-  string AccommodationId = 1;
+  string accommodationId = 1;
 }
 
 message GetRatingsForAccommodationResponse {
