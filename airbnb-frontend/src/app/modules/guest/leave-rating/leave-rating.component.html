@@ -1,4 +1,4 @@
-<body>
+<div class="dialog">
     <h3>Leave a rating!</h3>
     <div class="stars">
       <ul class="list-inline rating-list" *ngFor="let star of stars; let i= index">
@@ -7,8 +7,8 @@
         </li>
       </ul>
     </div>
-    <div class="footer">
+    <div class="footerr">
       <button class="btn btn-primary" (click)="sendReview()">Send</button>
       <button class="btn btn-outline-secondary" (click)="cancelReview()">Cancel</button>
     </div>
-    </body>
+  </div>

@@ -28,7 +28,7 @@ builder.Services.Configure<MongoDbSettings>(configuration.GetSection("MongoDbSet
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
-//builder.Services.AddHostedService<UpdatePricesService>();
+builder.Services.AddHostedService<UpdatePricesService>();
 
 
 var app = builder.Build();
