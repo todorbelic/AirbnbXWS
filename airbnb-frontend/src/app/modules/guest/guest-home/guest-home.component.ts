@@ -54,7 +54,7 @@ export class GuestHomeComponent {
   }
   rateAccommodation(id: any) {
     const dialogRef = this.dialog.open(LeaveRatingComponent, {
-      width: '280px',
+      width: '350px',
       data: {
         accommodationId: id,
         guestId: this.authService.getId()
