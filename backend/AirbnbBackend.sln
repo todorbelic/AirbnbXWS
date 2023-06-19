@@ -10,6 +10,7 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccommodationService", "AccommodationService\AccommodationService.csproj", "{475B2D96-26FC-42C3-A2B6-99CDF2E45084}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService", "NotificationService\NotificationService.csproj", "{D29EF042-0159-4A96-8B73-7454A8B4F1B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReviewService", "ReviewService\ReviewService.csproj", "{69020569-E5D6-490F-A7CB-28F2A1766EF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +34,10 @@ Global
 		{D29EF042-0159-4A96-8B73-7454A8B4F1B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D29EF042-0159-4A96-8B73-7454A8B4F1B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D29EF042-0159-4A96-8B73-7454A8B4F1B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69020569-E5D6-490F-A7CB-28F2A1766EF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69020569-E5D6-490F-A7CB-28F2A1766EF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69020569-E5D6-490F-A7CB-28F2A1766EF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69020569-E5D6-490F-A7CB-28F2A1766EF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

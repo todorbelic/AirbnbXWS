@@ -9,15 +9,16 @@ namespace ReservationService.Service
         bool CanGuestRateAccommodation(string guestId, string accommodationId);
         bool IsHostNoteworthyReservationWise(string hostId);
         bool IsAccommodationAvailableForDateRange(IsAccommodationAvailableForDateRangeRequest dto);
-        IEnumerable<ReservationViewDTO> GetActiveForHost(string hostId);
-        IEnumerable<ReservationViewDTO> GetActiveForGuest(string guestId);
+        IEnumerable<ReservationView> GetActiveForHost(string hostId);
+        IEnumerable<ReservationView> GetActiveForGuest(string guestId);
         Task<bool> AcceptReservation(string reservationId);
         Task<bool> SendReservationRequest(SendReservationRequestRequest dto);
         Task<bool> CancelReservation(string reservationId);
         Task<bool> DeleteReservationRequest(string requestId);
-        IEnumerable<ReservationViewDTO> GetReservationRequestsForGuest(string guestId);
-        IEnumerable<ReservationViewDTO> GetReservationRequestsForHost(string hostId);
+        int GetCancellationNumberForGuest(string guestId);
+        IEnumerable<ReservationView> GetReservationRequestsForGuest(string guestId);
+        IEnumerable<ReservationView> GetReservationRequestsForHost(string hostId);
         Task<bool> DenyReservationRequest(string requestId);
-        Task<ReservationViewDTO> GetById(string reservationId);
+        Task<ReservationView> GetById(string reservationId);
     }
 }

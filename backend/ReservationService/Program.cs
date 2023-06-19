@@ -5,6 +5,7 @@ using ReservationService.Middleware;
 using ReservationService.Repository;
 using ReservationService.Service;
 using ReservationService.Settings;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,8 +25,16 @@ IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettin
 builder.Services.AddSingleton<IMongoDbSettings>(serviceProvider =>
      serviceProvider.GetRequiredService<IOptions<MongoDbSettings>>().Value);
 builder.Services.Configure<MongoDbSettings>(configuration.GetSection("MongoDbSettings"));
+Log.Logger = new LoggerConfiguration().WriteTo
+       .Console()
+       .CreateLogger();
 
+builder.Services.AddLogging(loggingBuilder =>
+{
+    loggingBuilder.AddSerilog(dispose: true);
+});
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+
 var app = builder.Build();
 
 app.UseRouting();

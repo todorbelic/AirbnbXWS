@@ -1,0 +1,107 @@
+syntax = "proto3";
+option go_package = "proto/review";
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+service RatingServiceRPC{
+  rpc RateHost(RateHostRequest) returns (RateHostResponse){
+    option (google.api.http) = {
+      post: "/review/host",
+      body: "*"
+    };
+  }
+  rpc RateAccommodation(RateAccommodationRequest) returns (RateAccommodationResponse){
+    option (google.api.http) = {
+      post: "/review/accommodation",
+      body: "*"
+    };
+  }
+  rpc GetRatingsForHost(GetRatingsForHostRequest) returns (GetRatingsForHostResponse){
+    option (google.api.http) = {
+      get: "/review/host/{hostId}"
+    };
+  }
+  rpc GetRatingsForAccommodation(GetRatingsForAccommodationRequest) returns (GetRatingsForAccommodationResponse){
+    option (google.api.http) = {
+      get: "/review/accommodation/{accommodationId}"
+    };
+  }
+  rpc DeleteHostRating(DeleteHostRatingRequest) returns (DeleteHostRatingResponse) {
+    option (google.api.http) = {
+      post: "/review/host/delete"
+      body: "*"
+    };
+  }
+  rpc DeleteAccommodationRating(DeleteAccommodationRatingRequest) returns (DeleteAccommodationRatingResponse) {
+    option (google.api.http) = {
+      post: "/review/accommodation/delete"
+      body: "*"
+    };
+  }
+}
+
+message RateHostRequest {
+  string guestId = 1;
+  string hostId = 2;
+  double rating =3;
+}
+
+message GetRecommendedAccommodationsRequest {
+	string userId =1;
+}
+
+message GetRecommendedAccommodationsResponse {
+	repeated string accommodationIds = 1;
+}
+
+message RateAccommodationRequest {
+  string guestId = 1;
+  string accommodationId = 2;
+  double rating = 3;
+}
+
+message RateHostResponse {}
+
+message RateAccommodationResponse {}
+
+message GetRatingsForHostRequest {
+  string hostId =1;
+}
+
+message GetRatingsForHostResponse {
+  repeated HostRating ratings = 1;
+  double averageRating = 2;
+}
+
+message HostRating {
+  string userId =1;
+  double rating =2;
+}
+
+message GetRatingsForAccommodationRequest{
+  string accommodationId = 1;
+}
+
+message GetRatingsForAccommodationResponse {
+  repeated AccommodationRating ratings = 1;
+  double averageRating = 2;
+}
+
+message AccommodationRating {
+  string userId =1;
+  double rating =2;
+}
+
+message DeleteHostRatingRequest {
+	string guestId =1;
+	string hostId =2;
+}
+
+message DeleteHostRatingResponse {}
+
+message DeleteAccommodationRatingRequest {
+	string guestId =1;
+	string accommodationId =2;
+}
+
+message DeleteAccommodationRatingResponse{}

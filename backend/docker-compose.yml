@@ -54,6 +54,22 @@ services:
     env_file:
       - ./.env
 
+  review_service:
+    image: review_service
+    container_name: review_service
+    hostname: review_service
+    build:
+      context: ./ReviewService
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      REVIEW_SERVICE_ADDRESS: ${REVIEW_SERVICE_ADDRESS}
+      ASPNETCORE_URLS: http://+:8080/
+    networks:
+      - network
+    env_file:
+      - ./.env
+
   api_gateway:
     image: api_gateway
     container_name: api_gateway
@@ -66,11 +82,13 @@ services:
       USER_SERVICE_ADDRESS: user_service:8080
       ACCOMMODATION_SERVICE_ADDRESS: accommodation_service:8080
       RESERVATION_SERVICE_ADDRESS: reservation_service:8080
+      REVIEW_SERVICE_ADDRESS: review_service:8080
       GATEWAY_ADDRESS: ${GATEWAY_ADDRESS}
     depends_on:
       - user_service
       - accommodation_service
       - reservation_service
+      - review_service
     networks:
       - network
     ports:

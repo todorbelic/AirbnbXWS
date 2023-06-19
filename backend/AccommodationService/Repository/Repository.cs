@@ -14,7 +14,7 @@ namespace AccommodationService.Repository
         public Repository(IMongoDbSettings settings)
         {
             string connectionString = Environment.GetEnvironmentVariable("MongoConnectionString") ?? settings.ConnectionString;
-            var database = new MongoClient(connectionString).GetDatabase(settings.DatabaseName);
+            var database = new MongoClient("mongodb+srv://root:pass@cluster0.q9zmeka.mongodb.net/accommodation_db?retryWrites=true&w=majority").GetDatabase(settings.DatabaseName);
             _collection = database.GetCollection<TDocument>(GetCollectionName(typeof(TDocument)));
         }
 
