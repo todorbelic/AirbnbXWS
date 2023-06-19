@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using Grpc.Net.Client;
 using ReservationService.DTO;
 using ReservationService.Model;
 using ReservationService.Repository;
+using AccommodationService;
 
 namespace ReservationService.Service
 {
@@ -10,10 +12,13 @@ namespace ReservationService.Service
         private readonly IRepository<Reservation> _repository;
         private readonly IMapper _mapper;
         private readonly ILogger<IReservationService> _logger;
+        //private readonly AccommodationService.
         public ReservationService(IMapper mapper, IRepository<Reservation> repository, ILogger<IReservationService> logger) {
             _repository= repository;
             _mapper= mapper;
             _logger= logger;
+          //  var channel = GrpcChannel.ForAddress("http://localhost:5000");
+           // var client = new AccommodationService.AccommodationServiceClient(channel);
         }
 
         public async Task<bool> AcceptReservation(string reservationId)
