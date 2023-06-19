@@ -131,6 +131,7 @@ namespace ReservationService.Service
             return false;
         }
 
+
         public bool IsAccommodationAvailableForDateRange(IsAccommodationAvailableForDateRangeRequest request)
         {
             EnteredMethodLog("IsAccommodationAvailableForDateRange");

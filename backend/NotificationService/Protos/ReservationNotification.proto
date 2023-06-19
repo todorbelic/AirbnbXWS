@@ -7,6 +7,8 @@ service ReservationNotification {
   rpc ReservationAccepted (ReservationAcceptedRequest) returns (ReservationAcceptedResponse);
     rpc ReservationRejected (ReservationRejectedRequest) returns (ReservationRejectedResponse);
 
+
+
 }
 
 // The request message containing the user's name.

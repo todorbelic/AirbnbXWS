@@ -10,12 +10,14 @@
 
   <ItemGroup>
     <None Remove="Protos\AccommodationService.proto" />
+    <None Remove="Protos\ReviewNotification.proto" />
     <None Remove="Protos\UserService.proto" />
   </ItemGroup>
 
   <ItemGroup>
     <Protobuf Include="Protos\AccommodationService.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\ReviewNotification.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\UserService.proto" GrpcServices="Server" />
 	<Protobuf Include="Protos\ReservationNotification.proto" GrpcServices="Server" />
   </ItemGroup>

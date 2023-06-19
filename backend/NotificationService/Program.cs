@@ -19,18 +19,7 @@ builder.Services.AddGrpc(options =>
     options.Interceptors.Add<ErrorHandlingInterceptor>();
 });
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-        .AddJwtBearer(options =>
-        {
-            options.TokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuer = false, // Allow all issuers
-                ValidateAudience = false, // Allow all audiences
-                ValidateLifetime = true,
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
-            };
-        });
+
 
 builder.Services.AddScoped<IAppNotificationService, AppNotificationService>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -44,8 +33,6 @@ builder.Services.Configure<MongoDbSettings>(configuration.GetSection("MongoDbSet
 builder.Services.AddAuthorization();
 var app = builder.Build();
 
-
-app.UseAuthentication();
 app.UseRouting();
 app.UseAuthorization();
 

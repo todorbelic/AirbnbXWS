@@ -1,0 +1,30 @@
+﻿syntax = "proto3";
+option go_package = "proto/review";
+
+// The greeting service definition.
+service ReviewNotification {
+  // Sends a greeting
+  rpc RateHost(RateHostNotificationRequest) returns (RateHostNotificationResponse);
+  rpc RateAccommodation(RateAccommodationNotificationRequest) returns (RateAccommodationNotificationResponse);
+
+}
+
+// The request message containing the user's name.
+message RateHostNotificationRequest {
+  string hostId = 1;
+  double rating =2;
+}
+
+// The response message containing the greetings.
+message RateHostNotificationResponse {
+}
+
+message  RateAccommodationNotificationRequest{
+    string hostId=1;
+    string accomId=2;
+    double rating =3;
+
+}
+
+message RateAccommodationNotificationResponse {
+}

@@ -11,7 +11,8 @@ service NotificationServiceRPC{
   }
   rpc AddNotification(AddNotificationRequest) returns (AddNotificationResponse){
     option (google.api.http) = {
-      get: "/notification/add"
+      post: "/notification/add",
+      body: "*"
     };
   }
 

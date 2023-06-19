@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <Protobuf Include="Protos\ReviewService.proto" GrpcServices="Server" />
+        <Protobuf Include="Protos\ReviewNotification.proto" GrpcServices="Client" />
+
   </ItemGroup>
 
   <ItemGroup>
