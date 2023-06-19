@@ -8,6 +8,7 @@ import { GuestProfileComponent } from "./guest-profile/guest-profile.component";
 import { GuestEditProfileComponent } from "./guest-edit-profile/guest-edit-profile.component";
 import { GuestHomeComponent } from "./guest-home/guest-home.component";
 import { GuestToolbarComponent } from "./guest-toolbar/guest-toolbar.component";
+import { LeaveRatingComponent } from './leave-rating/leave-rating.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
         GuestProfileComponent,
         GuestHomeComponent,
         GuestToolbarComponent,
+        LeaveRatingComponent,
   ],
     imports: [
       CommonModule,

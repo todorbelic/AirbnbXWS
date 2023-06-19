@@ -2,8 +2,8 @@
 {
     public class Rating : Neo4jRelationship
     {
-        public double Value { get; set; }
-        public DateOnly Date { get; set; }
+        public int Value { get; set; }
+        public DateTime Date { get; set; }
 
         public DateTimeOffset Created { get; set; }
 

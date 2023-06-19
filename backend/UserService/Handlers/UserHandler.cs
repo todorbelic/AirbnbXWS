@@ -6,12 +6,11 @@ namespace UserService.Handlers
 {
     public class UserHandler : UserServiceRPC.UserServiceRPCBase
     {
-        private readonly ILogger _logger;
+      
         private readonly IAppUserService _appUserService;
 
-        public UserHandler(ILogger logger, IAppUserService appUserService)
+        public UserHandler(IAppUserService appUserService)
         {
-            _logger = logger;
             _appUserService = appUserService;
         }
 

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { AccommodationSearchRequest } from 'src/app/dto/accommodation-search-request';
 import { AccomService } from 'src/app/services/accom-service';
+import { AuthenticationService } from 'src/app/services/authentication-service';
+import { LeaveRatingComponent } from '../leave-rating/leave-rating.component';
 
 @Component({
   selector: 'app-guest-home',
@@ -8,6 +11,7 @@ import { AccomService } from 'src/app/services/accom-service';
   styleUrls: ['./guest-home.component.css']
 })
 export class GuestHomeComponent {
+
   public searchText: any= "";
   // cards = [
   //   {
@@ -22,7 +26,7 @@ export class GuestHomeComponent {
   public cards:any[]=[]
   public showSearched = false;
   public accSearch: AccommodationSearchRequest = new AccommodationSearchRequest();
-  constructor(private accomService:AccomService) { 
+  constructor(private accomService:AccomService, public dialog: MatDialog, private authService: AuthenticationService) { 
   }
 
   ngOnInit(): void {
@@ -48,7 +52,16 @@ export class GuestHomeComponent {
     })
 
   }
-  
+  rateAccommodation(id: any) {
+    const dialogRef = this.dialog.open(LeaveRatingComponent, {
+      width: '280px',
+      data: {
+        accommodationId: id,
+        guestId: this.authService.getId()
+      }
+    })
+  }
+
   loadPictures(){
 
     // this.cards.forEach(accom => {

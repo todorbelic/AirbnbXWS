@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["ReviewService/ReviewService.csproj", "ReviewService/"]
 RUN dotnet restore "ReviewService/ReviewService.csproj"
-COPY . .
+COPY . ./ReviewService
 WORKDIR "/src/ReviewService"
 RUN dotnet build "ReviewService.csproj" -c Release -o /app/build
 

@@ -1,4 +1,7 @@
+using Neo4jClient;
 using ReviewService.Handlers;
+using ReviewService.Repository;
+using ReviewService.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,9 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddGrpc();
-
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Neo4jRepository<>));
+builder.Services.AddScoped<IReviewService, RatingService>();
 var app = builder.Build();
 
+
+app.UseRouting();
 // Configure the HTTP request pipeline.
 app.UseEndpoints(endpoints =>
 {

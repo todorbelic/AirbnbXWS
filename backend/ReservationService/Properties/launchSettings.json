@@ -4,7 +4,7 @@
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_URLS": "http://localhost:8084/"
+        "ASPNETCORE_URLS": "http://localhost:8081/"
       },
       "dotnetRunMessages": true},
     "Docker": {

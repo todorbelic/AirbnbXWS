@@ -2,17 +2,28 @@ syntax = "proto3";
 option go_package = "proto/review";
 
 
-service RatingService{
+service RatingServiceRPC{
   rpc RateHost(RateHostRequest) returns (RateHostResponse);
   rpc RateAccommodation(RateAccommodationRequest) returns (RateAccommodationResponse);
   rpc GetRatingsForHost(GetRatingsForHostRequest) returns (GetRatingsForHostResponse);
   rpc GetRatingsForAccommodation(GetRatingsForAccommodationRequest) returns (GetRatingsForAccommodationResponse);
+  rpc GetRecommendedAccommodations(GetRecommendedAccommodationsRequest) returns (GetRecommendedAccommodationsResponse);
+  rpc DeleteHostRating(DeleteHostRatingRequest) returns (DeleteHostRatingResponse);
+  rpc DeleteAccommodationRating(DeleteAccommodationRatingRequest) returns (DeleteAccommodationRatingResponse);
 }
 
 message RateHostRequest {
   string guestId = 1;
   string hostId = 2;
   double rating =3;
+}
+
+message GetRecommendedAccommodationsRequest {
+	string userId =1;
+}
+
+message GetRecommendedAccommodationsResponse {
+	repeated string accommodationIds = 1;
 }
 
 message RateAccommodationRequest {
@@ -52,3 +63,17 @@ message AccommodationRating {
   string userId =1;
   double rating =2;
 }
+
+message DeleteHostRatingRequest {
+	string guestId =1;
+	string hostId =2;
+}
+
+message DeleteHostRatingResponse {}
+
+message DeleteAccommodationRatingRequest {
+	string guestId =1;
+	string accommodationId =2;
+}
+
+message DeleteAccommodationRatingResponse{}

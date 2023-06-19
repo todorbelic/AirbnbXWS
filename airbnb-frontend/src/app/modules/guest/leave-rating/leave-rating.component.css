@@ -1,0 +1,34 @@
+.rating-list {
+    display: inline-block;
+    list-style: none;
+  }
+  .rating-list li {
+    font-size: 20px;
+    float: right;
+    color: #ddd;
+    padding: 10px 5px;
+  }
+  .rating-list li:hover {
+    color: dodgerblue;
+  }
+  .rating-list li:hover ~ li {
+    color: dodgerblue;
+  }
+  .rating-list li.selected {
+    color: dodgerblue;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footer {
+    min-width: 200px;
+    display:flex;
+    flex-direction: row;
+    align-items: center ;
+    justify-content:  space-between;
+  }
