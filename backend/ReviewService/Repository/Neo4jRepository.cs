@@ -216,20 +216,16 @@ namespace ReviewService.Repository
 
         }  
 
-        public virtual async Task DeleteRelationship<TEntity2, TRelationship>(Expression<Func<TEntity, bool>> query1, Expression<Func<TEntity2, bool>> query2, TRelationship relationship)
+        public virtual async Task DeleteRelationship<TEntity2, TRelationship>(string query1, string query2, TRelationship relationship)
             where TEntity2 : Neo4jEntity, new()
             where TRelationship : Neo4jRelationship, new()
         {
             using var session = _driver.AsyncSession();
-            string name1 = query1.Parameters[0].Name;
             TEntity entity1 = new TEntity();
-            string name2 = query2.Parameters[0].Name;
             TEntity2 entity2 = new TEntity2();
-
-            await session.RunAsync(
-                $"MATCH ({name1}:{entity1.Label})-[r:{relationship.Name}]->({name2}:{entity2.Label}) " +
-                $"WHERE {query1} AND {query2} DELETE r"
-            );
+            string query = $"MATCH (:{entity1.Label} {query1})-[r:{relationship.Name}]->(:{entity2.Label} {query2}) " +
+                $"DELETE r";
+            await session.RunAsync(query);
         }
 
         public void CopyValues(TEntity target, TEntity source)

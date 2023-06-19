@@ -59,7 +59,7 @@
             <p>{{card.paymentOption}}</p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button>RATE</button>
+            <button mat-button (click)="rateAccommodation(card.id)">RATE</button>
           </mat-card-actions>
         </mat-card>
       </article>  

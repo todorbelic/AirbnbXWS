@@ -37,5 +37,15 @@ namespace ReviewService.Service
             string whereQuery = $"WHERE n.hostId = '{request.HostId}'";
             return await _guestRepository.GetHostRatings(nodeQuery, whereQuery, "hostId");
         }
+
+        public async Task DeleteAccommodationRating(DeleteAccommodationRatingRequest request)
+        {
+            await _guestRepository.DeleteRelationship<Accommodation, Rating>($"{{guestId :'{request.GuestId}'}}", $"{{accommodationId :'{request.AccommodationId}'}}", new Rating());
+        }
+
+        public async Task DeleteHostRating(DeleteHostRatingRequest request)
+        {
+            await _guestRepository.DeleteRelationship<Accommodation, Rating>($"{{guestId :'{request.GuestId}'}}", $"{{hostId :'{request.HostId}'}}", new Rating());
+        }
     }
 }

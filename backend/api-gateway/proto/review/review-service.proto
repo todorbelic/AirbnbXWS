@@ -26,12 +26,32 @@ service RatingServiceRPC{
       get: "/review/accommodation/{accommodationId}"
     };
   }
+  rpc DeleteHostRating(DeleteHostRatingRequest) returns (DeleteHostRatingResponse) {
+    option (google.api.http) = {
+      post: "/review/host/delete"
+      body: "*"
+    };
+  }
+  rpc DeleteAccommodationRating(DeleteAccommodationRatingRequest) returns (DeleteAccommodationRatingResponse) {
+    option (google.api.http) = {
+      post: "/review/accommodation/delete"
+      body: "*"
+    };
+  }
 }
 
 message RateHostRequest {
   string guestId = 1;
   string hostId = 2;
   double rating =3;
+}
+
+message GetRecommendedAccommodationsRequest {
+	string userId =1;
+}
+
+message GetRecommendedAccommodationsResponse {
+	repeated string accommodationIds = 1;
 }
 
 message RateAccommodationRequest {
@@ -71,3 +91,17 @@ message AccommodationRating {
   string userId =1;
   double rating =2;
 }
+
+message DeleteHostRatingRequest {
+	string guestId =1;
+	string hostId =2;
+}
+
+message DeleteHostRatingResponse {}
+
+message DeleteAccommodationRatingRequest {
+	string guestId =1;
+	string accommodationId =2;
+}
+
+message DeleteAccommodationRatingResponse{}

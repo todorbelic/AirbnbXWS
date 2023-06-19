@@ -34,6 +34,10 @@ namespace ReviewService.Handlers
             return await _reviewService.GetRatingsForHost(request);
         }
 
-
+        public override async Task<DeleteAccommodationRatingResponse> DeleteAccommodationRating(DeleteAccommodationRatingRequest request, ServerCallContext context)
+        {
+            await _reviewService.DeleteAccommodationRating(request);
+            return new DeleteAccommodationRatingResponse();
+        }
     }
 }

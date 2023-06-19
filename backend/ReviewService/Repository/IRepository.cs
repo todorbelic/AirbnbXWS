@@ -51,5 +51,8 @@ namespace ReviewService.Repository
 
         Task<GetRatingsForAccommodationResponse> GetAccommodationRatings(string nodeQuery, string whereQuery, string objectId);
         Task<GetRatingsForHostResponse> GetHostRatings(string nodeQuery, string whereQuery, string objectId);
+        Task DeleteRelationship<TEntity2, TRelationship>(string query1, string query2, TRelationship relationship)
+            where TEntity2 : Neo4jEntity, new()
+            where TRelationship : Neo4jRelationship, new();
     }
 }

@@ -8,6 +8,8 @@ service RatingServiceRPC{
   rpc GetRatingsForHost(GetRatingsForHostRequest) returns (GetRatingsForHostResponse);
   rpc GetRatingsForAccommodation(GetRatingsForAccommodationRequest) returns (GetRatingsForAccommodationResponse);
   rpc GetRecommendedAccommodations(GetRecommendedAccommodationsRequest) returns (GetRecommendedAccommodationsResponse);
+  rpc DeleteHostRating(DeleteHostRatingRequest) returns (DeleteHostRatingResponse);
+  rpc DeleteAccommodationRating(DeleteAccommodationRatingRequest) returns (DeleteAccommodationRatingResponse);
 }
 
 message RateHostRequest {
@@ -61,3 +63,17 @@ message AccommodationRating {
   string userId =1;
   double rating =2;
 }
+
+message DeleteHostRatingRequest {
+	string guestId =1;
+	string hostId =2;
+}
+
+message DeleteHostRatingResponse {}
+
+message DeleteAccommodationRatingRequest {
+	string guestId =1;
+	string accommodationId =2;
+}
+
+message DeleteAccommodationRatingResponse{}
