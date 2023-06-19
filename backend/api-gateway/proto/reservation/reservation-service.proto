@@ -5,17 +5,17 @@ import "google/api/annotations.proto";
 service ReservationServiceRPC{
   rpc GetActiveForHost(GetActiveForHostRequest) returns (GetActiveForHostResponse){
   	option (google.api.http) = {
-        get: "/reservation/host/active/{hostId}"
+        get: "/reservation/host/active"
     };
   }
   rpc GetActiveForGuest(GetActiveForGuestRequest) returns (GetActiveForGuestResponse){
     option (google.api.http) = {
-        get: "/reservation/guest/active/{guestId}"
+        get: "/reservation/guest/active"
     };
   }
   rpc GetCancellationNumberForGuest(GetCancellationNumberForGuestRequest) returns (GetCancellationNumberForGuestResponse){
     option (google.api.http) = {
-        get: "/reservation/guest/cancellation-number/{guestId}"
+        get: "/reservation/guest/cancellation-number"
     };
   }
   rpc AcceptReservation(AcceptReservationRequest) returns (AcceptReservationResponse){
@@ -44,12 +44,12 @@ service ReservationServiceRPC{
   }
   rpc GetReservationRequestsForGuest(GetReservationRequestsForGuestRequest) returns (GetReservationRequestsForGuestResponse){
     option (google.api.http) = {
-        get: "/reservation/guest/requests/{guestId}"
+        get: "/reservation/guest/requests"
     };
   }
   rpc GetReservationRequestsForHost(GetReservationRequestsForHostRequest) returns (GetReservationRequestsForHostResponse){
     option (google.api.http) = {
-        get: "/reservation/host/requests/{hostId}"
+        get: "/reservation/host/requests"
     };
   }
   rpc DenyReservationRequest(DenyReservationRequestRequest) returns (DenyReservationRequestResponse){

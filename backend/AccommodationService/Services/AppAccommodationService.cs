@@ -72,5 +72,31 @@ namespace AccommodationService.Services
             accommodationsSearched.ForEach(accommodations => accommodations.PriceTotal = accommodations.BasePrice * request.NumberOfGuests);
             return accommodationsSearched;
         }
+
+        public AccommodationForReservationView GetAccommodationForReservation(string accommodationId)
+        {
+            AppAccommodation accommodation = _repository.FindById(accommodationId);
+            if (accommodation == null) throw new AccommodationNotFoundException();
+            return _mapper.Map<AccommodationForReservationView>(accommodation);
+        }
+
+        public List<AccommodationForReservationView> getAccommodationsForReservations(List<string> accommodationIds)
+        {     
+            List<AppAccommodation> accommodations = _repository.AsQueryable().ToList();
+            if(accommodations.Count == 0) return new List<AccommodationForReservationView>();
+            List<AppAccommodation> accommodationViewsToReturn = new List<AppAccommodation>();
+            foreach (string id in accommodationIds)
+            {
+                foreach(AppAccommodation accommodation in accommodations)
+                {
+                    if (id.Equals(accommodation.Id))
+                    {
+                        accommodationViewsToReturn.Add(accommodation);
+                        break;
+                    }
+                }
+            }
+            return _mapper.Map<List<AccommodationForReservationView>>(accommodationViewsToReturn);
+        }
     }
 }

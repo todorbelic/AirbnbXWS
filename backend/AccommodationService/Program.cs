@@ -6,6 +6,7 @@ using AccommodationService.Repository;
 using AccommodationService.Services;
 using AccommodationService.Settings;
 using Microsoft.Extensions.Options;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,14 @@ builder.Services.AddSingleton<IMongoDbSettings>(serviceProvider =>
 builder.Services.Configure<MongoDbSettings>(configuration.GetSection("MongoDbSettings"));
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+Log.Logger = new LoggerConfiguration().WriteTo
+       .Console()
+       .CreateLogger();
+
+builder.Services.AddLogging(loggingBuilder =>
+{
+    loggingBuilder.AddSerilog(dispose: true);
+});
 
 builder.Services.AddHostedService<UpdatePricesService>();
 
