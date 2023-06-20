@@ -3,7 +3,8 @@
         <p>host-home works!</p>
     </app-host-toolbar>
     <div class="centered" style="margin-top:20vh">
-  
+      <button mat-raised-button style="margin-left:1%" (click)="searchHostAccom()">My Accommodation</button>
+
         <div class="row">
           <div class="col">
             <input type="text" class="input-search" placeholder="Country" [(ngModel)]="accSearch.country" style="margin-bottom:1%; margin-left: 1%;">
@@ -25,7 +26,7 @@
         <mat-datepicker #endPicker></mat-datepicker>
         <button mat-raised-button style="margin-left:1%" (click)="applySearch()">Search</button>
         <button mat-raised-button style="margin-left:1%" (click)="resetSearch()">Reset</button>
-      
+
         <section class="cards" >
           <article class="card" *ngFor="let card of cards">
             <mat-card class="example-card">
