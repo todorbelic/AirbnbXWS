@@ -32,12 +32,12 @@ namespace ReservationService.Service
             await DenyAllReservationsThatOverlap(reservation);
             await _repository.ReplaceOneAsync(reservation);
 
-
+/*
             using var channel = GrpcChannel.ForAddress("http://localhost:8083");
             var client = new ReservationNotification.ReservationNotificationClient(channel);
             var reply = await client.ReservationAcceptedAsync(
                             new ReservationAcceptedRequest { AccomId=reservation.AccommodationId, GuestId=reservation.GuestId, HostId=reservation.HostId});
-            
+            */
             _logger.Log(LogLevel.Information, "Finished accepting reservation");
             return true;
         }

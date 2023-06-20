@@ -14,17 +14,18 @@ export class HostReservationDialogComponent {
   ) {}
   cancel(){
     this.data.isResolved = false
+    console.log(this.data.reservation)
     this.dialogRef.close(this.data)
   }
 
-  blockUser(){
+  acceptClick(){
     this.data.isResolved = true
-    //this.data.isBlocked = true
+    this.data.isAccepted = true
     this.dialogRef.close(this.data)
   }
-  blockRefreshTokens(){
+  denyClick(){
     this.data.isResolved = true
-    //this.data.isBlocked = false
+    this.data.isAccepted = false
     this.dialogRef.close(this.data)
   }
   

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AccommodationSearchRequest } from 'src/app/dto/accommodation-search-request';
 import { AccomService } from 'src/app/services/accom-service';
+import { AuthenticationService } from 'src/app/services/authentication-service';
 
 @Component({
   selector: 'app-host-home',
@@ -19,10 +20,11 @@ export class HostHomeComponent {
 
   // ];
 
+
   public cards:any[]=[]
   public showSearched = false;
   public accSearch: AccommodationSearchRequest = new AccommodationSearchRequest();
-  constructor(private accomService:AccomService) { 
+  constructor(private accomService:AccomService,private authService:AuthenticationService) { 
   }
 
   ngOnInit(): void {
@@ -48,7 +50,11 @@ export class HostHomeComponent {
     })
 
   }
-  
+  searchHostAccom(){
+    this.accomService.getForHost(this.authService.getId()).subscribe(res=>{
+      this.cards=res.accommodations
+    })
+  }
   loadPictures(){
 
     // this.cards.forEach(accom => {

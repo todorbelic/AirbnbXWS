@@ -1,23 +1,23 @@
 export class ReservationView {
-    reservationId = ''
-    hostName = ''
-    guestName = ''
-    accommodationName = ''
-    address = ''
+    ReservationId = ''
+    HostName = ''
+    GuestName = ''
+    AccommodationName = ''
+    Address = ''
     startDate = ''
     endDate = ''
-    guestCount = 0
+    GuestCount = 0
 
     public constructor(obj? : ReservationView){
         if(obj){
-            this.reservationId = obj.reservationId
-            this.hostName = obj.hostName 
-            this.guestName = obj.guestName
-            this.accommodationName = obj.accommodationName
-            this.address = obj.address
+            this.ReservationId = obj.ReservationId
+            this.HostName = obj.HostName 
+            this.GuestName = obj.GuestName
+            this.AccommodationName = obj.AccommodationName
+            this.Address = obj.Address
             this.startDate = obj.startDate
             this.endDate = obj.endDate
-            this.guestCount = obj.guestCount
+            this.GuestCount = obj.GuestCount
         }
     }
 }

@@ -10,6 +10,7 @@ import { ReservationRequest } from '../dto/reservation-request';
 import { SendReservationRequest } from '../dto/send-reservation-request';
 import { DeleteReservationRequestData } from '../dto/delete-reservation-request';
 import { CancelReservationRequest } from '../dto/cancel-reservation-request';
+import { DenyReservationRequest } from '../dto/deny-reservation-request';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,8 @@ export class ReservationService {
   constructor(private http: HttpClient) { }
 
 
-  getAllForHost(id:any): Observable<any> {
-    return this.http.get(this.apiHost + '/host?hostId=' + id, { headers: this.headers })
+  getRequestsForHost(id:any): Observable<any> {
+    return this.http.get(this.apiHost + '/host/requests?hostId=' + id, { headers: this.headers })
   }
 
   getAllForGuest(id:any): Observable<any> {
@@ -49,6 +50,11 @@ export class ReservationService {
   cancelReservation(reservationId : CancelReservationRequest): Observable<any> {
     return this.http.post(this.apiHost + '/cancel', reservationId, { headers: this.headers })
   }
+
+  denyReservation(reservationId : DenyReservationRequest): Observable<any> {
+    return this.http.post(this.apiHost + '/deny', reservationId, { headers: this.headers })
+  }
+
 
 
 

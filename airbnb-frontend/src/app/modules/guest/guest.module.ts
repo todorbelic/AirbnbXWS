@@ -12,6 +12,7 @@ import { GuestToolbarComponent } from "./guest-toolbar/guest-toolbar.component";
 import { AllReservationsComponent } from './all-reservations/all-reservations.component';
 import { LeaveRatingComponent } from './leave-rating/leave-rating.component';
 import { AccommodationDetailsComponent } from './accommodation-details/accommodation-details.component';
+import { GuestReservationDialogComponent } from './guest-reservation-dialog/guest-reservation-dialog.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
         AllReservationsComponent,
         LeaveRatingComponent,
         AccommodationDetailsComponent,
+        GuestReservationDialogComponent,
   ],
     imports: [
       CommonModule,
