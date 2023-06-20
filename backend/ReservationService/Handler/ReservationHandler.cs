@@ -12,6 +12,8 @@ namespace ReservationService.Handler
             _reservationService = reservationService;
         }
 
+
+
         public override async Task<GetActiveForHostResponse> GetActiveForHost(GetActiveForHostRequest request, ServerCallContext context)
         {
             
@@ -31,7 +33,7 @@ namespace ReservationService.Handler
 
         public override async Task<AcceptReservationResponse> AcceptReservation(AcceptReservationRequest request, ServerCallContext context)
         {
-            bool response = await _reservationService.AcceptReservation(request.Id);
+            bool response = await _reservationService.AcceptReservation(request.ReservationId);
 
             return new AcceptReservationResponse()
             {
@@ -40,7 +42,6 @@ namespace ReservationService.Handler
             
         }
 
-        //skontati sto ovde vraca prazan string
         public override async Task<SendReservationRequestResponse> SendReservationRequest(SendReservationRequestRequest request, ServerCallContext context)
         {
             bool response =  await _reservationService.SendReservationRequest(request);
@@ -52,7 +53,7 @@ namespace ReservationService.Handler
 
         public override async Task<DeleteReservationRequestResponse> DeleteReservationRequest(DeleteReservationRequestRequest request, ServerCallContext context)
         {
-           bool response = await _reservationService.DeleteReservationRequest(request.RequestId);
+           bool response = await _reservationService.DeleteReservationRequest(request.ReservationId);
             return new DeleteReservationRequestResponse()
             {
                 Response = response
@@ -86,7 +87,7 @@ namespace ReservationService.Handler
 
         public override async Task<DenyReservationRequestResponse> DenyReservationRequest(DenyReservationRequestRequest request, ServerCallContext context)
         {
-            bool response = await _reservationService.DenyReservationRequest(request.RequestId);
+            bool response = await _reservationService.DenyReservationRequest(request.ReservationId);
             return new DenyReservationRequestResponse() { Response = response };
         }
 
@@ -94,6 +95,22 @@ namespace ReservationService.Handler
         {
             int response =  _reservationService.GetCancellationNumberForGuest(request.GuestId);
             return new GetCancellationNumberForGuestResponse() { CancellationNumber = response };
+        }
+
+        public override async Task<GetAllForGuestResponse> GetAllForGuest(GetAllForGuestRequest request, ServerCallContext context)
+        {
+            var res = new GetAllForGuestResponse();
+            var reservationViews = _reservationService.GetAllForGuest(request.GuestId);
+            res.Reservations.AddRange(reservationViews);
+            return res;
+        }
+
+        public override async Task<GetAllForHostResponse> GetAllForHost(GetAllForHostRequest request, ServerCallContext context)
+        {
+            var res = new GetAllForHostResponse();
+            var reservationViews = _reservationService.GetAllForHost(request.HostId);
+            res.Reservations.AddRange(reservationViews);
+            return res;
         }
     }
 }

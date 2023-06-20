@@ -4,6 +4,7 @@ service ReservationAccommodationRPC
 {
 	rpc GetAccommodationViewForReservation (GetAccommodationViewForReservationRequest) returns (GetAccommodationViewForReservationResponse);
 	rpc GetAccommodationViewForMultipleReservations (GetAccommodationViewForMultipleReservationsRequest) returns (GetAccommodationViewForMultipleReservationsResponse);
+	rpc GetTypeOfReservationConfirmation (GetTypeOfReservationConfirmationRequest) returns (GetTypeOfReservationConfirmationResponse);
 }
 
 message AccommodationForReservationView{
@@ -26,4 +27,12 @@ message GetAccommodationViewForMultipleReservationsRequest{
 
 message GetAccommodationViewForMultipleReservationsResponse{
 	repeated AccommodationForReservationView accommodations = 1;
+}
+
+message GetTypeOfReservationConfirmationRequest{
+	string accommodationId = 1;
+}
+
+message GetTypeOfReservationConfirmationResponse{
+	string typeOfConfirmation = 1;
 }

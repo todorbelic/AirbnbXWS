@@ -10,7 +10,9 @@ namespace ReservationService.Service
         bool IsHostNoteworthyReservationWise(string hostId);
         bool IsAccommodationAvailableForDateRange(IsAccommodationAvailableForDateRangeRequest dto);
         IEnumerable<ReservationView> GetActiveForHost(string hostId);
+        IEnumerable<ReservationView> GetAllForHost(string hostId);
         IEnumerable<ReservationView> GetActiveForGuest(string guestId);
+        IEnumerable<ReservationView> GetAllForGuest(string guestId);
         Task<bool> AcceptReservation(string reservationId);
         Task<bool> SendReservationRequest(SendReservationRequestRequest dto);
         Task<bool> CancelReservation(string reservationId);

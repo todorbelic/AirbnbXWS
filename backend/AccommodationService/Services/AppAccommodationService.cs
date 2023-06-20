@@ -3,6 +3,7 @@ using AccommodationService.Exceptions;
 using AccommodationService.Model;
 using AccommodationService.Repository;
 using AutoMapper;
+using Grpc.Net.Client;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -58,6 +59,8 @@ namespace AccommodationService.Services
 
         public async Task UpdateAccomDetails(UpdateAccomDetailsDTO dto)
         {
+            if (!CreateIsAccommodationAvailableForDateRangeRequest(dto.AccomId, DateTime.Now.ToString(), DateTime.Now.AddYears(10).ToString())) 
+                throw new AccommodationNotAvailableException();
             AppAccommodation accommodation = await GetById(dto.AccomId);
             if (accommodation == null)
             {
@@ -66,6 +69,15 @@ namespace AccommodationService.Services
             accommodation.SpecialPrice = dto.NewPrice;
             accommodation.Occasions = dto.Occasions;
             await _repository.ReplaceOneAsync(accommodation);
+        }
+
+        private bool CreateIsAccommodationAvailableForDateRangeRequest(string accommodationId, string startDate, string endDate)
+        {
+            ReservationTimeFrameProto timeframe = new ReservationTimeFrameProto() { StartDate= startDate, EndDate = endDate};
+            IsAccommodationAvailableForDateRangeRequest request = new IsAccommodationAvailableForDateRangeRequest() { AccommodationId = accommodationId, TimeFrame = timeframe };
+            var channel = GrpcChannel.ForAddress("http://reservation_service:8080");
+            var client = new InternalReservationServiceRPC.InternalReservationServiceRPCClient(channel);
+            return client.IsAccommodationAvailableForDateRange(request).IsAvailable;
         }
 
         public List<AccommodationSearch> SearchAccommodations(SearchAccommodationsRequest request)
@@ -77,14 +89,16 @@ namespace AccommodationService.Services
                                                                        && a.Address.StreetAddress.ToLower().Contains(request.StreetAddress.ToLower());
             
             List<AppAccommodation> accommodations = _repository.FilterBy(filterExpression).ToList();
-            List<AccommodationSearch> accommodationsSearched = _mapper.Map<List<AccommodationSearch>>(accommodations);
+            List<AppAccommodation> dateRangeFiltered = accommodations
+                .Where(a => CreateIsAccommodationAvailableForDateRangeRequest(a.Id.ToString(), request.StartDate, request.EndDate)).ToList();
+            List<AccommodationSearch> accommodationsSearched = _mapper.Map<List<AccommodationSearch>>(dateRangeFiltered);
             accommodationsSearched.ForEach(accommodations => accommodations.PriceTotal = accommodations.BasePrice * request.NumberOfGuests);
             return accommodationsSearched;
         }
 
         public AccommodationForReservationView GetAccommodationForReservation(string accommodationId)
         {
-            _logger.LogInformation("Usao u metodu");
+            
             AppAccommodation accommodation = _repository.FindById(accommodationId);
             if (accommodation == null) throw new AccommodationNotFoundException();
             return _mapper.Map<AccommodationForReservationView>(accommodation);
@@ -96,6 +110,13 @@ namespace AccommodationService.Services
             if (accommodations.Count == 0) return new List<AccommodationForReservationView>();
             IEnumerable<AppAccommodation> accommodationViewsToReturn = accommodations.Where(accommodation => accommodationIds.Any(id => id.Equals(accommodation.Id.ToString())));
             return _mapper.Map<IEnumerable<AccommodationForReservationView>>(accommodationViewsToReturn);
+        }
+
+        public async Task<string> GetTypeOfResConfirmationForAccommodation(string accommodationId)
+        {
+            AppAccommodation accommodation = await _repository.FindByIdAsync(accommodationId);
+            if (accommodation == null) throw new AccommodationNotFoundException();
+            return accommodation.TypeOfReservationConfirmation;
         }
     }
 }

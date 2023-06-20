@@ -13,6 +13,16 @@ service ReservationServiceRPC{
         get: "/reservation/guest/active"
     };
   }
+  rpc GetAllForGuest(GetAllForGuestRequest) returns (GetAllForGuestResponse){
+    option (google.api.http) = {
+        get: "/reservation/guest"
+    };
+  }
+   rpc GetAllForHost(GetAllForHostRequest) returns (GetAllForHostResponse){
+    option (google.api.http) = {
+        get: "/reservation/host"
+    };
+  }
   rpc GetCancellationNumberForGuest(GetCancellationNumberForGuestRequest) returns (GetCancellationNumberForGuestResponse){
     option (google.api.http) = {
         get: "/reservation/guest/cancellation-number"
@@ -86,6 +96,7 @@ message ReservationView {
     string startDate = 6;
     string endDate = 7;
     int32 GuestCount = 8;
+    string status = 9;
 }
 
 message ReservationTimeFrame {
@@ -106,6 +117,22 @@ message GetActiveForGuestRequest{
 }
 
 message GetActiveForGuestResponse{
+    repeated ReservationView reservations = 1;
+}
+
+message GetAllForGuestRequest{
+    string guestId = 1;
+}
+
+message GetAllForHostRequest{
+    string hostId = 1;
+}
+
+message GetAllForGuestResponse{
+    repeated ReservationView reservations = 1;
+}
+
+message GetAllForHostResponse{
     repeated ReservationView reservations = 1;
 }
 

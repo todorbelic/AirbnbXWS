@@ -1,9 +1,10 @@
 ﻿syntax = "proto3";
-option go_package = "proto/reservation";
 
 service ReservationServiceRPC{
   rpc GetActiveForHost(GetActiveForHostRequest) returns (GetActiveForHostResponse);
   rpc GetActiveForGuest(GetActiveForGuestRequest) returns (GetActiveForGuestResponse);
+  rpc GetAllForGuest(GetAllForGuestRequest) returns (GetAllForGuestResponse);
+   rpc GetAllForHost(GetAllForHostRequest) returns (GetAllForHostResponse);
   rpc GetCancellationNumberForGuest(GetCancellationNumberForGuestRequest) returns (GetCancellationNumberForGuestResponse);
   rpc AcceptReservation(AcceptReservationRequest) returns (AcceptReservationResponse);
   rpc SendReservationRequest(SendReservationRequestRequest) returns (SendReservationRequestResponse);
@@ -12,26 +13,6 @@ service ReservationServiceRPC{
   rpc GetReservationRequestsForGuest(GetReservationRequestsForGuestRequest) returns (GetReservationRequestsForGuestResponse);
   rpc GetReservationRequestsForHost(GetReservationRequestsForHostRequest) returns (GetReservationRequestsForHostResponse);
   rpc DenyReservationRequest(DenyReservationRequestRequest) returns (DenyReservationRequestResponse);
-}
-
-enum ReservationStatusProto {
- PENDING = 0;
- ACTIVE = 1;
- CANCELLED = 2;
- DENIED = 3;
- FINISHED = 4;
- DELETED = 5;
-}
-
-message ReservationProto {
-  string id = 1;
-  string hostId = 2;
-  string guestId = 3;
-  string accommodationId = 4;
-  string startDate = 5;
-  string endDate = 6;
-  int32 guestCount = 7;
-  ReservationStatusProto reservationStatus = 8;
 }
 
 message ReservationRequest {
@@ -59,6 +40,7 @@ message ReservationView {
     string startDate = 6;
     string endDate = 7;
     int32 GuestCount = 8;
+    string status = 9;
 }
 
 message ReservationTimeFrame {
@@ -82,6 +64,22 @@ message GetActiveForGuestResponse{
     repeated ReservationView reservations = 1;
 }
 
+message GetAllForGuestRequest{
+    string guestId = 1;
+}
+
+message GetAllForHostRequest{
+    string hostId = 1;
+}
+
+message GetAllForGuestResponse{
+    repeated ReservationView reservations = 1;
+}
+
+message GetAllForHostResponse{
+    repeated ReservationView reservations = 1;
+}
+
 message GetCancellationNumberForGuestRequest{
     string guestId = 1;
 }
@@ -91,7 +89,7 @@ message GetCancellationNumberForGuestResponse{
 }
 
 message AcceptReservationRequest{
-    string id = 1;
+    string reservationId = 1;
 }
 
 message AcceptReservationResponse{
@@ -107,7 +105,7 @@ message SendReservationRequestResponse{
 }
 
 message DeleteReservationRequestRequest{
-    string requestId = 1;
+    string reservationId = 1;
 }
 
 message DeleteReservationRequestResponse{
@@ -139,14 +137,10 @@ message GetReservationRequestsForHostResponse{
 }
 
 message DenyReservationRequestRequest{
-    string requestId = 1;
+    string reservationId = 1;
 }
 
 message DenyReservationRequestResponse{
     bool response = 1;
 }
-
-
-
-
 
