@@ -21,9 +21,7 @@ namespace ReservationService.Mapper
                 .ForMember(
                  dest => dest.GuestCount, opt => opt.MapFrom(src => src.Request.GuestCount));
             CreateMap<Reservation, ReservationView>();
-            CreateMap<GetAccommodationViewForReservationResponse, ReservationView>()
-                .ForMember(dest => dest.AccommodationName, opt => opt.MapFrom(src => src.Accommodation.Name))
-                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Accommodation.Address));
+            
         }
     }
 }

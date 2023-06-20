@@ -49,10 +49,12 @@ namespace ReservationService.Service
         private GetAccommodationViewForReservationResponse createGetAccommodationForReservationRequest(string accommodationId)
         {
             GetAccommodationViewForReservationRequest request = new GetAccommodationViewForReservationRequest() { Id = accommodationId };
-            var channel = GrpcChannel.ForAddress("http://localhost:8080");
+            var channel = GrpcChannel.ForAddress("http://accommodation_service:8080");
             var client = new ReservationAccommodationRPC.ReservationAccommodationRPCClient(channel);
             return client.GetAccommodationViewForReservation(request);
         }
+
+        /*
 
         private GetAccommodationViewForMultipleReservationsResponse createGetAccommodationsForReservationsRequest(IEnumerable<string> accommodationIds)
         {
@@ -62,6 +64,7 @@ namespace ReservationService.Service
             var client = new ReservationAccommodationRPC.ReservationAccommodationRPCClient(channel);
             return client.GetAccommodationViewForMultipleReservations(request);
         }
+        */
 
         public async Task<bool> SendReservationRequest(SendReservationRequestRequest dto)
         {
@@ -167,15 +170,9 @@ namespace ReservationService.Service
             EnteredMethodLog("GetActiveForHost");
             IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.HostId.Equals(hostId) && r.Status.Equals("ACTIVE"));
             if (reservations == null) return new List<ReservationView>();
-            IEnumerable<string> accommodationIds = reservations.Select(c => c.AccommodationId).Distinct();
-            IEnumerable<ReservationView> views = _mapper.Map<IEnumerable<ReservationView>>(reservations);
-            GetAccommodationViewForMultipleReservationsResponse response = createGetAccommodationsForReservationsRequest(accommodationIds);
-            _logger.Log(LogLevel.Information, response.Accommodations.Count().ToString());
-            _logger.Log(LogLevel.Information, response.Accommodations.First().Name);
-            views = _mapper.Map<IEnumerable<ReservationView>>(response);
-            _logger.Log(LogLevel.Information, views.First().AccommodationName + " " + views.First().Address + " " + views.First().GuestCount);
-            return views;
+           return GetActiveForReservations(reservations);
         }
+
 
         //ovde ce mi isto trebati get accommodation by id ili tako nesto
         public IEnumerable<ReservationView> GetActiveForGuest(string guestId)
@@ -183,7 +180,23 @@ namespace ReservationService.Service
             EnteredMethodLog("GetActiveForGuest");
             IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.GuestId.Equals(guestId) && r.Status.Equals("ACTIVE"));
             if (reservations == null) return new List<ReservationView>();
-            return _mapper.Map<IEnumerable<ReservationView>>(reservations);
+            return GetActiveForReservations(reservations);
+        }
+
+        private IEnumerable<ReservationView> GetActiveForReservations(IEnumerable<Reservation> reservations)
+        {
+            List<ReservationView> active = new List<ReservationView>();
+            foreach (Reservation reservation in reservations)
+            {
+                ReservationView view = _mapper.Map<ReservationView>(reservation);
+                GetAccommodationViewForReservationResponse response = createGetAccommodationForReservationRequest(reservation.AccommodationId);
+                view.AccommodationName = response.Accommodation.Name;
+                view.Address = response.Accommodation.Address;
+                active.Add(view);
+
+
+            }
+            return active;
         }
 
         public async Task<bool> DeleteReservationRequest(string requestId)

@@ -3,6 +3,7 @@ using AccommodationService.Exceptions;
 using AccommodationService.Model;
 using AccommodationService.Repository;
 using AutoMapper;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace AccommodationService.Services
@@ -77,6 +78,7 @@ namespace AccommodationService.Services
 
         public AccommodationForReservationView GetAccommodationForReservation(string accommodationId)
         {
+            _logger.LogInformation("Usao u metodu");
             AppAccommodation accommodation = _repository.FindById(accommodationId);
             if (accommodation == null) throw new AccommodationNotFoundException();
             return _mapper.Map<AccommodationForReservationView>(accommodation);
@@ -86,19 +88,7 @@ namespace AccommodationService.Services
         {
             List<AppAccommodation> accommodations = _repository.AsQueryable().ToList();
             if (accommodations.Count == 0) return new List<AccommodationForReservationView>();
-            IEnumerable<AppAccommodation> accommodationViewsToReturn = new List<AppAccommodation>();
-            foreach (string id in accommodationIds)
-            {
-                foreach(AppAccommodation accommodation in accommodations)
-                {
-                    if (id.Equals(accommodation.Id))
-                    {
-                        _logger.Log(LogLevel.Information, "u if je uslo");
-                        accommodationViewsToReturn.Append(accommodation);
-                    }
-                }
-                _logger.Log(LogLevel.Information,accommodationViewsToReturn.Count().ToString());
-            }
+            IEnumerable<AppAccommodation> accommodationViewsToReturn = accommodations.Where(accommodation => accommodationIds.Any(id => id.Equals(accommodation.Id.ToString())));
             return _mapper.Map<IEnumerable<AccommodationForReservationView>>(accommodationViewsToReturn);
         }
     }
