@@ -38,8 +38,8 @@ namespace ReservationService.Service
             GetAccommodationViewForReservationResponse response = createGetAccommodationForReservationRequest(reservation.AccommodationId);
             view.AccommodationName = response.Accommodation.Name;
             view.Address = response.Accommodation.Address;
-            view.GuestName = "";
-            view.HostName = "";
+            view.GuestName = createGetFullNameByIdRequest(reservation.GuestId);
+            view.HostName = createGetFullNameByIdRequest(reservation.HostId);
             return view;
         }
 
@@ -158,7 +158,7 @@ namespace ReservationService.Service
             return true;
         }
 
-        //ovde ce mi isto trebati get accommodation by id ili tako nesto
+      
         public IEnumerable<ReservationView> GetActiveForHost(string hostId)
         {
             EnteredMethodLog("GetActiveForHost");
@@ -168,7 +168,7 @@ namespace ReservationService.Service
         }
 
 
-        //ovde ce mi isto trebati get accommodation by id ili tako nesto
+      
         public IEnumerable<ReservationView> GetActiveForGuest(string guestId)
         {
             EnteredMethodLog("GetActiveForGuest");
@@ -206,8 +206,7 @@ namespace ReservationService.Service
             return true;
         }
 
-        //ovde ce mi isto trebati get accommodation by id ili tako nesto
-        //i proveriti sta sse desi ako nijedan ne zadovoljava uslov sta vrati
+      
         public IEnumerable<ReservationView> GetReservationRequestsForGuest(string guestId)
         {
             EnteredMethodLog("GetReservationRequestsForGuest");
@@ -215,13 +214,13 @@ namespace ReservationService.Service
             return GetViewDTOForReservations(reservations);
         }
 
-        //ovde ce mi isto trebati get accommodation by id ili tako nesto
-        //isto proveri za uslov kao i za get active oba
+       
+        
         public IEnumerable<ReservationView> GetReservationRequestsForHost(string hostId)
         {
             EnteredMethodLog("GetReservationRequestsForHost");
             IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.HostId.Equals(hostId) && r.Status.Equals("PENDING"));
-            return _mapper.Map<IEnumerable<ReservationView>>(reservations);
+            return GetViewDTOForReservations(reservations);
         }
 
         public async Task<bool> DenyReservationRequest(string requestId)
