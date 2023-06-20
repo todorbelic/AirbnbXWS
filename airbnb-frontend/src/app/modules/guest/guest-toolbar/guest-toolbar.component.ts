@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-guest-toolbar',
+  selector: 'guest-toolbar',
   templateUrl: './guest-toolbar.component.html',
   styleUrls: ['./guest-toolbar.component.css']
 })
