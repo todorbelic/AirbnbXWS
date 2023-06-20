@@ -51,9 +51,10 @@ export class HostHomeComponent {
 
   }
   searchHostAccom(){
-    this.accomService.getForHost(this.authService.getId()).subscribe(res=>{
-      this.cards=res.accommodations
-    })
+    // this.accomService.getForHost(this.authService.getId()).subscribe(res=>{
+    //   this.cards=res.accommodations
+    // })
+    this.cards.filter(a=>a.hostId===this.authService.getId())
   }
   loadPictures(){
 
