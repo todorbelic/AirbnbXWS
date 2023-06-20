@@ -24,5 +24,11 @@ namespace AccommodationService.Handlers
         {
             return new GetAccommodationViewForReservationResponse() { Accommodation = _accommodationService.GetAccommodationForReservation(request.Id) };
         }
+
+        public override async Task<GetTypeOfReservationConfirmationResponse> GetTypeOfReservationConfirmation(GetTypeOfReservationConfirmationRequest request, ServerCallContext context)
+        {
+            string type = await  _accommodationService.GetTypeOfResConfirmationForAccommodation(request.AccommodationId);
+            return new GetTypeOfReservationConfirmationResponse() { TypeOfConfirmation= type };
+        }
     }
 }

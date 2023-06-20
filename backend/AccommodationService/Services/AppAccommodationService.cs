@@ -78,7 +78,7 @@ namespace AccommodationService.Services
 
         public AccommodationForReservationView GetAccommodationForReservation(string accommodationId)
         {
-            _logger.LogInformation("Usao u metodu");
+            
             AppAccommodation accommodation = _repository.FindById(accommodationId);
             if (accommodation == null) throw new AccommodationNotFoundException();
             return _mapper.Map<AccommodationForReservationView>(accommodation);
@@ -90,6 +90,13 @@ namespace AccommodationService.Services
             if (accommodations.Count == 0) return new List<AccommodationForReservationView>();
             IEnumerable<AppAccommodation> accommodationViewsToReturn = accommodations.Where(accommodation => accommodationIds.Any(id => id.Equals(accommodation.Id.ToString())));
             return _mapper.Map<IEnumerable<AccommodationForReservationView>>(accommodationViewsToReturn);
+        }
+
+        public async Task<string> GetTypeOfResConfirmationForAccommodation(string accommodationId)
+        {
+            AppAccommodation accommodation = await _repository.FindByIdAsync(accommodationId);
+            if (accommodation == null) throw new AccommodationNotFoundException();
+            return accommodation.TypeOfReservationConfirmation;
         }
     }
 }
