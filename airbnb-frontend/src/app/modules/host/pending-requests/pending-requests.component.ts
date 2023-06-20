@@ -12,7 +12,7 @@ import { ReservationView } from 'src/app/dto/reservation-view';
 })
 export class PendingRequestsComponent {
   public dataSource = new MatTableDataSource<ReservationView>();
-  public displayedColumns = ['AccommodationName','startDate','endDate','GuestCount','HostName','click'];
+  public displayedColumns = ['AccommodationName','startDate','endDate','GuestCount','HostName','status','click',];
   public reservations:ReservationView[]=[];
 
   constructor(private reservationService:ReservationService,private authService:AuthenticationService){
@@ -20,7 +20,7 @@ export class PendingRequestsComponent {
   }
 
   ngOnInit():void{
-    this.reservationService.getActiveForHost(this.authService.getId()).subscribe(res=>{
+    this.reservationService.getAllForHost(this.authService.getId()).subscribe(res=>{
       this.reservations=res.reservations;
       this.dataSource.data=this.reservations;
 

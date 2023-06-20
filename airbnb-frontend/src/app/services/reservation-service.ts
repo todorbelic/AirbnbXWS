@@ -22,12 +22,12 @@ export class ReservationService {
   constructor(private http: HttpClient) { }
 
 
-  getActiveForHost(id:any): Observable<any> {
-    return this.http.get(this.apiHost + '/host/active?hostId=' + id, { headers: this.headers })
+  getAllForHost(id:any): Observable<any> {
+    return this.http.get(this.apiHost + '/host?hostId=' + id, { headers: this.headers })
   }
 
-  getActiveForGuest(id:any): Observable<any> {
-    return this.http.get(this.apiHost + '/guest/active?guestId=' + id, { headers: this.headers })
+  getAllForGuest(id:any): Observable<any> {
+    return this.http.get(this.apiHost + '/guest?guestId=' + id, { headers: this.headers })
   }
 
   getCancellationNumberForGuest(id : any) : Observable<any>{

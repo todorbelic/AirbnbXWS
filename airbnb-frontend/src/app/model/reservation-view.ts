@@ -7,7 +7,7 @@ export class ReservationView {
     endDate:Date=new Date()
     GuestCount:number=0
     Address:string=''
-   // reservationStatus:any
+    status:any
 
     public constructor(obj? : ReservationView){
         if(obj){
@@ -19,7 +19,7 @@ export class ReservationView {
             this.endDate = obj.endDate
             this.GuestCount = obj.GuestCount
             this.Address=obj.Address
-            //this.reservationStatus = obj.reservationStatus
+            this.status = obj.status
         }
     }
 }
