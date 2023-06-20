@@ -12,5 +12,7 @@ namespace UserService.Service
         Task<string> LogInUserAsync(Credentials dto);
         Task<User> GetCurrentUser(string id);
         Task UpdateUser(User userDto);
+
+        Task<string> GetFullNameById(string id);
     }
 }

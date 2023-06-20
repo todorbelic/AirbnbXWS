@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
 using Grpc.Net.Client;
-using ReservationService.DTO;
 using ReservationService.Model;
 using ReservationService.Repository;
-using Grpc.Net.Client;
-using System.Data;
 
 namespace ReservationService.Service
 {
@@ -54,17 +51,14 @@ namespace ReservationService.Service
             return client.GetAccommodationViewForReservation(request);
         }
 
-        /*
-
-        private GetAccommodationViewForMultipleReservationsResponse createGetAccommodationsForReservationsRequest(IEnumerable<string> accommodationIds)
+        private string createGetFullNameByIdRequest(string userId)
         {
-            GetAccommodationViewForMultipleReservationsRequest request = new GetAccommodationViewForMultipleReservationsRequest();
-            request.Ids.AddRange(accommodationIds);
-            var channel = GrpcChannel.ForAddress("http://accommodation_service:8080");
-            var client = new ReservationAccommodationRPC.ReservationAccommodationRPCClient(channel);
-            return client.GetAccommodationViewForMultipleReservations(request);
+            GetNameByIdRequest request = new GetNameByIdRequest() { Id = userId };
+            var channel = GrpcChannel.ForAddress("http://user_service:8080");
+            var client = new ReservationUserRPC.ReservationUserRPCClient(channel);
+            return client.GetNameById(request).FullName;
         }
-        */
+
 
         public async Task<bool> SendReservationRequest(SendReservationRequestRequest dto)
         {
@@ -192,6 +186,8 @@ namespace ReservationService.Service
                 GetAccommodationViewForReservationResponse response = createGetAccommodationForReservationRequest(reservation.AccommodationId);
                 view.AccommodationName = response.Accommodation.Name;
                 view.Address = response.Accommodation.Address;
+                view.HostName = createGetFullNameByIdRequest(reservation.HostId);
+                view.GuestName = createGetFullNameByIdRequest(reservation.GuestId);
                 active.Add(view);
 
 

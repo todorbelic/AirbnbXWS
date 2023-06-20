@@ -139,5 +139,15 @@ namespace UserService.Service
             }
             return _mapper.Map<User>(user);
         }
+
+        public async Task<string> GetFullNameById(string id)
+        {
+            var user = await GetById(id);
+            if (user == null)
+            {
+                throw new UserNotFoundException();
+            }
+            return user.FirstName + " " + user.LastName;
+        }
     }
 }

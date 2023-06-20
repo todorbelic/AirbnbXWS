@@ -1,0 +1,14 @@
+﻿syntax = "proto3";
+
+    service ReservationUserRPC{
+        rpc GetNameById (GetNameByIdRequest) returns (GetNameByIdResponse);
+    }
+
+    message GetNameByIdRequest{
+        string id = 1;
+    }
+
+    message GetNameByIdResponse{
+        string fullName = 1;
+    }
+
