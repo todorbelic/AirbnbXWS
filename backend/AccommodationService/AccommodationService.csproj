@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   
+
   <ItemGroup>
 	<Protobuf Include="Protos\AccommodationService.proto" GrpcServices="Server" />
   </ItemGroup>
@@ -17,6 +18,9 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Protobuf Include="Protos\ReservationAccommodation.proto" GrpcServices="Server" />
+	</ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="Protos\InternalReservationService.proto" GrpcServices="Client" />
 	</ItemGroup>
 
   <ItemGroup>

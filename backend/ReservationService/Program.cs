@@ -43,6 +43,7 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapGrpcService<ReservationHandler>();
     endpoints.MapGrpcService<InternalReservationHandler>();
+    endpoints.MapGrpcService<ReservationRatingHandler>();
 });
 
 app.Run();

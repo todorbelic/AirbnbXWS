@@ -1,0 +1,25 @@
+﻿syntax = "proto3";
+option go_package = "proto/reservationRating";
+   
+service ReservationRatingServiceRPC{
+	 rpc CanGuestRateHost(CanGuestRateHostRequest) returns (CanGuestRateHostResponse);
+	 rpc CanGuestRateAccommodation(CanGuestRateAccommodationRequest) returns (CanGuestRateAccommodationResponse);
+}
+
+message CanGuestRateHostRequest{
+    string guestId = 1;
+    string hostId = 2;
+}
+
+message CanGuestRateHostResponse{
+    bool response = 1;
+}
+
+message CanGuestRateAccommodationRequest{
+     string accommodationId = 1;
+     string guestId = 2;
+}
+
+message CanGuestRateAccommodationResponse{
+     bool response = 1;
+}

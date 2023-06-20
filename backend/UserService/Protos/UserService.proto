@@ -7,6 +7,7 @@ service UserServiceRPC{
   rpc EditUserProfile(EditUserProfileRequest) returns (EditUserProfileResponse);
   rpc Register(RegisterRequest) returns (RegisterResponse);
   rpc LogIn(LogInRequest) returns (LogInResponse);
+  rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse);
 }
 
 message Credentials {
@@ -38,6 +39,7 @@ message User {
   string username = 5;
   string password = 6;
   string role = 7;
+  bool isFeatured = 8;
 }
 
 message DeleteUserRequest {
@@ -79,3 +81,11 @@ message LogInRequest {
 message LogInResponse {
   string accessToken = 1;
 }
+
+message ChangePasswordRequest {
+	string userId =1;
+	string oldPassword = 2;
+	string newPassword = 3;
+}
+
+message ChangePasswordResponse {}

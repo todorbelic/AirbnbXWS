@@ -7,6 +7,8 @@ using UserService.Repository;
 using UserService.Model;
 using UserService.Settings;
 using UserService.Exceptions;
+using MongoDB.Driver.Core.Operations;
+using Grpc.Net.Client;
 
 namespace UserService.Service
 {
@@ -25,7 +27,38 @@ namespace UserService.Service
             _configuration = configuration;
         }
 
-        public async Task<AppUser> GetById(string id) => await _userRepository.FindByIdAsync(id);
+        public async Task<AppUser> GetById(string id)
+        {
+            AppUser user = await _userRepository.FindByIdAsync(id);
+            if(user == null) throw new UserNotFoundException();
+            if (user.Role.Equals("HOST")) user.IsFeatured = IsHostFeaturedInApp(id);
+            return user;
+        }  
+
+
+        private bool IsHostFeaturedInApp(string hostId)
+        {
+            return CreateIsHostFeaturedRequest(hostId) && CreateGetHostRatingRequest(hostId) > 4.7;
+        }
+
+        private bool CreateIsHostFeaturedRequest(string hostId)
+        {
+           
+            IsHostFeaturedRequest request = new IsHostFeaturedRequest() { HostId = hostId };
+            var channel = GrpcChannel.ForAddress("http://reservation_service:8080");
+            var client = new InternalReservationServiceRPC.InternalReservationServiceRPCClient(channel);
+            return client.IsHostFeatured(request).IsFeatured;
+        }
+
+        private double CreateGetHostRatingRequest(string hostId)
+        {
+
+            GetRatingsForHostRequest request = new GetRatingsForHostRequest() { HostId = hostId };
+            var channel = GrpcChannel.ForAddress("http://review_service:8080");
+            var client = new RatingServiceRPC.RatingServiceRPCClient(channel);
+            return client.GetRatingsForHost(request).AverageRating;
+        }
+
         public List<AppUser> Get() => _userRepository.AsQueryable().ToList();
 
         public async Task<bool> CheckIfUsernameExistsAsync(string username)
@@ -140,9 +173,29 @@ namespace UserService.Service
             return _mapper.Map<User>(user);
         }
 
+
+        public async Task ChangePassword(ChangePasswordRequest request)
+        {
+            var user = await GetById(request.UserId);
+            if (user == null)
+            {
+                throw new UserNotFoundException();
+            }
+
+            if (BCrypt.Net.BCrypt.Verify(request.OldPassword, user.Password))
+            {
+                user.Password = HashPassword(request.NewPassword);
+                await _userRepository.ReplaceOneAsync(user);
+            }
+            else
+            {
+                throw new IncorrectCredentialsException();
+            }
+        }
         public async Task<string> GetFullNameById(string id)
         {
             var user = await GetById(id);
+
             if (user == null)
             {
                 throw new UserNotFoundException();

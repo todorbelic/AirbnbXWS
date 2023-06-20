@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 using System.Text;
 using UserService.Handlers;
 using UserService.Mapper;
@@ -44,6 +45,14 @@ builder.Services.AddSingleton<IMongoDbSettings>(serviceProvider =>
 builder.Services.Configure<MongoDbSettings>(configuration.GetSection("MongoDbSettings"));
 
 builder.Services.AddAuthorization();
+Log.Logger = new LoggerConfiguration().WriteTo
+       .Console()
+       .CreateLogger();
+
+builder.Services.AddLogging(loggingBuilder =>
+{
+    loggingBuilder.AddSerilog(dispose: true);
+});
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 var app = builder.Build();
 
@@ -55,7 +64,9 @@ app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapGrpcService<UserHandler>();
+    endpoints.MapGrpcService<UserRatingHandler>();
     endpoints.MapGrpcService<ReservationUserHandler>();
+
 });
 
 // Configure the HTTP request pipeline.

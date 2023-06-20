@@ -1,4 +1,5 @@
-﻿using AccommodationService.Model;
+﻿using AccommodationService.DTO;
+using AccommodationService.Model;
 
 namespace AccommodationService.Services
 {
@@ -12,6 +13,8 @@ namespace AccommodationService.Services
 
         Task UpdateAccommodation(Accommodation dto);
         List<AccommodationSearch> SearchAccommodations(SearchAccommodationsRequest request);
+        Task<Accommodation> GetAccommodation(string id);
+        Task UpdateAccomDetails(UpdateAccomDetailsDTO dto);
 
         AccommodationForReservationView GetAccommodationForReservation(string accommodationId);
         IEnumerable<AccommodationForReservationView> getAccommodationsForReservations(IEnumerable<string> accommodationIds);

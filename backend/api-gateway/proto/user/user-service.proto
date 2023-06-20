@@ -10,7 +10,7 @@ service UserServiceRPC{
   }
   rpc GetCurrentUser(GetCurrentUserRequest) returns (GetCurrentUserResponse) {
     option (google.api.http) = {
-      get: "/user"
+      get: "/user/{id}"
     };
   }
   rpc EditUserProfile(EditUserProfileRequest) returns (EditUserProfileResponse) {
@@ -28,6 +28,12 @@ service UserServiceRPC{
   rpc LogIn(LogInRequest) returns (LogInResponse) {
     option (google.api.http) = {
       post: "/user/login"
+      body: "*"
+    };
+  }
+  rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse) {
+    option (google.api.http) = {
+      post: "/user/changePassword"
       body: "*"
     };
   }
@@ -63,6 +69,7 @@ message User {
   string username = 5;
   string password = 6;
   string role = 7;
+  bool isFeatured = 8;
 }
 
 message DeleteUserRequest {
@@ -104,3 +111,11 @@ message LogInRequest {
 message LogInResponse {
   string accessToken = 1;
 }
+
+message ChangePasswordRequest {
+	string userId =1;
+	string oldPassword = 2;
+	string newPassword = 3;
+}
+
+message ChangePasswordResponse {}

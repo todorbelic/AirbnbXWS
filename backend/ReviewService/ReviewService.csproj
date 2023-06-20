@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,12 +8,21 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
+  
+
   <ItemGroup>
     <Protobuf Include="Protos\ReviewService.proto" GrpcServices="Server" />
         <Protobuf Include="Protos\ReviewNotification.proto" GrpcServices="Client" />
 
   </ItemGroup>
 
+	<ItemGroup>
+		<Protobuf Include="Protos\UserRating.proto" GrpcServices="Client" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="Protos\InternalReservationService.proto" GrpcServices="Client" />
+	</ItemGroup>
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
@@ -21,6 +30,10 @@
     <PackageReference Include="Serilog" Version="3.0.0" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Middleware\" />
   </ItemGroup>
 
 </Project>

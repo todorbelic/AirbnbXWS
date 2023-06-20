@@ -50,8 +50,8 @@ namespace ReservationService.Service
             GetAccommodationViewForReservationResponse response = createGetAccommodationForReservationRequest(reservation.AccommodationId);
             view.AccommodationName = response.Accommodation.Name;
             view.Address = response.Accommodation.Address;
-            view.GuestName = "";
-            view.HostName = "";
+            view.GuestName = createGetFullNameByIdRequest(reservation.GuestId);
+            view.HostName = createGetFullNameByIdRequest(reservation.HostId);
             return view;
         }
 
@@ -166,6 +166,7 @@ namespace ReservationService.Service
         public bool IsAccommodationAvailableForDateRange(IsAccommodationAvailableForDateRangeRequest request)
         {
             EnteredMethodLog("IsAccommodationAvailableForDateRange");
+            _logger.LogInformation(request.AccommodationId + " " + request.TimeFrame.EndDate.ToString() + " " + request.TimeFrame.StartDate.ToString());
             DateTime start = DateTime.Parse(request.TimeFrame.StartDate);
             DateTime end = DateTime.Parse(request.TimeFrame.EndDate);
             IEnumerable<Reservation> reservationsForAccommodation = _repository.FilterBy(r => r.AccommodationId.Equals(request.AccommodationId) 
@@ -178,7 +179,7 @@ namespace ReservationService.Service
             return true;
         }
 
-        //ovde ce mi isto trebati get accommodation by id ili tako nesto
+      
         public IEnumerable<ReservationView> GetActiveForHost(string hostId)
         {
             EnteredMethodLog("GetActiveForHost");
@@ -187,12 +188,29 @@ namespace ReservationService.Service
            return GetViewDTOForReservations(reservations);
         }
 
-
         //ovde ce mi isto trebati get accommodation by id ili tako nesto
+        public IEnumerable<ReservationView> GetAllForHost(string hostId)
+        {
+            EnteredMethodLog("GetAllForHost");
+            IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.HostId.Equals(hostId));
+            if (reservations == null) return new List<ReservationView>();
+            return GetViewDTOForReservations(reservations);
+        }
+
+
+      
         public IEnumerable<ReservationView> GetActiveForGuest(string guestId)
         {
             EnteredMethodLog("GetActiveForGuest");
             IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.GuestId.Equals(guestId) && r.Status.Equals("ACTIVE"));
+            if (reservations == null) return new List<ReservationView>();
+            return GetViewDTOForReservations(reservations);
+        }
+
+        public IEnumerable<ReservationView> GetAllForGuest(string guestId)
+        {
+            EnteredMethodLog("GetAllForGuest");
+            IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.GuestId.Equals(guestId));
             if (reservations == null) return new List<ReservationView>();
             return GetViewDTOForReservations(reservations);
         }
@@ -226,8 +244,7 @@ namespace ReservationService.Service
             return true;
         }
 
-        //ovde ce mi isto trebati get accommodation by id ili tako nesto
-        //i proveriti sta sse desi ako nijedan ne zadovoljava uslov sta vrati
+      
         public IEnumerable<ReservationView> GetReservationRequestsForGuest(string guestId)
         {
             EnteredMethodLog("GetReservationRequestsForGuest");
@@ -235,13 +252,13 @@ namespace ReservationService.Service
             return GetViewDTOForReservations(reservations);
         }
 
-        //ovde ce mi isto trebati get accommodation by id ili tako nesto
-        //isto proveri za uslov kao i za get active oba
+       
+        
         public IEnumerable<ReservationView> GetReservationRequestsForHost(string hostId)
         {
             EnteredMethodLog("GetReservationRequestsForHost");
             IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.HostId.Equals(hostId) && r.Status.Equals("PENDING"));
-            return _mapper.Map<IEnumerable<ReservationView>>(reservations);
+            return GetViewDTOForReservations(reservations);
         }
 
         public async Task<bool> DenyReservationRequest(string requestId)

@@ -21,6 +21,8 @@ const _ = grpc.SupportPackageIsVersion7
 const (
 	ReservationServiceRPC_GetActiveForHost_FullMethodName               = "/ReservationServiceRPC/GetActiveForHost"
 	ReservationServiceRPC_GetActiveForGuest_FullMethodName              = "/ReservationServiceRPC/GetActiveForGuest"
+	ReservationServiceRPC_GetAllForGuest_FullMethodName                 = "/ReservationServiceRPC/GetAllForGuest"
+	ReservationServiceRPC_GetAllForHost_FullMethodName                  = "/ReservationServiceRPC/GetAllForHost"
 	ReservationServiceRPC_GetCancellationNumberForGuest_FullMethodName  = "/ReservationServiceRPC/GetCancellationNumberForGuest"
 	ReservationServiceRPC_AcceptReservation_FullMethodName              = "/ReservationServiceRPC/AcceptReservation"
 	ReservationServiceRPC_SendReservationRequest_FullMethodName         = "/ReservationServiceRPC/SendReservationRequest"
@@ -37,6 +39,8 @@ const (
 type ReservationServiceRPCClient interface {
 	GetActiveForHost(ctx context.Context, in *GetActiveForHostRequest, opts ...grpc.CallOption) (*GetActiveForHostResponse, error)
 	GetActiveForGuest(ctx context.Context, in *GetActiveForGuestRequest, opts ...grpc.CallOption) (*GetActiveForGuestResponse, error)
+	GetAllForGuest(ctx context.Context, in *GetAllForGuestRequest, opts ...grpc.CallOption) (*GetAllForGuestResponse, error)
+	GetAllForHost(ctx context.Context, in *GetAllForHostRequest, opts ...grpc.CallOption) (*GetAllForHostResponse, error)
 	GetCancellationNumberForGuest(ctx context.Context, in *GetCancellationNumberForGuestRequest, opts ...grpc.CallOption) (*GetCancellationNumberForGuestResponse, error)
 	AcceptReservation(ctx context.Context, in *AcceptReservationRequest, opts ...grpc.CallOption) (*AcceptReservationResponse, error)
 	SendReservationRequest(ctx context.Context, in *SendReservationRequestRequest, opts ...grpc.CallOption) (*SendReservationRequestResponse, error)
@@ -67,6 +71,24 @@ func (c *reservationServiceRPCClient) GetActiveForHost(ctx context.Context, in *
 func (c *reservationServiceRPCClient) GetActiveForGuest(ctx context.Context, in *GetActiveForGuestRequest, opts ...grpc.CallOption) (*GetActiveForGuestResponse, error) {
 	out := new(GetActiveForGuestResponse)
 	err := c.cc.Invoke(ctx, ReservationServiceRPC_GetActiveForGuest_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *reservationServiceRPCClient) GetAllForGuest(ctx context.Context, in *GetAllForGuestRequest, opts ...grpc.CallOption) (*GetAllForGuestResponse, error) {
+	out := new(GetAllForGuestResponse)
+	err := c.cc.Invoke(ctx, ReservationServiceRPC_GetAllForGuest_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *reservationServiceRPCClient) GetAllForHost(ctx context.Context, in *GetAllForHostRequest, opts ...grpc.CallOption) (*GetAllForHostResponse, error) {
+	out := new(GetAllForHostResponse)
+	err := c.cc.Invoke(ctx, ReservationServiceRPC_GetAllForHost_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -151,6 +173,8 @@ func (c *reservationServiceRPCClient) DenyReservationRequest(ctx context.Context
 type ReservationServiceRPCServer interface {
 	GetActiveForHost(context.Context, *GetActiveForHostRequest) (*GetActiveForHostResponse, error)
 	GetActiveForGuest(context.Context, *GetActiveForGuestRequest) (*GetActiveForGuestResponse, error)
+	GetAllForGuest(context.Context, *GetAllForGuestRequest) (*GetAllForGuestResponse, error)
+	GetAllForHost(context.Context, *GetAllForHostRequest) (*GetAllForHostResponse, error)
 	GetCancellationNumberForGuest(context.Context, *GetCancellationNumberForGuestRequest) (*GetCancellationNumberForGuestResponse, error)
 	AcceptReservation(context.Context, *AcceptReservationRequest) (*AcceptReservationResponse, error)
 	SendReservationRequest(context.Context, *SendReservationRequestRequest) (*SendReservationRequestResponse, error)
@@ -171,6 +195,12 @@ func (UnimplementedReservationServiceRPCServer) GetActiveForHost(context.Context
 }
 func (UnimplementedReservationServiceRPCServer) GetActiveForGuest(context.Context, *GetActiveForGuestRequest) (*GetActiveForGuestResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetActiveForGuest not implemented")
+}
+func (UnimplementedReservationServiceRPCServer) GetAllForGuest(context.Context, *GetAllForGuestRequest) (*GetAllForGuestResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllForGuest not implemented")
+}
+func (UnimplementedReservationServiceRPCServer) GetAllForHost(context.Context, *GetAllForHostRequest) (*GetAllForHostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllForHost not implemented")
 }
 func (UnimplementedReservationServiceRPCServer) GetCancellationNumberForGuest(context.Context, *GetCancellationNumberForGuestRequest) (*GetCancellationNumberForGuestResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCancellationNumberForGuest not implemented")
@@ -241,6 +271,42 @@ func _ReservationServiceRPC_GetActiveForGuest_Handler(srv interface{}, ctx conte
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ReservationServiceRPCServer).GetActiveForGuest(ctx, req.(*GetActiveForGuestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReservationServiceRPC_GetAllForGuest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllForGuestRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReservationServiceRPCServer).GetAllForGuest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ReservationServiceRPC_GetAllForGuest_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReservationServiceRPCServer).GetAllForGuest(ctx, req.(*GetAllForGuestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReservationServiceRPC_GetAllForHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllForHostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReservationServiceRPCServer).GetAllForHost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ReservationServiceRPC_GetAllForHost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReservationServiceRPCServer).GetAllForHost(ctx, req.(*GetAllForHostRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -403,6 +469,14 @@ var ReservationServiceRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetActiveForGuest",
 			Handler:    _ReservationServiceRPC_GetActiveForGuest_Handler,
+		},
+		{
+			MethodName: "GetAllForGuest",
+			Handler:    _ReservationServiceRPC_GetAllForGuest_Handler,
+		},
+		{
+			MethodName: "GetAllForHost",
+			Handler:    _ReservationServiceRPC_GetAllForHost_Handler,
 		},
 		{
 			MethodName: "GetCancellationNumberForGuest",
