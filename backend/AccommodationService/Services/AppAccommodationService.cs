@@ -35,6 +35,12 @@ namespace AccommodationService.Services
 
         public async Task<AppAccommodation> GetById(string id) => await _repository.FindByIdAsync(id);
 
+        public async Task<Accommodation> GetAccommodation(string id)
+        {
+            AppAccommodation accommodation = await _repository.FindByIdAsync(id);
+            return _mapper.Map<Accommodation>(accommodation);
+        }
+
         public async Task UpdateAccommodation(Accommodation dto)
         {
             AppAccommodation accommodation = await GetById(dto.Id);

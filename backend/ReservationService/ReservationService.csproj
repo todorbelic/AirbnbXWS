@@ -13,6 +13,9 @@
 	<ItemGroup>
 		<Protobuf Include="Protos\InternalReservationService.proto" GrpcServices="Server" />
 	</ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="Protos\ReservationRating.proto" GrpcServices="Server" />
+	</ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />

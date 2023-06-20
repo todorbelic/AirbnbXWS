@@ -139,5 +139,22 @@ namespace UserService.Service
             }
             return _mapper.Map<User>(user);
         }
+
+        public async Task ChangePassword(ChangePasswordRequest request)
+        {
+            var user = await GetById(request.UserId);
+            if (user == null)
+            {
+                throw new UserNotFoundException();
+            }
+            if(BCrypt.Net.BCrypt.Verify(request.OldPassword, user.Password))
+            {
+                user.Password = HashPassword(request.NewPassword);
+                await _userRepository.ReplaceOneAsync(user);
+            }else
+            {
+                throw new IncorrectCredentialsException();
+            }
+        }
     }
 }

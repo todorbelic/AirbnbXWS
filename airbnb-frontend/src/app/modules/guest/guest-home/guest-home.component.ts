@@ -4,6 +4,7 @@ import { AccommodationSearchRequest } from 'src/app/dto/accommodation-search-req
 import { AccomService } from 'src/app/services/accom-service';
 import { AuthenticationService } from 'src/app/services/authentication-service';
 import { LeaveRatingComponent } from '../leave-rating/leave-rating.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-guest-home',
@@ -26,7 +27,7 @@ export class GuestHomeComponent {
   public cards:any[]=[]
   public showSearched = false;
   public accSearch: AccommodationSearchRequest = new AccommodationSearchRequest();
-  constructor(private accomService:AccomService, public dialog: MatDialog, private authService: AuthenticationService) { 
+  constructor(private accomService:AccomService, public dialog: MatDialog, private authService: AuthenticationService, private router: Router) { 
   }
 
   ngOnInit(): void {
@@ -60,6 +61,10 @@ export class GuestHomeComponent {
         guestId: this.authService.getId()
       }
     })
+  }
+
+  accommodationDetails(id: any) {
+    this.router.navigate(['guest-accommodation-details/' + id]);
   }
 
   loadPictures(){

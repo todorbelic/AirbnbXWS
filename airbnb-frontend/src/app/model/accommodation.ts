@@ -9,6 +9,7 @@ export class Accommodation {
     minGuests:number=0
     maxGuests:number=0
     basePrice:number=0
+    hostId: string = ''
     paymentOption:any
 
 

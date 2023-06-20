@@ -10,6 +10,8 @@ namespace UserService.Mapper
             CreateMap<RegistrationUser, AppUser>().ReverseMap();
             CreateMap<Address, UserAddress>().ReverseMap();
             CreateMap<User, AppUser>().ReverseMap();
+            CreateMap<User, UserRating>().ReverseMap();
+            CreateMap<UserAddress, UserRatingAddress>();
         }
     }
 }

@@ -1,0 +1,61 @@
+.comment-section {
+    width: 80%; /* Adjust the width value as needed */
+  }
+  
+  .comment-section h3 {
+    text-align: center;
+  }
+  
+  .comment-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .comment-section li {
+    margin-bottom: 20px;
+  }
+  
+  .comment-section p {
+    margin: 0;
+  }
+
+
+  .horizontal-flex{
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+}
+
+.vertical-flex{
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+ }
+  
+ .card {
+     flex: 0 1 calc(25% - 1em);
+ }
+
+ @media screen and (min-width: 40em) {
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+ 
+    .card {
+        flex: 1 0 500px;
+        box-sizing: border-box;
+        margin: 1rem .25em;   }
+}
+
+@media screen and (min-width: 60em) {
+    .card {
+        flex: 0 1 calc(25% - 1em);
+    }
+}

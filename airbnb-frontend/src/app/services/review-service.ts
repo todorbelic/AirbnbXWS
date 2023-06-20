@@ -22,4 +22,19 @@ export class ReviewService {
     return this.http.post(this.apiHost + 'review/host', {guestId: guestId, hostId: hostId, rating: rating}, { headers: this.headers })
   }
 
+  getAccommodationRatings(id: any) : Observable<any> {
+    return this.http.get(this.apiHost + 'review/accommodation/' +id, { headers: this.headers })
+  }
+
+  getHostRatings(id: any) : Observable<any> {
+    return this.http.get(this.apiHost + 'review/host/' +id, { headers: this.headers })
+  }
+
+  deleteAccommodationRating(userId: any, accId: any) {
+    return this.http.post(this.apiHost + 'review/accommodation/delete' ,{guestId:userId, accommodationId: accId}, { headers: this.headers })
+  }
+
+  deleteHostRating(userId: any, accId: any) {
+    return this.http.post(this.apiHost + 'review/host/delete' ,{guestId:userId, accommodationId: accId}, { headers: this.headers })
+  }
 }

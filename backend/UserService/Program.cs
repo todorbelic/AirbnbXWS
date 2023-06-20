@@ -55,6 +55,7 @@ app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapGrpcService<UserHandler>();
+    endpoints.MapGrpcService<UserRatingHandler>();
 });
 
 // Configure the HTTP request pipeline.
