@@ -84,6 +84,7 @@ export class NewAccommComponent {
 
 
   addAccommodation(){
+    console.log(this.createAccommodationRequest)
     if(this.validateNumberOfGuests()){
       //console.log(this.createAccommodationRequest)
       this.createAccommodationRequest.request.pictures = this.base64Images

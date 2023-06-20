@@ -170,7 +170,7 @@ namespace ReservationService.Service
             DateTime start = DateTime.Parse(request.TimeFrame.StartDate);
             DateTime end = DateTime.Parse(request.TimeFrame.EndDate);
             IEnumerable<Reservation> reservationsForAccommodation = _repository.FilterBy(r => r.AccommodationId.Equals(request.AccommodationId) 
-            && r.Status.Equals("ACTIVE") && DateTime.Compare(r.StartDate, DateTime.Now)>=0);
+            && r.Status.Equals("ACTIVE"));
             if (!reservationsForAccommodation.Any()) return true;
             foreach(Reservation res in reservationsForAccommodation)
             {
