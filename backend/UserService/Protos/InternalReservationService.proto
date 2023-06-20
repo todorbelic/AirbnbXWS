@@ -1,0 +1,67 @@
+﻿syntax = "proto3";
+option go_package = "proto/reservation";
+   
+service InternalReservationServiceRPC{
+	 rpc CanGuestRateHost(CanGuestRateHostRequest) returns (CanGuestRateHostResponse);
+	 rpc CanGuestRateAccommodation(CanGuestRateAccommodationRequest) returns (CanGuestRateAccommodationResponse);
+     rpc DoesGuestHaveActiveReservations(DoesGuestHaveActiveReservationsRequest) returns (DoesGuestHaveActiveReservationsResponse);
+     rpc DoesHostHaveActiveReservations(DoesHostHaveActiveReservationsRequest) returns (DoesHostHaveActiveReservationsResponse);
+	 rpc IsAccommodationAvailableForDateRange(IsAccommodationAvailableForDateRangeRequest) returns (IsAccommodationAvailableForDateRangeResponse);
+     rpc IsHostFeatured(IsHostFeaturedRequest) returns (IsHostFeaturedResponse); 
+}
+
+message ReservationTimeFrameProto {
+  string startDate = 6;
+  string endDate = 7;
+}
+
+message CanGuestRateHostRequest{
+    string guestId = 1;
+    string hostId = 2;
+}
+
+message CanGuestRateHostResponse{
+    bool response = 1;
+}
+
+message CanGuestRateAccommodationRequest{
+     string accommodationId = 1;
+     string guestId = 2;
+}
+
+message CanGuestRateAccommodationResponse{
+     bool response = 1;
+}
+
+message DoesGuestHaveActiveReservationsRequest{
+    string guestId = 1;
+}
+
+message DoesGuestHaveActiveReservationsResponse{
+    bool response = 1;
+}
+
+message DoesHostHaveActiveReservationsRequest{
+    string hostId = 1;
+}
+
+message DoesHostHaveActiveReservationsResponse{
+    bool response = 1;
+}
+
+message IsAccommodationAvailableForDateRangeRequest{
+    string accommodationId = 1;
+    ReservationTimeFrameProto timeFrame = 2;
+}
+
+message IsAccommodationAvailableForDateRangeResponse{
+    bool isAvailable = 1;
+}
+
+message IsHostFeaturedRequest{
+    string hostId = 1;
+}
+
+message IsHostFeaturedResponse{
+    bool isFeatured = 1;
+}

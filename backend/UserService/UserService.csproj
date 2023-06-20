@@ -8,11 +8,18 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
+  
   <ItemGroup>
-    <Protobuf Include="Protos\UserService.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\InternalReservationService.proto" GrpcServices="Client" />
   </ItemGroup>
 	<ItemGroup>
 		<Protobuf Include="Protos\ReservationUser.proto" GrpcServices="Server" />
+	</ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="Protos\UserService.proto" GrpcServices="Server" />
+	</ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="Protos\ReviewService.proto" GrpcServices="Client" />
 	</ItemGroup>
 
   <ItemGroup>

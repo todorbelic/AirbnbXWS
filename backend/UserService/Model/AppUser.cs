@@ -15,7 +15,7 @@ namespace UserService.Model
         public string Password { get; set; }
         public Address? Address { get; set; }
         public string Role { get; set; }
-
+        public bool IsFeatured { get; set; }
         
     }
 }
