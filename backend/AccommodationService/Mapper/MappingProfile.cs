@@ -11,6 +11,9 @@ namespace AccommodationService.Mapper
             CreateMap<AppAddress, Address>().ReverseMap();
             CreateMap<Accommodation, AppAccommodation>().ReverseMap();
             CreateMap<AppAccommodation, AccommodationSearch>().ReverseMap();
+            CreateMap<AppAccommodation, AccommodationForReservationView>()
+                .ForMember(dest => dest.Address, opt => opt
+                .MapFrom(src => src.Address.StreetAddress + ", " + src.Address.City + ", " + src.Address.Country));
         }
     }
 }

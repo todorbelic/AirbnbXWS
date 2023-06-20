@@ -15,7 +15,7 @@ service ReservationServiceRPC{
   }
   rpc GetCancellationNumberForGuest(GetCancellationNumberForGuestRequest) returns (GetCancellationNumberForGuestResponse){
     option (google.api.http) = {
-        post: "/reservation/guest/cancellation-number"
+        get: "/reservation/guest/cancellation-number"
     };
   }
   rpc AcceptReservation(AcceptReservationRequest) returns (AcceptReservationResponse){
@@ -59,26 +59,6 @@ service ReservationServiceRPC{
     };
   }
 
-}
-
-enum ReservationStatusProto {
- PENDING = 0;
- ACTIVE = 1;
- CANCELLED = 2;
- DENIED = 3;
- FINISHED = 4;
- DELETED = 5;
-}
-
-message ReservationProto {
-  string id = 1;
-  string hostId = 2;
-  string guestId = 3;
-  string accommodationId = 4;
-  string startDate = 5;
-  string endDate = 6;
-  int32 guestCount = 7;
-  ReservationStatusProto reservationStatus = 8;
 }
 
 message ReservationRequest {
@@ -138,7 +118,7 @@ message GetCancellationNumberForGuestResponse{
 }
 
 message AcceptReservationRequest{
-    string id = 1;
+    string reservationId = 1;
 }
 
 message AcceptReservationResponse{
@@ -154,7 +134,7 @@ message SendReservationRequestResponse{
 }
 
 message DeleteReservationRequestRequest{
-    string requestId = 1;
+    string reservationId = 1;
 }
 
 message DeleteReservationRequestResponse{
@@ -186,7 +166,7 @@ message GetReservationRequestsForHostResponse{
 }
 
 message DenyReservationRequestRequest{
-    string requestId = 1;
+    string reservationId = 1;
 }
 
 message DenyReservationRequestResponse{

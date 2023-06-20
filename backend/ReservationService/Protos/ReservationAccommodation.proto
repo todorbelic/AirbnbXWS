@@ -1,0 +1,29 @@
+﻿syntax = "proto3";
+
+service ReservationAccommodationRPC
+{
+	rpc GetAccommodationViewForReservation (GetAccommodationViewForReservationRequest) returns (GetAccommodationViewForReservationResponse);
+	rpc GetAccommodationViewForMultipleReservations (GetAccommodationViewForMultipleReservationsRequest) returns (GetAccommodationViewForMultipleReservationsResponse);
+}
+
+message AccommodationForReservationView{
+  string id = 1;
+  string name = 2;
+  string address = 3;
+}
+
+message GetAccommodationViewForReservationRequest{
+	string id = 1;
+}
+
+message GetAccommodationViewForReservationResponse{
+	AccommodationForReservationView accommodation = 1;
+}
+
+message GetAccommodationViewForMultipleReservationsRequest{
+	repeated string ids = 1;
+}
+
+message GetAccommodationViewForMultipleReservationsResponse{
+	repeated AccommodationForReservationView accommodations = 1;
+}

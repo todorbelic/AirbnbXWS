@@ -1,0 +1,33 @@
+<guest-toolbar></guest-toolbar>
+<div class="certificates-main-div">
+    <table mat-table [dataSource]="dataSource" class="all-certificates-table">
+        <ng-container matColumnDef="issuer">
+            <th mat-header-cell *matHeaderCellDef class="cell-center-header">Issuer</th>
+            <td mat-cell *matCellDef="let certificate" class="clickable cell-center">{{certificate.issuer.firstName}} {{certificate.issuer.lastName}}</td>
+        </ng-container>
+        <ng-container matColumnDef="subject" >
+            <th mat-header-cell *matHeaderCellDef class="cell-center-header">Subject</th>
+            <td mat-cell *matCellDef="let certificate" class="clickable cell-center">{{certificate.subject.firstName}} {{certificate.subject.lastName}}</td>
+        </ng-container>
+        <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef class="cell-center-header">Certificate type</th>
+            <td mat-cell *matCellDef="let certificate" class="clickable cell-center">{{certificate.certificateRole}}</td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef class="cell-center-header">Certificate status</th>
+            <td mat-cell *matCellDef="let certificate" class="clickable cell-center">{{certificate.certificateStatus}}</td>
+        </ng-container>
+        <ng-container matColumnDef="expiration">
+            <th mat-header-cell *matHeaderCellDef class="cell-center-header">Expiration date</th>
+            <td mat-cell *matCellDef="let certificate" class="clickable cell-center">{{certificate.expiringDate}}</td>
+        </ng-container>
+        <ng-container matColumnDef="revoke-button">
+            <th mat-header-cell *matHeaderCellDef class="cell-center-header"></th>
+            <td mat-cell *matCellDef="let certificate" class="cell-center">
+            <button mat-raised-button [disabled]="(certificate.certificateStatus ==='REVOKED')" (click)="revokeCertificate(certificate)">Revoke</button>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
