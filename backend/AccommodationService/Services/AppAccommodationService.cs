@@ -3,6 +3,7 @@ using AccommodationService.Exceptions;
 using AccommodationService.Model;
 using AccommodationService.Repository;
 using AutoMapper;
+using Grpc.Net.Client;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -52,6 +53,7 @@ namespace AccommodationService.Services
 
         public async Task UpdateAccomDetails(UpdateAccomDetailsDTO dto)
         {
+            if (!CreateIsAccommodationAvailableForDateRangeRequest(dto.AccomId)) throw new AccommodationNotAvailableException();
             AppAccommodation accommodation = await GetById(dto.AccomId);
             if (accommodation == null)
             {
@@ -60,6 +62,16 @@ namespace AccommodationService.Services
             accommodation.SpecialPrice = dto.NewPrice;
             accommodation.Occasions = dto.Occasions;
             await _repository.ReplaceOneAsync(accommodation);
+        }
+
+        private bool CreateIsAccommodationAvailableForDateRangeRequest(string accommodationId)
+        {
+            DateTime current = DateTime.Now;
+            ReservationTimeFrameProto timeframe = new ReservationTimeFrameProto() { StartDate= current.ToString(), EndDate = current.AddYears(10).ToString()};
+            IsAccommodationAvailableForDateRangeRequest request = new IsAccommodationAvailableForDateRangeRequest() { AccommodationId = accommodationId, TimeFrame = timeframe };
+            var channel = GrpcChannel.ForAddress("http://reservation_service:8080");
+            var client = new InternalReservationServiceRPC.InternalReservationServiceRPCClient(channel);
+            return client.IsAccommodationAvailableForDateRange(request).IsAvailable;
         }
 
         public List<AccommodationSearch> SearchAccommodations(SearchAccommodationsRequest request)

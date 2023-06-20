@@ -61,6 +61,7 @@ message AccommodationRequest{
   int32 maxGuests = 7;
   int32 basePrice = 8;
   PaymentOption paymentOption = 9;
+  string typeOfReservationConfirmation = 10;
 }
 
 message DeleteAllForHostRequest{

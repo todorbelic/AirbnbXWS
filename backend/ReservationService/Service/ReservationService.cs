@@ -153,6 +153,7 @@ namespace ReservationService.Service
         public bool IsAccommodationAvailableForDateRange(IsAccommodationAvailableForDateRangeRequest request)
         {
             EnteredMethodLog("IsAccommodationAvailableForDateRange");
+            _logger.LogInformation(request.AccommodationId + " " + request.TimeFrame.EndDate.ToString() + " " + request.TimeFrame.StartDate.ToString());
             DateTime start = DateTime.Parse(request.TimeFrame.StartDate);
             DateTime end = DateTime.Parse(request.TimeFrame.EndDate);
             IEnumerable<Reservation> reservationsForAccommodation = _repository.FilterBy(r => r.AccommodationId.Equals(request.AccommodationId) 
