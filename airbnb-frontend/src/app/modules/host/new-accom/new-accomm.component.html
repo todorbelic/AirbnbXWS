@@ -1,3 +1,4 @@
+<app-host-toolbar></app-host-toolbar>
 <body>
     <div class="create-page">
         <mat-card class="create-mat-card">
@@ -45,8 +46,15 @@
                             placeholder="Benefits*"
                             required=""
                             (change)="onChange($event)">
-                </ng-select>                 
+                </ng-select>              
                 <input type="file" reqired (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg" />  
+                <mat-form-field>
+                    <mat-label>Reservation confirmation type</mat-label>
+                    <mat-select [(value)]="createAccommodationRequest.request.typeOfReservationConfirmation">
+                      <mat-option value = "MANUAL">Manual </mat-option>
+                      <mat-option value = "AUTOMATIC">Automatic</mat-option>
+                    </mat-select>
+                  </mat-form-field>
             </mat-card-content>
             <mat-card-actions class="create-mat-card-buttons">
                 <button mat-raised-button (click)="addAccommodation()">Add new accommodation</button>
