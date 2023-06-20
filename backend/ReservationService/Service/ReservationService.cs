@@ -63,6 +63,14 @@ namespace ReservationService.Service
             return client.GetAccommodationViewForReservation(request);
         }
 
+        private string CreateGetTypeOfConfirmationRequest(string accommodationId)
+        {
+            GetTypeOfReservationConfirmationRequest request = new GetTypeOfReservationConfirmationRequest() { AccommodationId = accommodationId };
+            var channel = GrpcChannel.ForAddress("http://accommodation_service:8080");
+            var client = new ReservationAccommodationRPC.ReservationAccommodationRPCClient(channel);
+            return client.GetTypeOfReservationConfirmation(request).TypeOfConfirmation;
+        }
+
         private string createGetFullNameByIdRequest(string userId)
         {
             GetNameByIdRequest request = new GetNameByIdRequest() { Id = userId };
@@ -83,9 +91,8 @@ namespace ReservationService.Service
             {
                 if (Overlaps(dtoReservation.StartDate, dtoReservation.EndDate, reservation.StartDate, reservation.EndDate)) return false;
             }
-            //ovde provera za smestaj ako automatski prihvata rezervacije odmah status = active, ako ne, status = pending
-            //if (true) dtoReservation.Status = "ACTIVE";
-            dtoReservation.Status = "PENDING";
+            if (CreateGetTypeOfConfirmationRequest(dto.Request.AccommodationId).Equals("MANUAL")) dtoReservation.Status = "PENDING";
+            else dtoReservation.Status = "ACTIVE";
             await _repository.InsertOneAsync(dtoReservation);
             _logger.Log(LogLevel.Information, "Finished sending reservation request");
             return true;

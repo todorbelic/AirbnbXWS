@@ -15,5 +15,7 @@ namespace AccommodationService.Services
 
         AccommodationForReservationView GetAccommodationForReservation(string accommodationId);
         IEnumerable<AccommodationForReservationView> getAccommodationsForReservations(IEnumerable<string> accommodationIds);
+        
+        Task<string> GetTypeOfResConfirmationForAccommodation(string accommodationId);
     }
 }

@@ -25,6 +25,8 @@ namespace AccommodationService.Model
 
         public int BasePrice { get; set; }
         public int SpecialPrice { get; set; }
+
+        public string TypeOfReservationConfirmation { get; set; }
         public List<List<int>> Occasions { get; set; }
     }
 }
