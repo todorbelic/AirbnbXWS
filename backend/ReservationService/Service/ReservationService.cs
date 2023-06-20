@@ -164,7 +164,7 @@ namespace ReservationService.Service
             EnteredMethodLog("GetActiveForHost");
             IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.HostId.Equals(hostId) && r.Status.Equals("ACTIVE"));
             if (reservations == null) return new List<ReservationView>();
-           return GetActiveForReservations(reservations);
+           return GetViewDTOForReservations(reservations);
         }
 
 
@@ -174,10 +174,10 @@ namespace ReservationService.Service
             EnteredMethodLog("GetActiveForGuest");
             IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.GuestId.Equals(guestId) && r.Status.Equals("ACTIVE"));
             if (reservations == null) return new List<ReservationView>();
-            return GetActiveForReservations(reservations);
+            return GetViewDTOForReservations(reservations);
         }
 
-        private IEnumerable<ReservationView> GetActiveForReservations(IEnumerable<Reservation> reservations)
+        private IEnumerable<ReservationView> GetViewDTOForReservations(IEnumerable<Reservation> reservations)
         {
             List<ReservationView> active = new List<ReservationView>();
             foreach (Reservation reservation in reservations)
@@ -212,7 +212,7 @@ namespace ReservationService.Service
         {
             EnteredMethodLog("GetReservationRequestsForGuest");
             IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.GuestId.Equals(guestId) && r.Status.Equals("PENDING"));
-            return _mapper.Map<IEnumerable<ReservationView>>(reservations);
+            return GetViewDTOForReservations(reservations);
         }
 
         //ovde ce mi isto trebati get accommodation by id ili tako nesto
