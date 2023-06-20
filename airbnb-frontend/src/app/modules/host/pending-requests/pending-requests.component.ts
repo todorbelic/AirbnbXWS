@@ -60,7 +60,7 @@ export class PendingRequestsComponent {
 
   acceptReservation(res:ReservationView){
     var acceptedRes=new AcceptReservationRequest()
-    acceptedRes.id=res.ReservationId;
+    acceptedRes.requestId=res.ReservationId;
     this.reservationService.acceptReservation(acceptedRes).subscribe(res=>{
       this.toast.success("Reservation accepted!")
     })

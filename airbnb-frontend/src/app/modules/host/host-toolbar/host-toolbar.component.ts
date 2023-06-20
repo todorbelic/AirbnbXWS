@@ -32,4 +32,8 @@ export class HostToolbarComponent {
   NewAccommodationClick(){
     this.router.navigate(['/host-add-accommodation']);
   }
+
+  UpdateAccom(){
+    this.router.navigate(['/host-update-accom']);
+  }
 }

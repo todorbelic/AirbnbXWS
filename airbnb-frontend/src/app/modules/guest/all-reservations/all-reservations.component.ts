@@ -11,7 +11,7 @@ import { AcceptReservationRequest } from 'src/app/dto/accept-reservation-request
 import { DenyReservationRequest } from 'src/app/dto/deny-reservation-request';
 import { ReservationView } from 'src/app/dto/reservation-view';
 import { GuestReservationDialogComponent } from '../guest-reservation-dialog/guest-reservation-dialog.component';
-
+import { CancelReservationRequest } from 'src/app/dto/cancel-reservation-request';
 @Component({
   selector: 'app-all-reservations',
   templateUrl: './all-reservations.component.html',
@@ -34,7 +34,7 @@ export class AllReservationsComponent {
   }
 
   public dataSource = new MatTableDataSource<ReservationView>();
-  public displayedColumns = ['AccommodationName','GuestName','GuestCount','startDate','endDate','status','click'];
+  public displayedColumns = ['AccommodationName','HostName','GuestCount','startDate','endDate','status','click'];
   public reservations:ReservationView[]=[];
 
   public isAccepted:boolean=false;
@@ -50,9 +50,9 @@ export class AllReservationsComponent {
       console.log(result)
         if(result.isResolved){
           if(result.isAccepted){
-            this.acceptReservation(res);
+            this.denyReservation(res)
           } else {
-              this.denyReservation(res)
+              
           }
         }
       this.isResolved = false
@@ -60,18 +60,11 @@ export class AllReservationsComponent {
     )
   }
 
-  acceptReservation(res:ReservationView){
-    var acceptedRes=new AcceptReservationRequest()
-    acceptedRes.id=res.ReservationId;
-    this.reservationService.acceptReservation(acceptedRes).subscribe(res=>{
-      this.toast.success("Reservation accepted!")
-    })
-  }
 
   denyReservation(res:ReservationView){
-      var deniedRes=new DenyReservationRequest()
-      deniedRes.requestId=res.ReservationId;
-      this.reservationService.denyReservation(deniedRes).subscribe(res=>{
+      var cancelledRes=new CancelReservationRequest()
+      cancelledRes.reservationId=res.ReservationId;
+      this.reservationService.cancelReservation(cancelledRes).subscribe(res=>{
         this.toast.success("Reservation denied!")
       })
     
