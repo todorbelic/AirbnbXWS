@@ -27,7 +27,7 @@ export class ReservationService {
   }
 
   getActiveForGuest(id:any): Observable<any> {
-    return this.http.get(this.apiHost + '/guest/active/' + id, { headers: this.headers })
+    return this.http.get(this.apiHost + '/guest/active?guestId=' + id, { headers: this.headers })
   }
 
   getCancellationNumberForGuest(id : any) : Observable<any>{

@@ -11,15 +11,18 @@ import { ReservationService } from 'src/app/services/reservation-service';
 })
 export class AllReservationsComponent {
   public dataSource = new MatTableDataSource<Reservation>();
-  public displayedColumns = ['host','accom','startDate','endDate','guestCount','status'];
+  public displayedColumns = ['accom','startDate','endDate','guestCount','host','status'];
+  public reservations:Reservation[]=[];
 
   constructor(private reservationService:ReservationService,private authService:AuthenticationService){
 
   }
 
-  ngOnInit(){
+  ngOnInit():void{
     this.reservationService.getActiveForGuest(this.authService.getId()).subscribe(res=>{
-      this.dataSource=res;
+      this.reservations=res;
+      this.dataSource.data=this.reservations;
+      console.log(res)
     });
   }
 
