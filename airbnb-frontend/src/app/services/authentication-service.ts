@@ -35,6 +35,10 @@ export class AuthenticationService {
     return this.http.get(this.apiHost + 'user/' + localStorage.getItem('userId'), {headers: this.headers});
   }
 
+  getUser(id: any): Observable<any> {
+    return this.http.get(this.apiHost + 'user/' + id, {headers: this.headers});
+  }
+
   updateUser(user: UserProfileData) : Observable<any> {
     return this.http.post(this.apiHost + 'user', {user: user}, {headers: this.headers});
 

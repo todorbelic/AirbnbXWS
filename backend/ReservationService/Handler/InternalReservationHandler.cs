@@ -12,17 +12,6 @@ namespace ReservationService.Handler
             _reservationService = reservationService;
         }
         
-        public override async Task<CanGuestRateHostResponse> CanGuestRateHost(CanGuestRateHostRequest request, ServerCallContext context)
-        {
-            bool response = _reservationService.CanGuestRateHost(request.GuestId, request.HostId);
-            return new CanGuestRateHostResponse() { Response = response };
-        }
-
-        public override async Task<CanGuestRateAccommodationResponse> CanGuestRateAccommodation(CanGuestRateAccommodationRequest request, ServerCallContext context)
-        {
-             bool response = _reservationService.CanGuestRateAccommodation(request.GuestId, request.AccommodationId);
-           return new CanGuestRateAccommodationResponse() { Response = response };
-        }
 
         public override async Task<IsAccommodationAvailableForDateRangeResponse> IsAccommodationAvailableForDateRange(IsAccommodationAvailableForDateRangeRequest request, ServerCallContext context)
         {

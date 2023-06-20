@@ -33,9 +33,9 @@ namespace AccommodationService.Handlers
             });
         }
 
-        public override Task<GetAccommodationResponse> GetAccommodation(GetAccommodationRequest request, ServerCallContext context)
+        public override async Task<GetAccommodationResponse> GetAccommodation(GetAccommodationRequest request, ServerCallContext context)
         {
-            return base.GetAccommodation(request, context);
+            return new GetAccommodationResponse() { Accommodation = await _accommodationService.GetAccommodation(request.Id) };
         }
 
         public override Task<SearchAccommodationsResponse> SearchAccommodations(SearchAccommodationsRequest request, ServerCallContext context)

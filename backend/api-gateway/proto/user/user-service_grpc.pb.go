@@ -24,6 +24,7 @@ const (
 	UserServiceRPC_EditUserProfile_FullMethodName = "/UserServiceRPC/EditUserProfile"
 	UserServiceRPC_Register_FullMethodName        = "/UserServiceRPC/Register"
 	UserServiceRPC_LogIn_FullMethodName           = "/UserServiceRPC/LogIn"
+	UserServiceRPC_ChangePassword_FullMethodName  = "/UserServiceRPC/ChangePassword"
 )
 
 // UserServiceRPCClient is the client API for UserServiceRPC service.
@@ -35,6 +36,7 @@ type UserServiceRPCClient interface {
 	EditUserProfile(ctx context.Context, in *EditUserProfileRequest, opts ...grpc.CallOption) (*EditUserProfileResponse, error)
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	LogIn(ctx context.Context, in *LogInRequest, opts ...grpc.CallOption) (*LogInResponse, error)
+	ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*ChangePasswordResponse, error)
 }
 
 type userServiceRPCClient struct {
@@ -90,6 +92,15 @@ func (c *userServiceRPCClient) LogIn(ctx context.Context, in *LogInRequest, opts
 	return out, nil
 }
 
+func (c *userServiceRPCClient) ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*ChangePasswordResponse, error) {
+	out := new(ChangePasswordResponse)
+	err := c.cc.Invoke(ctx, UserServiceRPC_ChangePassword_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceRPCServer is the server API for UserServiceRPC service.
 // All implementations must embed UnimplementedUserServiceRPCServer
 // for forward compatibility
@@ -99,6 +110,7 @@ type UserServiceRPCServer interface {
 	EditUserProfile(context.Context, *EditUserProfileRequest) (*EditUserProfileResponse, error)
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	LogIn(context.Context, *LogInRequest) (*LogInResponse, error)
+	ChangePassword(context.Context, *ChangePasswordRequest) (*ChangePasswordResponse, error)
 	mustEmbedUnimplementedUserServiceRPCServer()
 }
 
@@ -120,6 +132,9 @@ func (UnimplementedUserServiceRPCServer) Register(context.Context, *RegisterRequ
 }
 func (UnimplementedUserServiceRPCServer) LogIn(context.Context, *LogInRequest) (*LogInResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LogIn not implemented")
+}
+func (UnimplementedUserServiceRPCServer) ChangePassword(context.Context, *ChangePasswordRequest) (*ChangePasswordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangePassword not implemented")
 }
 func (UnimplementedUserServiceRPCServer) mustEmbedUnimplementedUserServiceRPCServer() {}
 
@@ -224,6 +239,24 @@ func _UserServiceRPC_LogIn_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserServiceRPC_ChangePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangePasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceRPCServer).ChangePassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserServiceRPC_ChangePassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceRPCServer).ChangePassword(ctx, req.(*ChangePasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserServiceRPC_ServiceDesc is the grpc.ServiceDesc for UserServiceRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -250,6 +283,10 @@ var UserServiceRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "LogIn",
 			Handler:    _UserServiceRPC_LogIn_Handler,
+		},
+		{
+			MethodName: "ChangePassword",
+			Handler:    _UserServiceRPC_ChangePassword_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -2,8 +2,6 @@
 option go_package = "proto/reservation";
    
 service InternalReservationServiceRPC{
-	 rpc CanGuestRateHost(CanGuestRateHostRequest) returns (CanGuestRateHostResponse);
-	 rpc CanGuestRateAccommodation(CanGuestRateAccommodationRequest) returns (CanGuestRateAccommodationResponse);
      rpc DoesGuestHaveActiveReservations(DoesGuestHaveActiveReservationsRequest) returns (DoesGuestHaveActiveReservationsResponse);
      rpc DoesHostHaveActiveReservations(DoesHostHaveActiveReservationsRequest) returns (DoesHostHaveActiveReservationsResponse);
 	 rpc IsAccommodationAvailableForDateRange(IsAccommodationAvailableForDateRangeRequest) returns (IsAccommodationAvailableForDateRangeResponse);
@@ -13,24 +11,6 @@ service InternalReservationServiceRPC{
 message ReservationTimeFrameProto {
   string startDate = 6;
   string endDate = 7;
-}
-
-message CanGuestRateHostRequest{
-    string guestId = 1;
-    string hostId = 2;
-}
-
-message CanGuestRateHostResponse{
-    bool response = 1;
-}
-
-message CanGuestRateAccommodationRequest{
-     string accommodationId = 1;
-     string guestId = 2;
-}
-
-message CanGuestRateAccommodationResponse{
-     bool response = 1;
 }
 
 message DoesGuestHaveActiveReservationsRequest{

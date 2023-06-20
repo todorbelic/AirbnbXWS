@@ -8,15 +8,17 @@ import { GuestProfileComponent } from "./guest-profile/guest-profile.component";
 import { GuestEditProfileComponent } from "./guest-edit-profile/guest-edit-profile.component";
 import { GuestHomeComponent } from "./guest-home/guest-home.component";
 import { GuestToolbarComponent } from "./guest-toolbar/guest-toolbar.component";
-import { ReservationRequestsComponent } from './reservation-requests/reservation-requests.component';
+//import { ReservationRequestsComponent } from './reservation-requests/reservation-requests.component';
 import { AllReservationsComponent } from './all-reservations/all-reservations.component';
 import { LeaveRatingComponent } from './leave-rating/leave-rating.component';
+import { AccommodationDetailsComponent } from './accommodation-details/accommodation-details.component';
 
 
 const routes: Routes = [
     { path: 'guest-profile', component: GuestProfileComponent },
     { path: 'guest-edit', component: GuestEditProfileComponent},
     { path:'guest-home', component: GuestHomeComponent},
+    { path: 'guest-accommodation-details/:id', component: AccommodationDetailsComponent}
   ];
   
   
@@ -27,9 +29,10 @@ const routes: Routes = [
         GuestProfileComponent,
         GuestHomeComponent,
         GuestToolbarComponent,
-        ReservationRequestsComponent,
+        //ReservationRequestsComponent,
         AllReservationsComponent,
         LeaveRatingComponent,
+        AccommodationDetailsComponent,
   ],
     imports: [
       CommonModule,

@@ -11,6 +11,11 @@
   <ItemGroup>
     <Protobuf Include="Protos\UserService.proto" GrpcServices="Server" />
   </ItemGroup>
+	
+    <ItemGroup>
+	    <Protobuf Include="Protos\UserRating.proto" GrpcServices="Server" />
+    </ItemGroup>
+	
 	<ItemGroup>
 		<Protobuf Include="Protos\ReservationUser.proto" GrpcServices="Server" />
 	</ItemGroup>

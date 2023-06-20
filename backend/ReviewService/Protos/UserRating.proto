@@ -1,0 +1,34 @@
+﻿syntax = "proto3";
+option go_package = "proto/userRating";
+
+service UserRatingRPC{
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+}
+
+
+message UserRatingAddress {
+  string id = 1;
+  string country = 2;
+  string city = 3;
+  string streetAddress = 4;
+}
+
+
+message UserRating {
+  string id = 1;
+  string firstName = 2;
+  string lastName = 3;
+  UserRatingAddress address = 4;
+  string username = 5;
+  string password = 6;
+  string role = 7;
+}
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message GetUserResponse {
+  UserRating user = 1;
+}
+

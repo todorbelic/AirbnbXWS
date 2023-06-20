@@ -25,6 +25,10 @@ export class AccomService {
     return this.http.get(this.apiHost + 'api/accommodation/host' + id, { headers: this.headers })
   }
 
+  getById(id:any) : Observable<any>{
+    return this.http.get(this.apiHost + 'accommodation/' + id, {headers: this.headers});
+  }
+
   getSearched(search: AccommodationSearchRequest) : Observable<any> {
     return this.http.post(this.apiHost + 'accommodation/search', search,  {headers: this.headers})
   }
