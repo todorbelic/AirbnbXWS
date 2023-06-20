@@ -48,6 +48,7 @@ app.UseEndpoints(endpoints =>
     {
         endpoints.MapGrpcService<GreeterService>();
         endpoints.MapGrpcService<AccommodationHandler>();
+        endpoints.MapGrpcService<AccommodationReservationHandler>();
     }
 );
 

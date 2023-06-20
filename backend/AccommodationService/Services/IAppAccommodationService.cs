@@ -14,6 +14,6 @@ namespace AccommodationService.Services
         List<AccommodationSearch> SearchAccommodations(SearchAccommodationsRequest request);
 
         AccommodationForReservationView GetAccommodationForReservation(string accommodationId);
-        List<AccommodationForReservationView> getAccommodationsForReservations(List<string> accommodationIds);
+        IEnumerable<AccommodationForReservationView> getAccommodationsForReservations(IEnumerable<string> accommodationIds);
     }
 }
