@@ -14,6 +14,7 @@ import { HostUpdateAccomComponent } from './host-update-accom/host-update-accom.
 import {MatListModule} from '@angular/material/list';
 import { NewAccommComponent } from './new-accom/new-accomm.component';
 import { NgSelectModule } from "@ng-select/ng-select";
+import { PendingRequestsComponent } from './pending-requests/pending-requests.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
         HostToolbarComponent,
         HostUpdateAccomComponent,
         NewAccommComponent,
+        PendingRequestsComponent,
   ],
     imports: [
       CommonModule,

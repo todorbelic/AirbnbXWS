@@ -13,5 +13,7 @@ namespace AccommodationService.Services
         Task UpdateAccommodation(Accommodation dto);
         List<AccommodationSearch> SearchAccommodations(SearchAccommodationsRequest request);
         Task<Accommodation> GetAccommodation(string id);
+        AccommodationForReservationView GetAccommodationForReservation(string accommodationId);
+        IEnumerable<AccommodationForReservationView> getAccommodationsForReservations(IEnumerable<string> accommodationIds);
     }
 }

@@ -3,6 +3,7 @@ using AccommodationService.Exceptions;
 using AccommodationService.Model;
 using AccommodationService.Repository;
 using AutoMapper;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace AccommodationService.Services
@@ -12,12 +13,14 @@ namespace AccommodationService.Services
         private readonly IConfiguration _configuration;
         private readonly IRepository<AppAccommodation> _repository;
         private readonly IMapper _mapper;
+        private readonly ILogger<IAppAccommodationService> _logger;
 
-        public AppAccommodationService(IConfiguration configuration, IRepository<AppAccommodation> repository, IMapper mapper)
+        public AppAccommodationService(IConfiguration configuration, IRepository<AppAccommodation> repository, IMapper mapper, ILogger<IAppAccommodationService> logger)
         {
             _configuration = configuration;
             _repository = repository;
             _mapper = mapper;
+            _logger = logger;
         }
         public async Task AddAccommodation(AccommodationRequest dto)
         {
@@ -77,6 +80,22 @@ namespace AccommodationService.Services
             List<AccommodationSearch> accommodationsSearched = _mapper.Map<List<AccommodationSearch>>(accommodations);
             accommodationsSearched.ForEach(accommodations => accommodations.PriceTotal = accommodations.BasePrice * request.NumberOfGuests);
             return accommodationsSearched;
+        }
+
+        public AccommodationForReservationView GetAccommodationForReservation(string accommodationId)
+        {
+            _logger.LogInformation("Usao u metodu");
+            AppAccommodation accommodation = _repository.FindById(accommodationId);
+            if (accommodation == null) throw new AccommodationNotFoundException();
+            return _mapper.Map<AccommodationForReservationView>(accommodation);
+        }
+
+        public IEnumerable<AccommodationForReservationView> getAccommodationsForReservations(IEnumerable<string> accommodationIds)
+        {
+            List<AppAccommodation> accommodations = _repository.AsQueryable().ToList();
+            if (accommodations.Count == 0) return new List<AccommodationForReservationView>();
+            IEnumerable<AppAccommodation> accommodationViewsToReturn = accommodations.Where(accommodation => accommodationIds.Any(id => id.Equals(accommodation.Id.ToString())));
+            return _mapper.Map<IEnumerable<AccommodationForReservationView>>(accommodationViewsToReturn);
         }
     }
 }

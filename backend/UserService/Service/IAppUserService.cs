@@ -13,5 +13,7 @@ namespace UserService.Service
         Task<User> GetCurrentUser(string id);
         Task UpdateUser(User userDto);
         Task ChangePassword(ChangePasswordRequest request);
+        Task<string> GetFullNameById(string id);
+
     }
 }
