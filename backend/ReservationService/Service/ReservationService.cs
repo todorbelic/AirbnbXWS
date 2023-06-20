@@ -175,12 +175,29 @@ namespace ReservationService.Service
            return GetViewDTOForReservations(reservations);
         }
 
+        //ovde ce mi isto trebati get accommodation by id ili tako nesto
+        public IEnumerable<ReservationView> GetAllForHost(string hostId)
+        {
+            EnteredMethodLog("GetAllForHost");
+            IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.HostId.Equals(hostId));
+            if (reservations == null) return new List<ReservationView>();
+            return GetViewDTOForReservations(reservations);
+        }
+
 
         //ovde ce mi isto trebati get accommodation by id ili tako nesto
         public IEnumerable<ReservationView> GetActiveForGuest(string guestId)
         {
             EnteredMethodLog("GetActiveForGuest");
             IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.GuestId.Equals(guestId) && r.Status.Equals("ACTIVE"));
+            if (reservations == null) return new List<ReservationView>();
+            return GetViewDTOForReservations(reservations);
+        }
+
+        public IEnumerable<ReservationView> GetAllForGuest(string guestId)
+        {
+            EnteredMethodLog("GetAllForGuest");
+            IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.GuestId.Equals(guestId));
             if (reservations == null) return new List<ReservationView>();
             return GetViewDTOForReservations(reservations);
         }
