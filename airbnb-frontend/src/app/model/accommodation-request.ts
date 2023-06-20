@@ -10,6 +10,7 @@ export class AccommodationRequest {
     maxGuests: number = 0
     basePrice: number = 0
     paymentOption: any
+    typeOfReservationConfirmation = ''
 
     public constructor(obj? : AccommodationRequest){
         if(obj){
@@ -22,6 +23,7 @@ export class AccommodationRequest {
             this.maxGuests = obj.maxGuests
             this.basePrice = obj.basePrice
             this.paymentOption = obj.paymentOption
+            this.typeOfReservationConfirmation = obj.typeOfReservationConfirmation
         }
     }
 }

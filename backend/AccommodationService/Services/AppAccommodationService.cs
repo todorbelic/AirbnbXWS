@@ -59,8 +59,10 @@ namespace AccommodationService.Services
 
         public async Task UpdateAccomDetails(UpdateAccomDetailsDTO dto)
         {
+            _logger.LogInformation(dto.AccomId + " ");
             if (!CreateIsAccommodationAvailableForDateRangeRequest(dto.AccomId, DateTime.Now.ToString(), DateTime.Now.AddYears(10).ToString())) 
                 throw new AccommodationNotAvailableException();
+            _logger.LogInformation("slobodan je pa nastavlja sa izmenom");
             AppAccommodation accommodation = await GetById(dto.AccomId);
             if (accommodation == null)
             {
@@ -88,9 +90,12 @@ namespace AccommodationService.Services
                                                                        && a.Address.City.ToLower().Contains(request.City.ToLower())
                                                                        && a.Address.StreetAddress.ToLower().Contains(request.StreetAddress.ToLower());
             
+            _logger.Log(LogLevel.Information, request.City);
             List<AppAccommodation> accommodations = _repository.FilterBy(filterExpression).ToList();
+            _logger.Log(LogLevel.Information, accommodations.First().Name);
             List<AppAccommodation> dateRangeFiltered = accommodations
                 .Where(a => CreateIsAccommodationAvailableForDateRangeRequest(a.Id.ToString(), request.StartDate, request.EndDate)).ToList();
+            _logger.Log(LogLevel.Information, dateRangeFiltered.Count().ToString());
             List<AccommodationSearch> accommodationsSearched = _mapper.Map<List<AccommodationSearch>>(dateRangeFiltered);
             accommodationsSearched.ForEach(accommodations => accommodations.PriceTotal = accommodations.BasePrice * request.NumberOfGuests);
             return accommodationsSearched;

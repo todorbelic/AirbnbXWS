@@ -17,6 +17,7 @@ service AccommodationServiceRPC{
   rpc ModifyAccommodation(ModifyAccommodationRequest) returns (ModifyAccommodationResponse){
      option (google.api.http) = {
       post: "/accommodation/modify"
+      body: "*"
     };
   }
   rpc SearchAccommodations(SearchAccommodationsRequest) returns (SearchAccommodationsResponse){
@@ -33,6 +34,7 @@ service AccommodationServiceRPC{
   rpc SetReservationOption (SetReservationOptionRequest) returns (SetReservationOptionResponse){
      option (google.api.http) = {
       post: "/accommodation/reservation-option"
+      body: "*"
     };
   }
 
