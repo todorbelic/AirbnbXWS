@@ -53,7 +53,8 @@ namespace AccommodationService.Services
 
         public async Task UpdateAccomDetails(UpdateAccomDetailsDTO dto)
         {
-            if (!CreateIsAccommodationAvailableForDateRangeRequest(dto.AccomId)) throw new AccommodationNotAvailableException();
+            if (!CreateIsAccommodationAvailableForDateRangeRequest(dto.AccomId, DateTime.Now.ToString(), DateTime.Now.AddYears(10).ToString())) 
+                throw new AccommodationNotAvailableException();
             AppAccommodation accommodation = await GetById(dto.AccomId);
             if (accommodation == null)
             {
@@ -64,10 +65,9 @@ namespace AccommodationService.Services
             await _repository.ReplaceOneAsync(accommodation);
         }
 
-        private bool CreateIsAccommodationAvailableForDateRangeRequest(string accommodationId)
+        private bool CreateIsAccommodationAvailableForDateRangeRequest(string accommodationId, string startDate, string endDate)
         {
-            DateTime current = DateTime.Now;
-            ReservationTimeFrameProto timeframe = new ReservationTimeFrameProto() { StartDate= current.ToString(), EndDate = current.AddYears(10).ToString()};
+            ReservationTimeFrameProto timeframe = new ReservationTimeFrameProto() { StartDate= startDate, EndDate = endDate};
             IsAccommodationAvailableForDateRangeRequest request = new IsAccommodationAvailableForDateRangeRequest() { AccommodationId = accommodationId, TimeFrame = timeframe };
             var channel = GrpcChannel.ForAddress("http://reservation_service:8080");
             var client = new InternalReservationServiceRPC.InternalReservationServiceRPCClient(channel);
@@ -83,7 +83,9 @@ namespace AccommodationService.Services
                                                                        && a.Address.StreetAddress.ToLower().Contains(request.StreetAddress.ToLower());
             
             List<AppAccommodation> accommodations = _repository.FilterBy(filterExpression).ToList();
-            List<AccommodationSearch> accommodationsSearched = _mapper.Map<List<AccommodationSearch>>(accommodations);
+            List<AppAccommodation> dateRangeFiltered = accommodations
+                .Where(a => CreateIsAccommodationAvailableForDateRangeRequest(a.Id.ToString(), request.StartDate, request.EndDate)).ToList();
+            List<AccommodationSearch> accommodationsSearched = _mapper.Map<List<AccommodationSearch>>(dateRangeFiltered);
             accommodationsSearched.ForEach(accommodations => accommodations.PriceTotal = accommodations.BasePrice * request.NumberOfGuests);
             return accommodationsSearched;
         }

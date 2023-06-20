@@ -48,7 +48,9 @@ message AccommodationSearch{
   int32 maxGuests = 8;
   int32 basePrice = 9;
   int32 priceTotal = 10;
-  PaymentOption paymentOption = 11;
+  string startDate = 11;
+  string endDate = 12;
+  PaymentOption paymentOption = 13;
 }
 
 message AccommodationRequest{
