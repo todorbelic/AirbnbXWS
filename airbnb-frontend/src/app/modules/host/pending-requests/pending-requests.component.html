@@ -1,1 +1,36 @@
-<p>pending-requests works!</p>
+
+<app-host-toolbar></app-host-toolbar>
+<body>
+<div class="certificates-main-div" style="margin-top:5%;">
+    <table mat-table [dataSource]="dataSource" class="all-certificates-table">
+        <ng-container matColumnDef="accommodationId">
+            <th mat-header-cell *matHeaderCellDef class="cell-center-header">Accommodation</th>
+            <td mat-cell *matCellDef="let res" class="clickable cell-center">{{res.accommodationId}}</td>
+        </ng-container>
+        <ng-container matColumnDef="startDate" >
+            <th mat-header-cell *matHeaderCellDef class="cell-center-header">Start Date</th>
+            <td mat-cell *matCellDef="let res" class="clickable cell-center">{{res.startDate}}</td>
+        </ng-container>
+        <ng-container matColumnDef="endDate">
+            <th mat-header-cell *matHeaderCellDef class="cell-center-header">End Date</th>
+            <td mat-cell *matCellDef="let res" class="clickable cell-center">{{res.endDate}}</td>
+        </ng-container>
+        <ng-container matColumnDef="guestCount">
+            <th mat-header-cell *matHeaderCellDef class="cell-center-header">Guest Number</th>
+            <td mat-cell *matCellDef="let res" class="clickable cell-center">{{res.guestCount}}</td>
+        </ng-container>
+        <ng-container matColumnDef="hostId">
+            <th mat-header-cell *matHeaderCellDef class="cell-center-header">Host</th>
+            <td mat-cell *matCellDef="let res" class="clickable cell-center">{{res.hostId}}</td>
+        </ng-container>
+        <ng-container matColumnDef="reservationStatus">
+            <th mat-header-cell *matHeaderCellDef class="cell-center-header">Status</th>
+            <td mat-cell *matCellDef="let res" class="clickable cell-center">{{res.reservationStatus}}</td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+</body>

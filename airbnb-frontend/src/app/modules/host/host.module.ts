@@ -23,6 +23,7 @@ const routes: Routes = [
     { path:'host-home', component: HostHomeComponent},
     { path: 'host-add-accommodation', component: NewAccommComponent},
     { path:'host-update-accom', component: HostUpdateAccomComponent},
+    {path: 'host-pending-res',component:PendingRequestsComponent}
 
 
   ];

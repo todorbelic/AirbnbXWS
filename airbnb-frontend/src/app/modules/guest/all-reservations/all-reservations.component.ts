@@ -20,13 +20,12 @@ export class AllReservationsComponent {
 
   ngOnInit():void{
     this.reservationService.getActiveForGuest(this.authService.getId()).subscribe(res=>{
-      this.reservations=res;
+      this.reservations=res.reservations;
+      
       this.dataSource.data=this.reservations;
-      console.log(res)
-    });
-  }
 
-  revokeCertificate(certificate:any){
-    
+      console.log('res='+res)
+      console.log('res.reservations='+this.reservations)
+    });
   }
 }

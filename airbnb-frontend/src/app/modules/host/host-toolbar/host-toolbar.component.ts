@@ -25,7 +25,7 @@ export class HostToolbarComponent {
   }
 
   ReservationsClick(){
-    this.router.navigate(['/host-reservations']);
+    this.router.navigate(['/host-pending-res']);
 
   }
 

@@ -23,7 +23,7 @@ export class ReservationService {
 
 
   getActiveForHost(id:any): Observable<any> {
-    return this.http.get(this.apiHost + '/host/active/' + id, { headers: this.headers })
+    return this.http.get(this.apiHost + '/host/active?hostId=' + id, { headers: this.headers })
   }
 
   getActiveForGuest(id:any): Observable<any> {
