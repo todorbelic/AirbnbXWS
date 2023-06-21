@@ -22,7 +22,7 @@ export class AccomService {
   }
 
   getForHost(id:any): Observable<any> {
-    return this.http.get(this.apiHost + 'api/accommodation/host' + id, { headers: this.headers })
+    return this.http.get(this.apiHost + 'accommodation/host/' + id, { headers: this.headers })
   }
 
   getById(id:any) : Observable<any>{
