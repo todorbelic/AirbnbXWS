@@ -1,7 +1,7 @@
 export class DenyReservationRequest{
-   requestId = ''
+   reservationId = ''
 
    public constructor(obj? :DenyReservationRequest){
-    if(obj) this.requestId = obj.requestId
+    if(obj) this.reservationId = obj.reservationId
    }
 }

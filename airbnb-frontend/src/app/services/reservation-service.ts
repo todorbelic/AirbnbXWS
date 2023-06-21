@@ -48,11 +48,11 @@ export class ReservationService {
   }
 
   cancelReservation(reservationId : CancelReservationRequest): Observable<any> {
-    return this.http.post(this.apiHost + '/cancel?reservationId='+reservationId, { headers: this.headers })
+    return this.http.post(this.apiHost + '/cancel',reservationId, { headers: this.headers })
   }
 
   denyReservation(reservationId : DenyReservationRequest): Observable<any> {
-    return this.http.post(this.apiHost + '/deny',reservationId, { headers: this.headers })
+    return this.http.post(this.apiHost + '/deny-request',reservationId, { headers: this.headers })
   }
 
 

@@ -1,6 +1,6 @@
 export class AcceptReservationRequest {
-    requestId = ''
+    reservationId = ''
     public constructor(obj? : AcceptReservationRequest){
-        if(obj) this.requestId = obj.requestId
+        if(obj) this.reservationId = obj.reservationId
     }
 }

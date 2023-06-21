@@ -90,9 +90,7 @@ namespace AccommodationService.Services
                                                                        && a.Address.City.ToLower().Contains(request.City.ToLower())
                                                                        && a.Address.StreetAddress.ToLower().Contains(request.StreetAddress.ToLower());
             
-            _logger.Log(LogLevel.Information, request.City);
             List<AppAccommodation> accommodations = _repository.FilterBy(filterExpression).ToList();
-            _logger.Log(LogLevel.Information, accommodations.First().Name);
             List<AppAccommodation> dateRangeFiltered = accommodations
                 .Where(a => CreateIsAccommodationAvailableForDateRangeRequest(a.Id.ToString(), request.StartDate, request.EndDate)).ToList();
             _logger.Log(LogLevel.Information, dateRangeFiltered.Count().ToString());

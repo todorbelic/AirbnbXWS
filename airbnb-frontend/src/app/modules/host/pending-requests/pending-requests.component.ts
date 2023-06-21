@@ -60,7 +60,7 @@ export class PendingRequestsComponent {
 
   acceptReservation(res:ReservationView){
     var acceptedRes=new AcceptReservationRequest()
-    acceptedRes.requestId=res.ReservationId;
+    acceptedRes.reservationId=res.ReservationId;
     this.reservationService.acceptReservation(acceptedRes).subscribe(res=>{
       this.toast.success("Reservation accepted!")
     })
@@ -68,7 +68,7 @@ export class PendingRequestsComponent {
 
   denyReservation(res:ReservationView){
       var deniedRes=new DenyReservationRequest()
-      deniedRes.requestId=res.ReservationId;
+      deniedRes.reservationId=res.ReservationId;
       this.reservationService.denyReservation(deniedRes).subscribe(res=>{
         this.toast.success("Reservation denied!")
       })
