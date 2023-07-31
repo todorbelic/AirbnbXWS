@@ -50,7 +50,7 @@ namespace UserService.Handlers
                 User = user
             };
         }
-
+        [Authorize]
         public override async Task<ChangePasswordResponse> ChangePassword(ChangePasswordRequest request, ServerCallContext context)
         {
             await _appUserService.ChangePassword(request);

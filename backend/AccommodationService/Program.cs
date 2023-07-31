@@ -1,12 +1,14 @@
-using AccommodationService.BackgroundTasks;
 using AccommodationService.Handlers;
 using AccommodationService.Mapper;
 using AccommodationService.Middleware;
 using AccommodationService.Repository;
 using AccommodationService.Services;
 using AccommodationService.Settings;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddGrpc(options =>
     { options.Interceptors.Add<ErrorHandlingInterceptor>(); }
 );
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = false, // Allow all issuers
+                ValidateAudience = false, // Allow all audiences
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+            };
+        });
 
 builder.Services.AddScoped<IAppAccommodationService, AppAccommodationService>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -36,13 +51,13 @@ builder.Services.AddLogging(loggingBuilder =>
 {
     loggingBuilder.AddSerilog(dispose: true);
 });
-
-builder.Services.AddHostedService<UpdatePricesService>();
-
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+app.UseAuthentication();
 app.UseRouting();
+app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
     {
@@ -51,10 +66,5 @@ app.UseEndpoints(endpoints =>
         endpoints.MapGrpcService<AccommodationReservationHandler>();
     }
 );
-
-// Configure the HTTP request pipeline.
-//app.MapGrpcService<GreeterService>();
-//app.MapGrpcService<AppAccommodationService>();
-//app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 
 app.Run();

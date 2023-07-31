@@ -1,4 +1,5 @@
 ﻿using Grpc.Core;
+using Microsoft.AspNetCore.Authorization;
 using ReservationService.Service;
 
 namespace ReservationService.Handler
@@ -13,7 +14,7 @@ namespace ReservationService.Handler
         }
 
 
-
+        [Authorize(Roles = "HOST")]
         public override async Task<GetActiveForHostResponse> GetActiveForHost(GetActiveForHostRequest request, ServerCallContext context)
         {
             
@@ -23,6 +24,7 @@ namespace ReservationService.Handler
             return res;
         }
 
+        [Authorize(Roles = "GUEST")]
         public override async Task<GetActiveForGuestResponse> GetActiveForGuest(GetActiveForGuestRequest request, ServerCallContext context)
         {
             var res = new GetActiveForGuestResponse();
@@ -31,6 +33,7 @@ namespace ReservationService.Handler
             return res;
         }
 
+        [Authorize(Roles = "HOST")]
         public override async Task<AcceptReservationResponse> AcceptReservation(AcceptReservationRequest request, ServerCallContext context)
         {
             bool response = await _reservationService.AcceptReservation(request.ReservationId);
@@ -42,6 +45,7 @@ namespace ReservationService.Handler
             
         }
 
+        [Authorize(Roles = "GUEST")]
         public override async Task<SendReservationRequestResponse> SendReservationRequest(SendReservationRequestRequest request, ServerCallContext context)
         {
             bool response =  await _reservationService.SendReservationRequest(request);
@@ -51,6 +55,7 @@ namespace ReservationService.Handler
             };
         }
 
+        [Authorize(Roles = "GUEST")]
         public override async Task<DeleteReservationRequestResponse> DeleteReservationRequest(DeleteReservationRequestRequest request, ServerCallContext context)
         {
            bool response = await _reservationService.DeleteReservationRequest(request.ReservationId);
@@ -60,6 +65,7 @@ namespace ReservationService.Handler
             };
         }
 
+        [Authorize(Roles = "GUEST")]
         public override async Task<CancelReservationResponse> CancelReservation(CancelReservationRequest request, ServerCallContext context)
         {
             bool response = await _reservationService.CancelReservation(request.ReservationId);
@@ -69,6 +75,7 @@ namespace ReservationService.Handler
             };
         }
 
+        [Authorize(Roles = "GUEST")]
         public override async Task<GetReservationRequestsForGuestResponse> GetReservationRequestsForGuest(GetReservationRequestsForGuestRequest request, ServerCallContext context)
         {
             var res = new GetReservationRequestsForGuestResponse();
@@ -77,6 +84,7 @@ namespace ReservationService.Handler
             return res;
         }
 
+        [Authorize(Roles = "HOST")]
         public override async Task<GetReservationRequestsForHostResponse> GetReservationRequestsForHost(GetReservationRequestsForHostRequest request, ServerCallContext context)
         {
             var res = new GetReservationRequestsForHostResponse();
@@ -85,18 +93,21 @@ namespace ReservationService.Handler
             return res;
         }
 
+        [Authorize(Roles = "HOST")]
         public override async Task<DenyReservationRequestResponse> DenyReservationRequest(DenyReservationRequestRequest request, ServerCallContext context)
         {
             bool response = await _reservationService.DenyReservationRequest(request.ReservationId);
             return new DenyReservationRequestResponse() { Response = response };
         }
 
+        [Authorize(Roles = "HOST")]
         public override async Task<GetCancellationNumberForGuestResponse> GetCancellationNumberForGuest(GetCancellationNumberForGuestRequest request, ServerCallContext context)
         {
             int response =  _reservationService.GetCancellationNumberForGuest(request.GuestId);
             return new GetCancellationNumberForGuestResponse() { CancellationNumber = response };
         }
 
+        [Authorize(Roles = "GUEST")]
         public override async Task<GetAllForGuestResponse> GetAllForGuest(GetAllForGuestRequest request, ServerCallContext context)
         {
             var res = new GetAllForGuestResponse();
@@ -105,6 +116,7 @@ namespace ReservationService.Handler
             return res;
         }
 
+        [Authorize(Roles = "HOST")]
         public override async Task<GetAllForHostResponse> GetAllForHost(GetAllForHostRequest request, ServerCallContext context)
         {
             var res = new GetAllForHostResponse();

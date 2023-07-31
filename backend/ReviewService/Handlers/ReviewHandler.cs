@@ -1,5 +1,7 @@
 ﻿using Grpc.Core;
+using Microsoft.AspNetCore.Authorization;
 using ReviewService.Service;
+using System.Data;
 
 namespace ReviewService.Handlers
 {
@@ -12,12 +14,14 @@ namespace ReviewService.Handlers
             this._reviewService = reviewService;
         }
 
+        [Authorize(Roles = "GUEST")]
         public override async Task<RateAccommodationResponse> RateAccommodation(RateAccommodationRequest request, ServerCallContext context)
         {
             await _reviewService.RateAccomodation(request);
             return new RateAccommodationResponse();
         }
 
+        [Authorize(Roles = "GUEST")]
         public override async Task<RateHostResponse> RateHost(RateHostRequest request, ServerCallContext context)
         {
             await _reviewService.RateHost(request);
@@ -34,10 +38,18 @@ namespace ReviewService.Handlers
             return await _reviewService.GetRatingsForHost(request);
         }
 
+        [Authorize(Roles = "GUEST")]
         public override async Task<DeleteAccommodationRatingResponse> DeleteAccommodationRating(DeleteAccommodationRatingRequest request, ServerCallContext context)
         {
             await _reviewService.DeleteAccommodationRating(request);
             return new DeleteAccommodationRatingResponse();
+        }
+
+        [Authorize(Roles = "GUEST")]
+        public override async Task<DeleteHostRatingResponse> DeleteHostRating(DeleteHostRatingRequest request, ServerCallContext context)
+        {
+            await _reviewService.DeleteHostRating(request);
+            return new DeleteHostRatingResponse();
         }
     }
 }
