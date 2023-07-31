@@ -1,5 +1,6 @@
 ﻿using AccommodationService.Services;
 using Grpc.Core;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AccommodationService.Handlers
 {
@@ -13,7 +14,7 @@ namespace AccommodationService.Handlers
             _logger = logger;
             _accommodationService = accommodationService;
         }
-
+        [Authorize(Roles = "HOST")]
         public override async Task<CreateAccommodationResponse> CreateAccommodation(CreateAccommodationRequest request, ServerCallContext context)
         {
             await _accommodationService.AddAccommodation(request.Request);

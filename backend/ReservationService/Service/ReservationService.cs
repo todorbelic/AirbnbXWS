@@ -1,8 +1,3 @@
-﻿using Amazon.Runtime.Internal;
-using AutoMapper;
-using Grpc.Net.Client;
-using Microsoft.AspNetCore.Authorization.Infrastructure;
-using Microsoft.Extensions.Hosting;
 ﻿using AutoMapper;
 using Grpc.Net.Client;
 using ReservationService.Model;
@@ -31,13 +26,6 @@ namespace ReservationService.Service
             reservation.Status = "ACTIVE";
             await DenyAllReservationsThatOverlap(reservation);
             await _repository.ReplaceOneAsync(reservation);
-
-/*
-            using var channel = GrpcChannel.ForAddress("http://localhost:8083");
-            var client = new ReservationNotification.ReservationNotificationClient(channel);
-            var reply = await client.ReservationAcceptedAsync(
-                            new ReservationAcceptedRequest { AccomId=reservation.AccommodationId, GuestId=reservation.GuestId, HostId=reservation.HostId});
-            */
             _logger.Log(LogLevel.Information, "Finished accepting reservation");
             return true;
         }
@@ -131,7 +119,6 @@ namespace ReservationService.Service
 
         }
 
-        //ovo ne radi, guestId dodje prazan????/
         public int GetCancellationNumberForGuest(string guestId)
         {
             _logger.Log(LogLevel.Information, guestId);
@@ -145,7 +132,6 @@ namespace ReservationService.Service
         public bool CanGuestRateHost(string guestId, string hostId)
         {
             EnteredMethodLog("CanGuestRateHost");
-            //ovo mozda promeniti jer pise da moze ako je imao bar jednu rezervaciju koju nije otkazao, znaci sve osim cancelled?
             IEnumerable<Reservation> guestHistoryWithHost = _repository.FilterBy(r => r.HostId.Equals(hostId) && r.GuestId.Equals(guestId)
             && r.Status.Equals("FINISHED"));
             if(guestHistoryWithHost.Any()) return true;
@@ -188,7 +174,6 @@ namespace ReservationService.Service
            return GetViewDTOForReservations(reservations);
         }
 
-        //ovde ce mi isto trebati get accommodation by id ili tako nesto
         public IEnumerable<ReservationView> GetAllForHost(string hostId)
         {
             EnteredMethodLog("GetAllForHost");
@@ -196,9 +181,7 @@ namespace ReservationService.Service
             if (reservations == null) return new List<ReservationView>();
             return GetViewDTOForReservations(reservations);
         }
-
-
-      
+  
         public IEnumerable<ReservationView> GetActiveForGuest(string guestId)
         {
             EnteredMethodLog("GetActiveForGuest");
@@ -243,7 +226,6 @@ namespace ReservationService.Service
             await _repository.ReplaceOneAsync(reservation);
             return true;
         }
-
       
         public IEnumerable<ReservationView> GetReservationRequestsForGuest(string guestId)
         {
@@ -251,9 +233,7 @@ namespace ReservationService.Service
             IEnumerable<Reservation> reservations = _repository.FilterBy(r => r.GuestId.Equals(guestId) && r.Status.Equals("PENDING"));
             return GetViewDTOForReservations(reservations);
         }
-
-       
-        
+      
         public IEnumerable<ReservationView> GetReservationRequestsForHost(string hostId)
         {
             EnteredMethodLog("GetReservationRequestsForHost");
@@ -272,7 +252,6 @@ namespace ReservationService.Service
             return true;
         }
 
-        //moze da otkaze samo ako je bar dan pre pocetka rezervacije
         public async Task<bool> CancelReservation(string reservationId)
         {
             EnteredMethodLog("CancelReservation");
@@ -299,7 +278,6 @@ namespace ReservationService.Service
        private int GetTotalReservedDaysForHost(string hostId)
         {
             EnteredMethodLog("GetTotalReservedDaysForHost");
-            //da li da ubrojim i aktivne?
             int days = 0;
             IEnumerable<Reservation> allFinished = _repository.FilterBy(r => r.HostId.Equals(hostId) && r.Status.Equals("FINISHED"));
             foreach(Reservation reservation in allFinished)
@@ -324,6 +302,5 @@ namespace ReservationService.Service
         {
             _logger.Log(LogLevel.Information, "Entered the " + method + " method in Reservation service.");
         }
-
     }
 }

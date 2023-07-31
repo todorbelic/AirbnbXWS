@@ -190,17 +190,17 @@ namespace ReviewService.Repository
 
         public async Task<GetRecommendedAccommodationsRequest> GetReccommendedAccommodations(string guestId)
         {
-            string query = $" MATCH (g:Guest)-[r1:RATE]->(a:Accommodation) " +
+            string query = $"MATCH (g:Guest)-[r1:RATE]->(a:Accommodation) " +
                            $"WHERE g.guestId = '{guestId}' " +
-                           $" WITH g, COLLECT(DISTINCT a.accommodationId) AS reservedAccommodations " +
+                           $"WITH g, COLLECT(DISTINCT a.accommodationId) AS reservedAccommodations " +
                            $"MATCH (g)-[r2:RATE]->(a2:Accommodation)<-[r3:RATE]-(g2:Guest) " +
                            $"WHERE a2.accommodationId IN reservedAccommodations AND ABS(r2.value - r3.value) <= 1 " +
                            $"WITH g2, a2 " +
-                           $" MATCH (g2)-[r4:RATE]->(a3:Accommodation) " +
+                           $"MATCH (g2)-[r4:RATE]->(a3:Accommodation) " +
                            $"WHERE r4.value >= 3 AND r4.date >= datetime().epochSeconds - 7776000 " +
                            $"WITH a3, COUNT(*) AS ratingsCount " +
-                           $" WHERE ratingsCount <= 5 " +
-                           $" RETURN a3";
+                           $"WHERE ratingsCount <= 5 " +
+                           $"RETURN a3";
 
             using var session = _driver.AsyncSession();
             var result = await session.RunAsync(query);

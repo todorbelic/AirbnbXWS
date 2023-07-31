@@ -2,7 +2,6 @@
 using ReviewService.Model;
 using ReviewService.Repository;
 using Host = ReviewService.Model.Host;
-using System.Globalization;
 
 namespace ReviewService.Service
 {
@@ -49,8 +48,6 @@ namespace ReviewService.Service
             var client = new ReviewNotification.ReviewNotificationClient(channel);
             var reply = await client.RateHostAsync(
                             new RateHostNotificationRequest { HostId = request.HostId, Rating=request.Rating });
-
-            //_logger.Log(LogLevel.Information, "Finished accepting reservation");
         }
 
         public async Task<GetRatingsForAccommodationResponse> GetRatingsForAccommodation(GetRatingsForAccommodationRequest request) 
