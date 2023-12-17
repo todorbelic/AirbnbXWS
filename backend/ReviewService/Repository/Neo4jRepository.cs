@@ -12,7 +12,7 @@ namespace ReviewService.Repository
 
         public Neo4jRepository()
         {
-            _driver = GraphDatabase.Driver("neo4j+s://05b6487c.databases.neo4j.io:7687", AuthTokens.Basic("neo4j", "9oCVCDhxkBNsNU3HkXQbx3BmiBdQR4ELpTlQt2zR2zo"));
+            _driver = GraphDatabase.Driver("", AuthTokens.Basic("", ""));
         }
 
         public virtual async Task<IEnumerable<TEntity>> All()
